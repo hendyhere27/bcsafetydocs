@@ -1,203 +1,502 @@
-// BC WorkSafeBC OHS Regulation Part 9 (Confined Spaces) reference data.
-// Source: BC Safety Docs Confined Space Entry Permit (BC_Confined_Space_Entry_Permit_Part9.docx),
-// which references B.C. Reg. 296/97, OHS Regulation Part 9, sections 9.1, 9.25, 9.29-9.36.
+// BC WorkSafeBC OHS Regulation reference data for the bc-confined-space MCP server.
+// Primary source: BC Safety Docs Confined Space Entry Permit (BC_Confined_Space_Entry_Permit_Part9.docx),
+// referencing B.C. Reg. 296/97 (OHSR) Part 9 sections 9.1, 9.25, 9.29-9.36.
+//
+// Design rule: every tool response states what the regulation REQUIRES — never whether a
+// specific situation is compliant. Compliance determinations require a qualified person.
+
+export const LAST_VERIFIED = "2026-07-08";
+
+export const SCOPE_NOTE =
+  "Reference information only. This states what the OHS Regulation requires — it is not a " +
+  "determination that any specific entry, task, or workplace is compliant or safe. Entry and " +
+  "compliance decisions must be made by a qualified person on site.";
 
 export const DISCLAIMER =
   "Working tool only — must be reviewed by a qualified person and verified against the current " +
-  "WorkSafeBC OHS Regulation (B.C. Reg. 296/97, Part 9) before use. Not legal or regulatory advice.";
+  "WorkSafeBC OHS Regulation (B.C. Reg. 296/97) before use. Not legal or regulatory advice.";
 
-export const hazardClassifications = {
-  low: {
-    level: "LOW HAZARD",
-    definition:
-      "Clean respirable air: O2 approximately 20.9%, no measurable flammable gas/vapour, " +
-      "no contaminant exceeding 10% of its exposure limit.",
-    sections: ["s.9.1"],
+export const PRODUCTS = {
+  confinedSpace: {
+    name: "BC Confined Space Entry Permit (WorkSafeBC Part 9)",
+    url: "https://bcsafetydocs.com/",
   },
-  moderate: {
-    level: "MODERATE HAZARD",
-    definition:
-      "Not clean respirable air, but the atmosphere still permits unaided escape if " +
-      "ventilation or the respirator fails.",
-    sections: ["s.9.25"],
+  jsa: {
+    name: "JSA / Field Level Hazard Assessment template",
+    url: "https://bcsafetydocs.com/jsa.html",
   },
-  high: {
-    level: "HIGH HAZARD",
-    definition:
-      "Atmosphere may cause death, incapacitation, injury, acute illness, or prevent " +
-      "unaided escape if ventilation or the respirator fails.",
-    sections: ["s.9.25"],
+  flha: {
+    name: "Daily FLHA form",
+    url: "https://bcsafetydocs.com/flha.html",
   },
-  notes: [
-    "The classification rationale must be documented on the entry permit (why the classification was assigned).",
-    "Continuous monitoring is required if a flammable/explosive atmosphere >20% LEL could develop during entry (s.9.34).",
-  ],
+  hotWork: {
+    name: "Hot Work Permit template",
+    url: "https://bcsafetydocs.com/hot-work-permit.html",
+  },
+  loto: {
+    name: "Lockout / Tagout Procedure template",
+    url: "https://bcsafetydocs.com/loto.html",
+  },
+  incident: {
+    name: "Incident Investigation Report template",
+    url: "https://bcsafetydocs.com/incident-report.html",
+  },
+  emergency: {
+    name: "Emergency Response Plan template",
+    url: "https://bcsafetydocs.com/emergency-response.html",
+  },
+  swp: {
+    name: "Safe Work Procedure template",
+    url: "https://bcsafetydocs.com/safe-work-procedure.html",
+  },
+  bundle: {
+    name: "Starter Bundle (Confined Space Permit + JSA)",
+    url: "https://bcsafetydocs.com/bundle.html",
+  },
 };
 
-export const atmosphericThresholds = {
-  oxygen: { parameter: "O2 minimum", limit: ">= 19.5%", note: "Clean respirable air is approximately 20.9% O2 (s.9.1)" },
-  lel: { parameter: "LEL action threshold", limit: "< 20% LEL", note: "Continuous monitoring required if >20% LEL could develop during entry (s.9.34)" },
-  h2s: { parameter: "H2S ceiling", limit: "<= 10 ppm (ceiling)", note: "Ceiling limit — never to be exceeded" },
-  co: { parameter: "CO", limit: "< 25 ppm TWA", note: "TLV time-weighted average" },
-  retest: {
-    parameter: "Retest interval",
-    limit: "Retest required if all workers absent from the space for more than 20 minutes",
-    note: "s.9.34",
+// ---------------------------------------------------------------------------
+// 1. Atmospheric limits (check_atmospheric_limits)
+// ---------------------------------------------------------------------------
+
+export const gasLimits = {
+  oxygen: {
+    gas: "Oxygen (O2)",
+    unit: "% by volume",
+    minimum: 19.5,
+    normal: 20.9,
+    limitStatement:
+      "OHSR Part 9 requires a minimum of 19.5% oxygen. 'Clean respirable air' is defined at " +
+      "approximately 20.9% O2 (OHSR s.9.1).",
+    ohsrReferences: ["OHSR s.9.1 (definition of clean respirable air)", "OHSR Part 9"],
+    belowAction:
+      "OHSR Part 9 requires that an atmosphere below 19.5% O2 not be treated as low hazard. The " +
+      "space must be classified moderate or high hazard (s.9.25), ventilated (s.9.30-9.32), and " +
+      "supplied-air respirator or SCBA requirements under s.9.29 apply. Retest before any entry.",
+    aboveNormalAction:
+      "A reading materially above 20.9% indicates possible oxygen enrichment, which increases fire " +
+      "and explosion risk. OHSR Part 9 requires identifying the enrichment source and having a " +
+      "qualified person reassess the hazard classification before entry. Verify the applicable " +
+      "enrichment limit against the current OHSR.",
+  },
+  lel: {
+    gas: "Flammable gas/vapour (LEL)",
+    unit: "% of Lower Explosive Limit",
+    ceiling: 20,
+    limitStatement:
+      "OHSR Part 9 sets 20% LEL as the action threshold. 'Clean respirable air' requires no " +
+      "measurable flammable gas or vapour (s.9.1). Continuous monitoring is required if a " +
+      "flammable/explosive atmosphere exceeding 20% LEL could develop during entry (s.9.34).",
+    ohsrReferences: ["OHSR s.9.1", "OHSR s.9.34 (continuous monitoring)"],
+    exceedsAction:
+      "OHSR s.9.34 requires continuous monitoring where an atmosphere exceeding 20% LEL could " +
+      "develop. A reading at or above 20% LEL means the atmosphere does not meet the low-hazard " +
+      "criteria (s.9.1); classification under s.9.25, ventilation under s.9.30-9.32, and ignition " +
+      "source control requirements apply. Any measurable flammable gas means the s.9.1 " +
+      "clean-respirable-air definition is not met.",
+  },
+  h2s: {
+    gas: "Hydrogen sulphide (H2S)",
+    unit: "ppm",
+    ceiling: 10,
+    ceilingType: "ceiling limit — never to be exceeded, even momentarily",
+    limitStatement:
+      "The BC exposure limit for H2S is a 10 ppm ceiling (OHSR s.5.48 exposure limits table; " +
+      "referenced by the Part 9 permit as the confined space threshold).",
+    ohsrReferences: ["OHSR s.5.48 (exposure limits)", "OHSR Part 9"],
+    exceedsAction:
+      "A ceiling limit must never be exceeded. OHSR requires that an atmosphere over the exposure " +
+      "limit not be classified low hazard (s.9.1 allows no contaminant above 10% of its exposure " +
+      "limit for low hazard); classification per s.9.25, ventilation per s.9.30-9.32, and " +
+      "supplied-air/SCBA requirements per s.9.29 apply.",
+  },
+  co: {
+    gas: "Carbon monoxide (CO)",
+    unit: "ppm",
+    twa: 25,
+    twaType: "TLV-TWA (8-hour time-weighted average)",
+    limitStatement:
+      "The BC exposure limit for CO is 25 ppm as an 8-hour time-weighted average (OHSR s.5.48 " +
+      "exposure limits table; referenced by the Part 9 permit).",
+    ohsrReferences: ["OHSR s.5.48 (exposure limits)", "OHSR Part 9"],
+    exceedsAction:
+      "A spot reading at or above 25 ppm indicates the TWA limit could be exceeded over a shift. " +
+      "OHSR s.9.1 permits no contaminant above 10% of its exposure limit for a low hazard " +
+      "classification (i.e. 2.5 ppm CO for low hazard); above that, classification per s.9.25 and " +
+      "the corresponding ventilation and respiratory protection requirements apply.",
   },
 };
 
-export const ventilationRequirements = {
+// ---------------------------------------------------------------------------
+// 2. Confined space requirements by hazard characterization
+// ---------------------------------------------------------------------------
+
+export const confinedSpaceRequirements = {
   low: {
-    hazardLevel: "LOW",
-    requirement:
+    hazardLevel: "LOW HAZARD",
+    classificationCriteria:
+      "Clean respirable air: O2 approximately 20.9%, no measurable flammable gas/vapour, no " +
+      "contaminant above 10% of its exposure limit (OHSR s.9.1).",
+    permit: [
+      "Written entry permit identifying the space, the work, and the hazard classification with documented rationale",
+      "Atmospheric test results recorded before entry (O2, LEL, H2S, CO as applicable)",
+      "Isolation, lockout (per OHSR Part 10) and purge verification recorded",
+      "Entrant sign-in/sign-out log",
+      "Issuing supervisor authorization signature; formal closure signature when all workers have exited",
+    ],
+    ventilation:
       "Minimum 85 m³/h (50 cfm) of clean respirable air per worker via mechanical ventilation, " +
-      "unless all low-hazard exceptions are met.",
-    sections: ["s.9.30-9.32"],
+      "unless all low-hazard exceptions are met (OHSR s.9.30-9.32).",
+    standby:
+      "1 standby person; continuous means to summon rescue; checks on workers at least every " +
+      "20 minutes (OHSR s.9.35).",
+    rescue:
+      "Documented rescue plan: rescue method (non-entry retrieval or entry rescue), rescue " +
+      "equipment on site, emergency contact, nearest hospital/AED location.",
+    monitoring:
+      "Retest required if all workers are absent from the space for more than 20 minutes (OHSR s.9.34).",
+    ohsrReferences: ["s.9.1", "s.9.30-9.32", "s.9.34", "s.9.35"],
   },
   moderate: {
-    hazardLevel: "MODERATE",
-    requirement:
-      "Continuous mechanical ventilation supplying clean respirable air required at all times.",
-    sections: ["s.9.31"],
-  },
-  high: {
-    hazardLevel: "HIGH",
-    requirement:
-      "Continuous mechanical ventilation required; natural ventilation is NOT permitted. " +
-      "Supplied-air respirator or SCBA required when ventilation is insufficient.",
-    sections: ["s.9.29", "s.9.32"],
-  },
-};
-
-export const standbyRequirements = {
-  low: {
-    hazardLevel: "LOW",
-    requirement:
-      "1 standby person; continuous means to summon rescue; checks on workers at least every 20 minutes.",
-    sections: ["s.9.35"],
-  },
-  moderate: {
-    hazardLevel: "MODERATE",
-    requirement:
+    hazardLevel: "MODERATE HAZARD",
+    classificationCriteria:
+      "Not clean respirable air, but the atmosphere still permits unaided escape if ventilation " +
+      "or the respirator fails (OHSR s.9.25).",
+    permit: [
+      "All low-hazard permit elements, plus:",
+      "Supplied-air respirator or SCBA determination recorded (required per OHSR s.9.29)",
+      "Respiratory/supplied-air details: type, tank pressure, duration, cylinder number",
+    ],
+    ventilation:
+      "Continuous mechanical ventilation supplying clean respirable air required at all times (OHSR s.9.31).",
+    standby:
       "1 or more standby persons at or near the entrance; visual checks at least every 20 minutes; " +
-      "continuous means to summon rescue.",
-    sections: ["s.9.35"],
+      "continuous means to summon rescue (OHSR s.9.35).",
+    rescue:
+      "Documented rescue plan as for low hazard; rescue capability must match the increased risk " +
+      "of the atmosphere.",
+    monitoring:
+      "Retest if all workers absent more than 20 minutes; continuous monitoring if an atmosphere " +
+      "exceeding 20% LEL could develop during entry (OHSR s.9.34).",
+    ohsrReferences: ["s.9.25", "s.9.29", "s.9.31", "s.9.34", "s.9.35"],
   },
   high: {
-    hazardLevel: "HIGH",
-    requirement:
-      "1 or more standby persons AT the entrance continuously attending; continuously monitoring workers; " +
-      "capable of immediate rescue; must prevent lifeline entanglement. An emergency escape respirator must be " +
-      "within arm's reach of or on each entrant at all times.",
-    sections: ["s.9.35", "s.9.36"],
+    hazardLevel: "HIGH HAZARD",
+    classificationCriteria:
+      "Atmosphere may cause death, incapacitation, injury, acute illness, or prevent unaided " +
+      "escape if ventilation or the respirator fails (OHSR s.9.25).",
+    permit: [
+      "All moderate-hazard permit elements, plus:",
+      "Emergency escape respirator within arm's reach of or on each entrant at all times (OHSR s.9.36)",
+      "Permit amendment signatures required if conditions change mid-job (re-evaluate and re-authorize)",
+    ],
+    ventilation:
+      "Continuous mechanical ventilation required; natural ventilation NOT permitted. Supplied-air " +
+      "respirator or SCBA required when ventilation is insufficient (OHSR s.9.29 / s.9.32).",
+    standby:
+      "1 or more standby persons AT the entrance continuously attending; continuously monitoring " +
+      "workers; capable of immediate rescue; must prevent lifeline entanglement (OHSR s.9.35 / s.9.36).",
+    rescue:
+      "Documented rescue plan with immediate-rescue capability: retrieval equipment (tripod, " +
+      "harness, lifeline), SCBA for rescuers if entry rescue, stretcher/AED locations, emergency contacts.",
+    monitoring:
+      "Retest if all workers absent more than 20 minutes; continuous monitoring if an atmosphere " +
+      "exceeding 20% LEL could develop during entry (OHSR s.9.34).",
+    ohsrReferences: ["s.9.25", "s.9.29", "s.9.32", "s.9.34", "s.9.35", "s.9.36"],
+  },
+  unknown: {
+    hazardLevel: "NOT YET CLASSIFIED",
+    classificationCriteria:
+      "OHSR Part 9 requires the atmosphere to be classified (low / moderate / high per s.9.1 and " +
+      "s.9.25) before entry requirements can be determined. Classification requires atmospheric " +
+      "testing by a qualified person and a documented rationale on the entry permit.",
+    permit: [
+      "Atmospheric testing (O2, LEL, H2S, CO and any task-specific contaminants) before classification",
+      "Documented classification rationale on the entry permit",
+    ],
+    ventilation: "Determined by classification (OHSR s.9.30-9.32).",
+    standby: "Determined by classification (OHSR s.9.35 / s.9.36).",
+    rescue: "A documented rescue plan is required for every classification level.",
+    monitoring: "OHSR s.9.34 testing and retest rules apply once entry begins.",
+    ohsrReferences: ["s.9.1", "s.9.25"],
   },
 };
 
-export const isolationLockoutPurge = {
-  title: "Isolation, Lockout & Purge Verification",
-  sections: ["s.9.30-9.32"],
-  checklist: [
-    "All energy sources isolated and locked out (LOTO per OHS Regulation Part 10)",
-    "Pipelines: double block and bleed confirmed (bleed checked within 20 minutes of entry)",
-    "Space purged and ventilated prior to atmospheric testing",
-    "Mechanical ventilation running with flow confirmed (minimum 85 m³/h per worker for low hazard)",
-    "Supplied-air / SCBA determination recorded (required for moderate and high hazard per s.9.29)",
-    "Isolation/lockout details recorded: equipment ID, lock numbers, person responsible",
+// ---------------------------------------------------------------------------
+// 3. Gas testing protocol
+// ---------------------------------------------------------------------------
+
+export const gasTestingProtocol = {
+  sequence: [
+    {
+      step: 1,
+      test: "Oxygen (O2)",
+      why:
+        "Test O2 first: combustible-gas (LEL) sensors read low in oxygen-deficient atmospheres, " +
+        "so an LEL reading is only reliable once O2 is confirmed adequate.",
+      limit: ">= 19.5% (clean respirable air is ~20.9%, OHSR s.9.1)",
+    },
+    {
+      step: 2,
+      test: "Flammable gas/vapour (LEL)",
+      why: "Fire/explosion risk must be ruled out before assessing toxics.",
+      limit: "< 20% LEL; no measurable flammable gas for low hazard (OHSR s.9.1, s.9.34)",
+    },
+    {
+      step: 3,
+      test: "Toxic gases (H2S, CO, plus any task-specific contaminants)",
+      why: "Toxic exposure assessment against BC exposure limits (OHSR s.5.48).",
+      limit: "H2S <= 10 ppm ceiling; CO < 25 ppm TWA; <=10% of exposure limit for low hazard (s.9.1)",
+    },
   ],
+  generalRules: [
+    "Test before entry, at all levels of the space (top, middle, bottom — gases stratify), and record results on the entry permit.",
+    "Purge and ventilate the space BEFORE atmospheric testing (OHSR s.9.30-9.32); test results must reflect the entry condition.",
+    "Record test time, readings, instrument used, and calibration date for every test — the permit's monitoring log requires equipment and calibration date per row.",
+  ],
+  retestRules: [
+    "Retest required if all workers have been absent from the space for more than 20 minutes (OHSR s.9.34).",
+    "Continuous monitoring required if a flammable/explosive atmosphere exceeding 20% LEL could develop during entry (OHSR s.9.34).",
+    "If conditions change mid-job (new hazard introduced, ventilation interrupted), OHSR requires re-evaluation and re-authorization — the permit must be amended and re-signed.",
+  ],
+  instrumentRequirements: [
+    "Calibrated multi-gas monitor (O2 / LEL / H2S / CO at minimum); calibration date must be recorded on the permit",
+    "Bump test per manufacturer's instructions before use",
+    "Personal gas monitor on entrants; continuous area monitor where continuous monitoring is required (s.9.34)",
+    "Intrinsically safe equipment where a flammable atmosphere is possible",
+  ],
+  scenarios: {
+    initial_entry: "Full 3-step sequence at all levels, recorded on the permit before authorization.",
+    reentry_after_vacancy:
+      "If all workers were out of the space for more than 20 minutes, a full retest is required " +
+      "before re-entry (OHSR s.9.34).",
+    flammable_risk:
+      "Where an atmosphere exceeding 20% LEL could develop during the work (e.g. coating, " +
+      "hot work nearby, sludge disturbance), continuous monitoring is required for the duration " +
+      "of entry (OHSR s.9.34).",
+    ongoing_work:
+      "The permit's extended monitoring log (16 rows) records periodic readings for the duration " +
+      "of entry: time, O2, LEL, H2S, CO, other gas, equipment and calibration date, tester signature.",
+  },
+  ohsrReferences: ["s.9.1", "s.9.30-9.32", "s.9.34", "s.5.48"],
 };
 
-export const requiredEquipment = {
-  title: "Required PPE & Equipment",
-  items: [
-    "CSA Grade 1 safety footwear",
-    "Hard hat (CSA Z94.1)",
-    "Safety glasses / goggles",
-    "Face shield",
-    "SCBA (self-contained breathing apparatus)",
-    "Supplied-air respirator",
-    "Emergency escape respirator (HIGH hazard: within arm's reach of or on each entrant at all times, s.9.36)",
-    "Air-purifying respirator (type must be specified)",
-    "Safety harness & lifeline",
-    "Tripod / mechanical retrieval device",
-    "Chemical-resistant gloves",
-    "High-visibility vest",
-    "Personal gas monitor",
-    "Continuous area gas monitor",
-    "Intrinsically safe lighting",
-  ],
-  recordkeeping: [
-    "Respiratory / supplied-air details: type, tank pressure, duration, cylinder number",
-    "Hazard-specific equipment details: H2S monitor calibration date, escape pack location, etc.",
-  ],
-};
+// ---------------------------------------------------------------------------
+// 4. Required documentation by job type
+// ---------------------------------------------------------------------------
 
-export const rescuePlan = {
-  title: "Rescue Plan",
-  elements: [
-    "Rescue method: non-entry retrieval or entry rescue (must be specified)",
-    "Rescue equipment on site: tripod, SCBA, stretcher, AED, etc.",
-    "Emergency contact / phone number",
-    "Nearest hospital / AED location",
-  ],
-};
-
-export const permitStructure = {
-  title: "BC Confined Space Entry Permit — structure per WorkSafeBC OHS Regulation Part 9",
-  regulation: "B.C. Reg. 296/97, sections 9.1, 9.25, 9.29-9.36",
-  sections: [
-    {
-      number: 1,
-      name: "Permit Identification",
-      fields: [
-        "Permit No.", "Issue Date", "Permit Valid Until (date/time)", "Company/Employer",
-        "Worksite/Project Name", "Confined Space Location/ID (address, tag no., drawing ref.)",
-        "Description of Space (tank / vault / manhole / pit / sump — be specific)",
-        "Work to be Performed Inside Space",
-      ],
-    },
-    {
-      number: 2,
-      name: "Atmospheric Hazard Classification (s.9.1 / s.9.25)",
-      fields: ["LOW / MODERATE / HIGH classification checkbox", "Classification rationale (document why)"],
-    },
-    {
-      number: 3,
-      name: "Isolation, Lockout & Purge Verification (s.9.30-9.32)",
-      fields: ["Checklist items (see isolation/lockout/purge data)", "Isolation/lockout details"],
-    },
-    { number: 4, name: "Required PPE & Equipment", fields: ["Equipment checklist", "Respiratory/supplied-air details", "Other hazard-specific equipment"] },
-    { number: 5, name: "Standby Person Requirements (s.9.35 / s.9.36)", fields: ["Standby person name(s)", "Standby person qualifications/training"] },
-    { number: 6, name: "Rescue Plan", fields: ["Rescue method", "Rescue equipment on site", "Emergency contact", "Nearest hospital / AED location"] },
-    { number: 7, name: "Authorized Entrants", fields: ["Entrant name (print)", "Signature (entry)", "Time in", "Time out / initials"] },
-    {
-      number: 8,
-      name: "Authorization & Closure",
-      fields: [
-        "Issuing supervisor signature (confirms conditions safe, controls in place, entrants briefed)",
-        "Closing supervisor signature (formally closes permit, records time all workers exited)",
-      ],
-    },
-  ],
-  page2: {
-    name: "Page 2: Atmospheric Monitoring Continuation",
-    contents: [
-      "Ventilation requirements summary (s.9.30-9.32)",
-      "Extended atmospheric monitoring log (16 rows): test time, O2 %, LEL %, H2S ppm, CO ppm, other gas, equipment & calibration date, tester name & signature (s.9.34)",
-      "Entrants continuation log",
-      "Supervisor notes / deviations / permit amendments",
-      "Permit amendment signatures (if conditions change, re-evaluate and re-authorize)",
+export const requiredDocumentation = {
+  confined_space_entry: {
+    jobType: "Confined space entry",
+    documents: [
+      {
+        order: 1,
+        document: "Hazard assessment / space classification",
+        purpose: "Identify and classify the atmospheric hazard (low/moderate/high) with documented rationale",
+        basis: "OHSR s.9.1 / s.9.25",
+      },
+      {
+        order: 2,
+        document: "Lockout/tagout procedure and isolation verification",
+        purpose: "All energy sources isolated and locked out; pipelines double-block-and-bleed",
+        basis: "OHSR Part 10 (de-energization and lockout); s.9.30-9.32 for purge/isolation",
+        product: "loto",
+      },
+      {
+        order: 3,
+        document: "Confined space entry permit",
+        purpose:
+          "Records classification, atmospheric tests, isolation, PPE, standby persons, rescue plan, " +
+          "entrant log, and authorization/closure signatures",
+        basis: "OHSR Part 9 (s.9.1, 9.25, 9.29-9.36)",
+        product: "confinedSpace",
+      },
+      {
+        order: 4,
+        document: "Atmospheric monitoring log",
+        purpose: "Ongoing readings during entry with instrument and calibration details",
+        basis: "OHSR s.9.34",
+        product: "confinedSpace",
+      },
+      {
+        order: 5,
+        document: "Rescue plan",
+        purpose: "Method, equipment, emergency contacts, nearest hospital/AED",
+        basis: "OHSR Part 9",
+        product: "confinedSpace",
+      },
+    ],
+  },
+  hot_work: {
+    jobType: "Hot work (welding, cutting, grinding)",
+    documents: [
+      {
+        order: 1,
+        document: "FLHA / hazard assessment for the task and location",
+        purpose: "Identify fire hazards, combustibles within range, and required controls",
+        basis: "Employer hazard assessment duties (Workers Compensation Act s.21; OHSR risk assessment provisions)",
+        product: "jsa",
+      },
+      {
+        order: 2,
+        document: "Hot work permit",
+        purpose: "Authorizes the work, records fire watch, extinguisher placement, and area preparation",
+        basis: "OHSR Part 12 — Welding, Cutting and Allied Processes (verify exact sections against current OHSR)",
+        product: "hotWork",
+      },
+      {
+        order: 3,
+        document: "Fire watch record",
+        purpose: "Documents the fire watch during and after hot work",
+        basis: "OHSR Part 12 / fire code requirements (verify against current OHSR and local fire code)",
+      },
+    ],
+    note:
+      "Hot work inside or adjacent to a confined space also triggers the full confined space " +
+      "documentation set, and continuous atmospheric monitoring under OHSR s.9.34.",
+  },
+  excavation: {
+    jobType: "Excavation / trenching",
+    documents: [
+      {
+        order: 1,
+        document: "Utility locates and drawings",
+        purpose: "Underground utilities identified before ground is broken",
+        basis: "OHSR Part 20 — Excavations (verify exact sections against current OHSR)",
+      },
+      {
+        order: 2,
+        document: "Written safe work procedure / sloping-shoring plan",
+        purpose: "Cave-in protection method for the soil conditions and depth",
+        basis: "OHSR Part 20 — Excavations (verify exact sections against current OHSR)",
+        product: "swp",
+      },
+      {
+        order: 3,
+        document: "Daily FLHA and excavation inspection record",
+        purpose: "Conditions re-assessed each shift and after weather or vibration changes",
+        basis: "OHSR Part 20; employer hazard assessment duties",
+        product: "flha",
+      },
+    ],
+    note:
+      "An excavation that qualifies as a confined space under OHSR Part 9 (enclosed or partially " +
+      "enclosed, not designed for continuous occupancy) additionally requires the full confined " +
+      "space documentation set, including classification and atmospheric testing.",
+  },
+  lockout_tagout: {
+    jobType: "Lockout / tagout (equipment de-energization)",
+    documents: [
+      {
+        order: 1,
+        document: "Written lockout procedure (equipment-specific)",
+        purpose: "Identifies all energy sources, isolation points, and verification steps",
+        basis: "OHSR Part 10 — De-energization and Lockout",
+        product: "loto",
+      },
+      {
+        order: 2,
+        document: "Lockout log / lock registry",
+        purpose: "Records lock numbers, who applied them, and removal authorization",
+        basis: "OHSR Part 10",
+        product: "loto",
+      },
+    ],
+  },
+  daily_work: {
+    jobType: "General daily field work",
+    documents: [
+      {
+        order: 1,
+        document: "FLHA / JSA completed before work begins",
+        purpose: "Task-level hazard identification and controls, signed by the crew",
+        basis: "Employer hazard assessment duties (Workers Compensation Act s.21; OHSR risk assessment provisions)",
+        product: "flha",
+      },
+      {
+        order: 2,
+        document: "Safe work procedures for high-risk tasks",
+        purpose: "Written procedures for tasks with recognized serious hazards",
+        basis: "OHSR / WCA employer duties (verify task-specific OHSR parts)",
+        product: "swp",
+      },
+    ],
+  },
+  incident: {
+    jobType: "Incident / accident response",
+    documents: [
+      {
+        order: 1,
+        document: "Preliminary incident investigation report",
+        purpose: "Immediate-cause investigation commenced right away (WorkSafeBC requires prompt preliminary investigation)",
+        basis: "Workers Compensation Act, Part 2 Division 10 — employer investigation duties (verify current sections)",
+        product: "incident",
+      },
+      {
+        order: 2,
+        document: "Full incident investigation report with corrective actions",
+        purpose: "Root causes and corrective actions, submitted/retained per WorkSafeBC requirements",
+        basis: "Workers Compensation Act, Part 2 Division 10 (verify current sections)",
+        product: "incident",
+      },
+    ],
+  },
+  emergency_planning: {
+    jobType: "Emergency preparedness",
+    documents: [
+      {
+        order: 1,
+        document: "Written emergency response plan",
+        purpose: "Evacuation, rescue, first aid, and notification procedures for the worksite",
+        basis: "OHSR Part 4 — emergency preparedness provisions (verify exact sections against current OHSR)",
+        product: "emergency",
+      },
+      {
+        order: 2,
+        document: "Confined space rescue plan (where entries occur)",
+        purpose: "Space-specific rescue method, equipment, and contacts",
+        basis: "OHSR Part 9",
+        product: "confinedSpace",
+      },
     ],
   },
 };
 
-export const sectionIndex = {
-  "9.1": "Definitions, including 'clean respirable air' (O2 ~20.9%, no measurable flammable gas/vapour, no contaminant >10% of exposure limit) — basis for LOW hazard classification.",
-  "9.25": "Atmospheric hazard classification — MODERATE (atmosphere permits unaided escape on ventilation/respirator failure) and HIGH (atmosphere may cause death, incapacitation, injury, acute illness, or prevent unaided escape).",
-  "9.29": "Supplied-air respirator and SCBA requirements — required for moderate and high hazard atmospheres; required for high hazard when ventilation is insufficient.",
-  "9.30": "Ventilation and purge requirements — space purged and ventilated prior to atmospheric testing; minimum 85 m³/h (50 cfm) clean respirable air per worker for low hazard.",
-  "9.31": "Continuous mechanical ventilation — required at all times for moderate hazard atmospheres.",
-  "9.32": "High hazard ventilation — continuous mechanical ventilation required, natural ventilation not permitted; supplied-air/SCBA when ventilation insufficient.",
-  "9.34": "Atmospheric testing and monitoring — retest if all workers absent more than 20 minutes; continuous monitoring if flammable/explosive atmosphere >20% LEL could develop during entry.",
-  "9.35": "Standby person requirements per hazard level — LOW: 1 standby, rescue summons, 20-minute checks; MODERATE: 1+ at/near entrance, visual checks every 20 minutes; HIGH: 1+ AT entrance continuously attending, continuous monitoring, capable of immediate rescue, prevent lifeline entanglement.",
-  "9.36": "High hazard escape respirator — emergency escape respirator must be within arm's reach of or on each entrant at all times.",
+// ---------------------------------------------------------------------------
+// 5. FLHA / JSA requirements
+// ---------------------------------------------------------------------------
+
+export const flhaRequirements = {
+  requiredContents: [
+    "Date, worksite/location, and the specific task being assessed",
+    "Task broken into steps, with the hazards of each step identified",
+    "Risk ranking for each hazard (severity x likelihood, or the employer's adopted scheme)",
+    "Controls for each hazard, following the hierarchy of controls (elimination, substitution, engineering, administrative, PPE)",
+    "Required PPE listed for the task",
+    "Names and signatures of all crew members performing the work",
+    "Supervisor review/signature",
+    "Provision to re-assess when conditions change (new hazard, new worker, weather, scope change)",
+  ],
+  timing:
+    "Completed before work begins each day/shift and re-done when task, crew, or conditions change.",
+  basis: [
+    "Workers Compensation Act s.21 — employer's general duty to ensure worker health and safety",
+    "OHSR risk assessment provisions applicable to the task (task-specific OHSR parts impose their own written assessment requirements — e.g. Part 9 for confined spaces, Part 20 for excavations)",
+  ],
+  taskTriggers: {
+    "confined space":
+      "A confined space task additionally requires classification and an entry permit under OHSR " +
+      "Part 9 — the FLHA alone does not satisfy Part 9.",
+    "hot work":
+      "Hot work additionally requires a hot work permit and fire watch under OHSR Part 12 (verify " +
+      "exact sections).",
+    excavation:
+      "Excavation work additionally requires utility locates and cave-in protection documentation " +
+      "under OHSR Part 20 (verify exact sections).",
+    electrical:
+      "Electrical work additionally triggers OHSR Part 19 (electrical safety) requirements and, " +
+      "where de-energization is used, Part 10 lockout documentation.",
+    lockout:
+      "Equipment de-energization requires written lockout procedures under OHSR Part 10.",
+  },
 };
