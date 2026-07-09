@@ -32,7 +32,24 @@ built around B.C. Reg. 296/97 (OHSR) Part 9, s.9.1, 9.25, 9.29–9.36 and s.5.48
 
 Plus one resource: `bcsafety://worksafebc/reference` (the complete reference set as one JSON document).
 
-## Setup
+## Remote server (hosted — no install)
+
+The server is deployed publicly on Cloudflare Workers:
+
+- **Streamable HTTP:** `https://mcp.bcsafetydocs.com/mcp`
+- **SSE (legacy clients):** `https://mcp.bcsafetydocs.com/sse`
+
+Connect from Claude Code:
+
+```sh
+claude mcp add --transport http bc-confined-space https://mcp.bcsafetydocs.com/mcp
+```
+
+Deploy updates with `wrangler deploy` from this directory (config in `wrangler.jsonc`;
+entry point `worker.js`). Tool definitions in `tools.js` are shared between the Worker
+and the local stdio server.
+
+## Local (stdio) setup
 
 ```sh
 cd mcp-server
@@ -63,10 +80,11 @@ Add to `claude_desktop_config.json` (Settings → Developer → Edit Config):
 ## Test
 
 ```sh
-node test-client.mjs
+node test-client.mjs                 # local stdio server
+node test-remote.mjs                 # deployed remote server
 ```
 
-Spawns the server over stdio and exercises all 5 tools plus the resource. The test also enforces
+`test-client.mjs` spawns the server over stdio and exercises all 5 tools plus the resource. The test also enforces
 the design rules: max 6 tools, the response envelope (`ohsr_references`, `last_verified`,
 `plain_language`, `scope_note`) on every response, and a ban on verdict language
 ("you are compliant", "safe to enter").

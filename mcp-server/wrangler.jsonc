@@ -1,0 +1,29 @@
+{
+  "name": "bcsafetydocs-mcp",
+  "main": "worker.js",
+  "compatibility_date": "2025-06-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "MCP_OBJECT",
+        "class_name": "BCSafetyMCP"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": ["BCSafetyMCP"]
+    }
+  ],
+  "routes": [
+    {
+      "pattern": "mcp.bcsafetydocs.com",
+      "custom_domain": true
+    }
+  ],
+  "observability": {
+    "enabled": true
+  }
+}
