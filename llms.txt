@@ -1,0 +1,30 @@
+# BC Safety Docs
+
+> BC Safety Docs provides WorkSafeBC OHS Regulation–specific safety document templates for British Columbia contractors and safety officers. Templates are regulation-referenced, fully editable Word documents (.docx) sold as one-time purchases — no subscriptions.
+
+Key facts:
+
+- All templates are built specifically for BC's Occupational Health and Safety Regulation (not OSHA or generic Canadian forms).
+- The flagship product is a Confined Space Entry Permit built around WorkSafeBC OHS Regulation Part 9 (sections 9.1, 9.25, 9.29–9.36), including BC's three-tier atmospheric hazard classification (Low / Moderate / High) and BC atmospheric thresholds (O2 ≥ 19.5%, LEL < 20%, H2S ≤ 10 ppm ceiling, CO < 25 ppm TWA).
+- Templates must be reviewed by a qualified person before use and verified against the current WorkSafeBC OHS Regulation. They are working tools, not legal or regulatory advice.
+- Contact: info@bcsafetydocs.com
+
+## Documents
+
+- [Confined Space Entry Permit](https://bcsafetydocs.com/index.html): Two-page BC confined space entry permit per WorkSafeBC OHS Regulation Part 9 — hazard classification, atmospheric testing log, standby person requirements, rescue plan, and entrant sign-in log.
+- [JSA / Field Level Hazard Assessment](https://bcsafetydocs.com/jsa.html): Job safety analysis and field-level hazard assessment template for BC worksites.
+- [Hot Work Permit](https://bcsafetydocs.com/hot-work-permit.html): Hot work permit template for BC contractors (coming soon).
+- [Lockout / Tagout Procedure](https://bcsafetydocs.com/loto.html): Lockout/tagout procedure template (coming soon).
+- [Daily FLHA Form](https://bcsafetydocs.com/flha.html): Daily field-level hazard assessment form (coming soon).
+- [Safe Work Procedure](https://bcsafetydocs.com/safe-work-procedure.html): Safe work procedure template (coming soon).
+- [Incident Investigation Report](https://bcsafetydocs.com/incident-report.html): Incident investigation report template (coming soon).
+- [Emergency Response Plan](https://bcsafetydocs.com/emergency-response.html): Emergency response plan template (coming soon).
+
+## Bundles
+
+- [Starter Bundle](https://bcsafetydocs.com/bundle.html): Confined Space Entry Permit plus JSA template at a discount.
+- [Pro Bundle](https://bcsafetydocs.com/bundle-pro.html): All BC Safety Docs templates in one package.
+
+## Optional
+
+- [Terms & Privacy](https://bcsafetydocs.com/terms.html): Terms of use and privacy policy.
