@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BC JSA Template | Field Level Hazard Assessment | WorkSafeBC Part 3 | BC Safety Docs</title>
+  <meta name="description" content="BC Job Safety Analysis and Field Level Hazard Assessment template for WorkSafeBC OHS Regulation Part 3. 8-step analysis table, hierarchy of controls, crew briefing sign-off. For BC contractors."/>
+  <meta name="keywords" content="BC JSA template, field level hazard assessment BC, FLHA template WorkSafeBC, job safety analysis BC, BC contractor hazard assessment, WorkSafeBC Part 3 JSA, BC FLHA form"/>
+  <link rel="canonical" href="https://bcsafetydocs.com/jsa.html"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
+  <link rel="manifest" href="/site.webmanifest"/>
+  <link rel="shortcut icon" href="/favicon.ico"/>
+  <style>
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; font-size: 16px; color: #1A1A1A; background: #fff; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+:root { --black:#1A1A1A; --yellow:#F5C400; --white:#FFFFFF; --grey:#4A4A4A; --light:#F4F4F4; --red:#C0392B; --blue:#1A5276; --border:#DDDDDD; --mid:#BDC3C7; }
+nav { position:fixed; top:0; left:0; right:0; z-index:200; background:var(--black); height:56px; display:flex; align-items:center; padding:0 4%; gap:0; }
+.nav-logo { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:1.15rem; color:var(--white); letter-spacing:0.04em; text-decoration:none; margin-right:32px; white-space:nowrap; }
+.nav-logo span { color:var(--yellow); }
+.nav-links { display:flex; align-items:center; gap:0; flex:1; list-style:none; }
+.nav-links > li { position:relative; }
+.nav-links > li > a, .nav-links > li > button { display:flex; align-items:center; gap:4px; font-family:'Inter',sans-serif; font-size:0.82rem; font-weight:500; color:#AAAAAA; text-decoration:none; padding:0 14px; height:56px; background:none; border:none; cursor:pointer; transition:color 0.15s; white-space:nowrap; }
+.nav-links > li > a:hover, .nav-links > li > button:hover, .nav-links > li > a.active { color:var(--white); }
+.nav-links > li > a.active { border-bottom:2px solid var(--yellow); }
+.nav-links > li > button::after { content:' ▾'; font-size:0.7rem; }
+.dropdown { display:none; position:absolute; top:56px; left:0; background:#111; border-top:2px solid var(--yellow); min-width:220px; z-index:300; box-shadow:0 8px 24px rgba(0,0,0,0.4); }
+.nav-links > li:hover .dropdown, .nav-links > li:focus-within .dropdown { display:block; }
+.dropdown a { display:block; font-size:0.82rem; color:#AAAAAA; text-decoration:none; padding:10px 18px; border-bottom:1px solid #222; transition:background 0.1s,color 0.1s; }
+.dropdown a:hover { background:#1A1A1A; color:var(--white); }
+.dropdown .dd-label { font-size:0.68rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#555; padding:10px 18px 4px; cursor:default; display:block; }
+.dropdown a.highlight { color:var(--yellow); }
+.nav-cta { margin-left:auto; font-family:'Inter',sans-serif; font-size:0.8rem; font-weight:600; background:var(--yellow); color:var(--black); padding:8px 16px; border-radius:3px; text-decoration:none; white-space:nowrap; transition:opacity 0.15s; }
+.nav-cta:hover { opacity:0.85; }
+.nav-toggle { display:none; background:none; border:none; cursor:pointer; margin-left:auto; padding:8px; }
+.nav-toggle span { display:block; width:22px; height:2px; background:var(--white); margin:4px 0; }
+.page-top { margin-top:56px; }
+section { padding:72px 8%; }
+.section-label { font-family:'Barlow Condensed',sans-serif; font-size:0.75rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--red); margin-bottom:10px; }
+.section-title { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:clamp(1.8rem,3vw,2.5rem); line-height:1.1; color:var(--black); margin-bottom:14px; }
+.section-body { font-size:0.97rem; color:var(--grey); max-width:580px; line-height:1.7; }
+.trust-bar { background:var(--light); border-top:3px solid var(--yellow); padding:18px 8%; display:flex; align-items:center; justify-content:center; gap:40px; flex-wrap:wrap; }
+.trust-item { display:flex; align-items:center; gap:9px; font-size:0.83rem; font-weight:600; color:var(--grey); }
+.trust-icon { width:19px; height:19px; background:var(--yellow); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.65rem; font-weight:800; color:var(--black); flex-shrink:0; }
+.includes-list { list-style:none; }
+.includes-list li { display:flex; align-items:flex-start; gap:11px; padding:11px 0; border-bottom:1px solid var(--border); font-size:0.91rem; color:var(--grey); line-height:1.5; }
+.includes-list li:last-child { border-bottom:none; }
+.check { width:19px; height:19px; background:var(--yellow); border-radius:2px; display:flex; align-items:center; justify-content:center; font-size:0.62rem; font-weight:800; color:var(--black); flex-shrink:0; margin-top:2px; }
+.reg-card { background:var(--light); border-left:4px solid var(--red); padding:26px; border-radius:2px; }
+.reg-card h4 { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:1.05rem; color:var(--black); margin-bottom:14px; letter-spacing:0.02em; }
+.reg-row { display:flex; justify-content:space-between; align-items:center; padding:7px 0; border-bottom:1px solid var(--border); font-size:0.81rem; }
+.reg-row:last-child { border-bottom:none; }
+.reg-label { color:var(--grey); }
+.reg-val { font-weight:600; color:var(--black); font-family:'Barlow Condensed',sans-serif; font-size:0.93rem; letter-spacing:0.02em; }
+.btn-primary { display:inline-block; text-align:center; background:var(--yellow); color:var(--black); font-family:'Barlow Condensed',sans-serif; font-size:1.08rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; padding:15px 28px; border-radius:3px; text-decoration:none; transition:opacity 0.15s,transform 0.15s; }
+.btn-primary:hover { opacity:0.9; transform:translateY(-1px); }
+.btn-dark { display:inline-block; background:var(--black); color:var(--white); font-family:'Barlow Condensed',sans-serif; font-size:1.1rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:17px 44px; border-radius:3px; text-decoration:none; transition:opacity 0.15s,transform 0.15s; }
+.btn-dark:hover { opacity:0.85; transform:translateY(-1px); }
+.btn-outline { display:inline-block; background:transparent; color:var(--black); border:2px solid var(--black); font-family:'Barlow Condensed',sans-serif; font-size:1.05rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; padding:14px 32px; border-radius:3px; text-decoration:none; transition:background 0.15s,color 0.15s; }
+.btn-outline:hover { background:var(--black); color:var(--white); }
+.cta-section { background:var(--yellow); text-align:center; padding:72px 8%; }
+.cta-section .section-label { color:rgba(0,0,0,0.45); }
+.cta-section .section-title { color:var(--black); }
+.cta-section .section-body { color:rgba(0,0,0,0.65); margin:0 auto 32px; }
+.price-block { display:inline-flex; align-items:baseline; gap:5px; margin-bottom:24px; }
+.price-amount { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:3.4rem; color:var(--black); line-height:1; }
+.price-currency { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:1.3rem; color:var(--black); }
+.price-once { font-size:0.82rem; color:rgba(0,0,0,0.5); margin-left:4px; }
+.cta-disclaimer { font-size:0.73rem; color:rgba(0,0,0,0.45); max-width:480px; margin:14px auto 0; line-height:1.6; }
+footer { background:var(--black); padding:32px 8%; display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:20px; }
+.footer-logo { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:1rem; color:var(--white); letter-spacing:0.04em; }
+.footer-logo span { color:var(--yellow); }
+footer p { font-size:0.74rem; color:#555; line-height:1.65; max-width:420px; }
+footer a { color:#666; text-decoration:none; }
+footer a:hover { color:var(--yellow); }
+.coming-hero { min-height:calc(100vh - 56px); background:var(--black); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:60px 8%; }
+.coming-hero .eyebrow { font-family:'Barlow Condensed',sans-serif; font-size:0.78rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--yellow); margin-bottom:16px; }
+.coming-hero h1 { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:clamp(2.4rem,5vw,4rem); color:var(--white); line-height:1.05; margin-bottom:20px; }
+.coming-hero h1 em { font-style:normal; color:var(--yellow); }
+.coming-hero p { font-size:1rem; color:#888; max-width:480px; line-height:1.7; margin-bottom:36px; }
+.coming-links { display:flex; gap:14px; flex-wrap:wrap; justify-content:center; }
+@media(max-width:860px){ .nav-links,.nav-cta{display:none} .nav-toggle{display:block} nav.open .nav-links{display:flex;flex-direction:column;position:fixed;top:56px;left:0;right:0;background:#111;padding:12px 0 20px;gap:0;align-items:stretch;z-index:199} nav.open .nav-links > li > a, nav.open .nav-links > li > button{height:auto;padding:12px 20px;color:var(--white)} nav.open .dropdown{position:static;border-top:none;box-shadow:none;background:#0A0A0A} nav.open .nav-cta{display:block;margin:8px 20px 0} }
+@media(max-width:600px){ section{padding:44px 5%} .trust-bar{padding:16px 5%;gap:18px} footer{flex-direction:column} }
+
+
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 56px);overflow:hidden}
+.hero-left{background:#2C3E50;padding:80px 6% 80px 8%;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2}
+.hero-left::after{content:'';position:absolute;top:0;right:-60px;width:120px;height:100%;background:#2C3E50;clip-path:polygon(0 0,50% 0,100% 100%,0 100%);z-index:3}
+.hero-right{background:#F5C400;padding:80px 8% 80px 10%;display:flex;flex-direction:column;justify-content:center}
+.eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#F5C400;margin-bottom:14px}
+.hero-headline{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(2.4rem,4.2vw,3.5rem);line-height:1.0;color:var(--white);margin-bottom:22px}
+.hero-headline em{font-style:normal;color:#F5C400}
+.hero-sub{font-size:0.97rem;color:#AAAAAA;line-height:1.65;max-width:420px;margin-bottom:34px}
+.hero-cta-group{display:flex;flex-direction:column;gap:10px;max-width:280px}
+.price-note{font-size:0.8rem;color:#888;text-align:center}
+.form-card{background:var(--white);border-radius:4px;box-shadow:0 8px 40px rgba(0,0,0,0.18);overflow:hidden;max-width:400px}
+.form-card-header{padding:13px 18px}
+.form-card-header h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;color:var(--white);letter-spacing:0.04em}
+.form-card-header p{font-size:0.7rem;color:rgba(255,255,255,0.7);margin-top:2px}
+.form-card-body{padding:18px}
+.form-field{margin-bottom:9px}
+.form-label{display:block;background:#ECF0F1;font-size:0.66rem;font-weight:600;color:#555;padding:3px 7px;letter-spacing:0.04em}
+.form-input{display:block;width:100%;height:26px;border:1px solid #DDD;border-top:none}
+.hazard-row{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0 6px;font-size:0.74rem;font-weight:600}
+.hazard-row span{display:flex;align-items:center;gap:4px}
+.cb{width:11px;height:11px;border:1.5px solid #999;display:inline-block}
+.cb.checked{background:#2C3E50;border-color:#2C3E50}
+.form-tag{display:inline-block;background:#EBF5FB;border:1px solid #AED6F1;font-size:0.63rem;color:#1A5276;padding:2px 7px;border-radius:2px;margin-top:5px;margin-right:4px}
+.hierarchy-bar{background:#2C3E50;color:white;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.82rem;letter-spacing:0.06em;padding:10px 20px;margin:40px 0 20px;border-radius:2px;display:inline-block}
+.hc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:44px}
+.hc-card{text-align:center;padding:18px 10px;border:2px solid var(--border);border-radius:3px}
+.hc-card.active{border-color:#2C3E50;background:#F0F3F4}
+.hc-num{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.5rem;color:#2C3E50}
+.hc-label{font-size:0.78rem;font-weight:600;color:var(--grey);margin-top:4px}
+.hc-desc{font-size:0.72rem;color:#999;margin-top:6px;line-height:1.4}
+.includes-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;margin-top:44px;align-items:start}
+.who-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:36px}
+.who-card{background:var(--white);border:1px solid var(--border);border-radius:3px;padding:22px}
+.who-card h4{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;color:var(--black);margin-bottom:7px}
+.who-card p{font-size:0.84rem;color:var(--grey);line-height:1.6}
+@media(max-width:900px){.hero{grid-template-columns:1fr;min-height:auto}.hero-left::after{display:none}.hero-left{padding:56px 5%}.hero-right{padding:36px 5%;background:#F9F9F9}.hc-grid{grid-template-columns:repeat(3,1fr)}.includes-grid{grid-template-columns:1fr}.who-grid{grid-template-columns:1fr}}
+
+  </style>
+</head>
+<body>
+<nav id="sitenav">
+  <a href="/index.html" class="nav-logo">BC<span>SAFETY</span>DOCS</a>
+  <ul class="nav-links">
+    <li>
+      <button aria-haspopup="true">Permits</button>
+      <div class="dropdown">
+        <span class="dd-label">Entry Permits</span>
+        <a href="/index.html">Confined Space Entry Permit</a>
+        <a href="/hot-work-permit.html">Hot Work Permit <span style="color:#F5C400;font-size:0.7rem;">Coming Soon</span></a>
+        <span class="dd-label">Procedures</span>
+        <a href="/loto.html">Lockout / Tagout Procedure <span style="color:#F5C400;font-size:0.7rem;">Coming Soon</span></a>
+      </div>
+    </li>
+    <li>
+      <button aria-haspopup="true">Assessments</button>
+      <div class="dropdown">
+        <a href="/jsa.html">JSA / Field Level Hazard Assessment</a>
+        <a href="/flha.html">Daily FLHA Form <span style="color:#F5C400;font-size:0.7rem;">Coming Soon</span></a>
+        <a href="/safe-work-procedure.html">Safe Work Procedure <span style="color:#F5C400;font-size:0.7rem;">Coming Soon</span></a>
+      </div>
+    </li>
+    <li>
+      <button aria-haspopup="true">Incident &amp; Emergency</button>
+      <div class="dropdown">
+        <a href="/incident-report.html">Incident Investigation Report <span style="color:#F5C400;font-size:0.7rem;">Coming Soon</span></a>
+        <a href="/emergency-response.html">Emergency Response Plan <span style="color:#F5C400;font-size:0.7rem;">Coming Soon</span></a>
+      </div>
+    </li>
+    <li>
+      <button aria-haspopup="true">Bundles</button>
+      <div class="dropdown">
+        <a href="/bundle.html" class="highlight">Starter Bundle &mdash; Save $27</a>
+        <a href="/bundle-pro.html" class="highlight">Pro Bundle &mdash; All Documents</a>
+      </div>
+    </li>
+    <li><a href="mailto:info@bcsafetydocs.com">Contact</a></li>
+  </ul>
+  <a href="/bundle.html" class="nav-cta">Starter Bundle &mdash; $97 CAD</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<script>
+  const toggle = document.getElementById('navToggle');
+  const nav = document.getElementById('sitenav');
+  if(toggle) toggle.addEventListener('click', () => nav.classList.toggle('open'));
+</script>
+
+<div class="page-top">
+  <section class="hero" aria-label="Hero">
+    <div class="hero-left">
+      <p class="eyebrow">WorkSafeBC OHS Regulation Part 3 &mdash; s.3.3</p>
+      <h1 class="hero-headline">JSA and FLHA templates<br>built for<br><em>BC job sites.</em></h1>
+      <p class="hero-sub">One document covers both your Job Safety Analysis and Field Level Hazard Assessment. Hierarchy of controls built in. Toolbox talk and crew briefing sign-off included. BC OHS Regulation Part 3 referenced throughout.</p>
+      <div class="hero-cta-group">
+        <a href="https://buy.stripe.com/eVqdR87bb04j8M5dd5fEk01" class="btn-primary">Download Template &mdash; $57 CAD</a>
+        <p class="price-note">Word document (.docx) &mdash; instant download</p>
+      </div>
+    </div>
+    <div class="hero-right" aria-hidden="true">
+      <div class="form-card">
+        <div class="form-card-header" style="background:#2C3E50;">
+          <h3>JOB SAFETY ANALYSIS / FLHA</h3>
+          <p>WorkSafeBC OHS Regulation Part 3 &middot; s.3.3 Risk Assessment</p>
+        </div>
+        <div class="form-card-body">
+          <div class="form-field"><span class="form-label">Task / Job Description</span><div class="form-input"></div></div>
+          <div class="form-field"><span class="form-label">Hazard Categories (check all that apply)</span>
+            <div class="hazard-row">
+              <span><span class="cb"></span> Excavation</span>
+              <span><span class="cb checked"></span> Confined Space</span>
+              <span><span class="cb"></span> Hot Work</span>
+            </div>
+          </div>
+          <div class="form-field"><span class="form-label">3 JSA ANALYSIS TABLE (E&rarr;S&rarr;Eng&rarr;A&rarr;PPE)</span><div class="form-input" style="height:36px;"></div></div>
+          <div class="form-field"><span class="form-label">6 TOOLBOX TALK &amp; CREW BRIEFING</span><div class="form-input"></div></div>
+          <span class="form-tag">&#10003; 8-step analysis table</span>
+          <span class="form-tag">&#10003; Crew briefing sign-off</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="trust-bar">
+    <div class="trust-item"><div class="trust-icon">&#10003;</div> BC OHS Regulation Part 3 s.3.3</div>
+    <div class="trust-item"><div class="trust-icon">&#10003;</div> Hierarchy of controls built in</div>
+    <div class="trust-item"><div class="trust-icon">&#10003;</div> Toolbox talk sign-off included</div>
+    <div class="trust-item"><div class="trust-icon">&#10003;</div> Works as JSA or FLHA</div>
+  </div>
+
+  <section aria-labelledby="hc-title">
+    <p class="section-label">Built around the regulation</p>
+    <h2 class="section-title" id="hc-title">Hierarchy of controls. Sequenced correctly.</h2>
+    <p class="section-body">Most generic JSA templates list controls as a free-text field. This one sequences them correctly &mdash; elimination first, PPE last &mdash; matching the WorkSafeBC OHS Regulation requirement under Part 3.</p>
+    <div class="hierarchy-bar">WORKSAFEBC HIERARCHY OF CONTROLS &mdash; s.3.3</div>
+    <div class="hc-grid">
+      <div class="hc-card active"><div class="hc-num">1</div><div class="hc-label">Eliminate</div><div class="hc-desc">Remove the hazard entirely from the workplace</div></div>
+      <div class="hc-card active"><div class="hc-num">2</div><div class="hc-label">Substitute</div><div class="hc-desc">Replace with something less hazardous</div></div>
+      <div class="hc-card active"><div class="hc-num">3</div><div class="hc-label">Engineering</div><div class="hc-desc">Isolate people from the hazard</div></div>
+      <div class="hc-card active"><div class="hc-num">4</div><div class="hc-label">Administrative</div><div class="hc-desc">Change the way people work</div></div>
+      <div class="hc-card active"><div class="hc-num">5</div><div class="hc-label">PPE</div><div class="hc-desc">Protect the worker &mdash; last resort</div></div>
+    </div>
+  </section>
+
+  <section style="background:var(--light);" aria-labelledby="includes-title">
+    <p class="section-label">What's included</p>
+    <h2 class="section-title" id="includes-title">Analysis table. Hazard checklist. Crew briefing. One form.</h2>
+    <div class="includes-grid">
+      <ul class="includes-list">
+        <li><span class="check">&#10003;</span> Fillable Word document (.docx) &mdash; edit on any device, print on site</li>
+        <li><span class="check">&#10003;</span> Job information: task description, 8 work type checkboxes, supervisor details</li>
+        <li><span class="check">&#10003;</span> 12-category hazard identification checklist to review before analysis</li>
+        <li><span class="check">&#10003;</span> 8-step JSA analysis table: Task Step / Hazards / Controls / Residual Risk</li>
+        <li><span class="check">&#10003;</span> Hierarchy of controls (E&rarr;S&rarr;Eng&rarr;A&rarr;PPE) built into the table header</li>
+        <li><span class="check">&#10003;</span> Residual risk rating (High / Medium / Low) per step</li>
+        <li><span class="check">&#10003;</span> Additional controls / site-specific notes field</li>
+        <li><span class="check">&#10003;</span> Supervisor authorization signature before work begins</li>
+        <li><span class="check">&#10003;</span> Toolbox talk briefing notes field</li>
+        <li><span class="check">&#10003;</span> 8-worker crew briefing sign-off table</li>
+        <li><span class="check">&#10003;</span> Closing supervisor confirmation &mdash; all workers briefed before work starts</li>
+        <li><span class="check">&#10003;</span> Revision number field for document control</li>
+        <li><span class="check">&#10003;</span> BC OHS Regulation Part 3 s.3.3 referenced throughout</li>
+      </ul>
+      <div class="reg-card">
+        <h4>Regulatory Basis</h4>
+        <div class="reg-row"><span class="reg-label">Regulation</span><span class="reg-val">BC OHS Reg. Part 3</span></div>
+        <div class="reg-row"><span class="reg-label">Risk assessment requirement</span><span class="reg-val">s.3.3</span></div>
+        <div class="reg-row"><span class="reg-label">Hierarchy of controls</span><span class="reg-val">Part 3 s.3.12</span></div>
+        <div class="reg-row"><span class="reg-label">Works as JSA</span><span class="reg-val">&#10003; Yes</span></div>
+        <div class="reg-row"><span class="reg-label">Works as FLHA</span><span class="reg-val">&#10003; Yes</span></div>
+        <div class="reg-row"><span class="reg-label">Toolbox talk record</span><span class="reg-val">&#10003; Built in</span></div>
+        <div class="reg-row"><span class="reg-label">Crew sign-off</span><span class="reg-val">&#10003; 8 workers</span></div>
+        <div class="reg-row"><span class="reg-label">Format</span><span class="reg-val">Editable .docx</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="who-title">
+    <p class="section-label">Who it's for</p>
+    <h2 class="section-title" id="who-title">Every BC contractor who puts workers in front of hazards.</h2>
+    <div class="who-grid">
+      <div class="who-card"><h4>Small Contractors &amp; Owner-Operators</h4><p>If you're doing pre-job planning without a safety coordinator, this form keeps you compliant and documented without taking 45 minutes to fill out.</p></div>
+      <div class="who-card"><h4>Pipeline &amp; Utility Crews</h4><p>High-hazard tasks with multiple workers need a documented analysis before work starts. This form covers the analysis and crew briefing in one document.</p></div>
+      <div class="who-card"><h4>Mechanical &amp; Construction</h4><p>Hot work, working at heights, energized equipment &mdash; the work type checkboxes and hazard category grid ensure nothing gets missed before the job starts.</p></div>
+      <div class="who-card"><h4>Safety Officers Building Programs</h4><p>Whether you're building a COR-ready safety program or need a solid daily FLHA for a small crew, this template is the foundation.</p></div>
+    </div>
+  </section>
+
+  <section class="cta-section" id="buy" aria-labelledby="cta-title">
+    <p class="section-label">Get the template</p>
+    <h2 class="section-title" id="cta-title">Briefed, documented, and ready to work.</h2>
+    <p class="section-body">One form. Pre-job hazard analysis, crew briefing, and supervisor sign-off &mdash; all in a single editable Word document.</p>
+    <div class="price-block"><span class="price-currency">$</span><span class="price-amount">57</span><span class="price-currency">CAD</span><span class="price-once">one-time</span></div><br>
+    <a href="https://buy.stripe.com/eVqdR87bb04j8M5dd5fEk01" class="btn-dark">Download Now &mdash; Instant Access</a><br>
+    <p style="font-size:0.8rem;color:rgba(0,0,0,0.45);margin-top:8px;">Word document (.docx) &middot; Instant download &middot; No subscription</p>
+    <p style="margin-top:12px;"><a href="/bundle.html" style="font-size:0.85rem;color:rgba(0,0,0,0.55);text-decoration:underline;">Need the confined space permit too? Save $27 with the Starter Bundle &rarr;</a></p>
+    <p class="cta-disclaimer">This template is a professional working tool. All documents must be reviewed by a qualified person prior to use and verified against the current WorkSafeBC OHS Regulation. Not legal or regulatory advice.</p>
+  </section>
+</div>
+<footer>
+  <div>
+    <div class="footer-logo">BC<span>SAFETY</span>DOCS</div>
+    <p style="margin-top:8px;">WorkSafeBC OHS Regulation compliance document templates for BC contractors and safety officers.</p>
+    <p style="margin-top:8px;"><a href="mailto:info@bcsafetydocs.com">info@bcsafetydocs.com</a></p>
+  </div>
+  <div>
+    <p style="color:#666;font-size:0.78rem;font-weight:600;margin-bottom:8px;">DOCUMENTS</p>
+    <p><a href="/index.html">Confined Space Entry Permit</a><br>
+    <a href="/jsa.html">JSA / FLHA Template</a><br>
+    <a href="/hot-work-permit.html">Hot Work Permit</a><br>
+    <a href="/incident-report.html">Incident Investigation Report</a></p>
+  </div>
+  <div>
+    <p style="color:#666;font-size:0.78rem;font-weight:600;margin-bottom:8px;">BUNDLES</p>
+    <p><a href="/bundle.html">Starter Bundle</a><br>
+    <a href="/bundle-pro.html">Pro Bundle</a></p>
+    <p style="margin-top:16px;"><a href="/terms.html">Terms &amp; Privacy</a></p>
+  </div>
+  <p style="width:100%;color:#333;font-size:0.7rem;border-top:1px solid #222;padding-top:16px;margin-top:8px;">
+    &copy; 2026 BC Safety Docs. All rights reserved. Templates are professional working tools &mdash; must be reviewed by a qualified person before use. Not legal or regulatory advice.
+  </p>
+</footer>
+</body>
+</html>
