@@ -1,0 +1,17 @@
+{
+  "name": "bc-confined-space-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for WorkSafeBC OHS Regulation Part 9 (Confined Spaces) reference data, based on the BC Safety Docs confined space entry permit",
+  "type": "module",
+  "main": "server.js",
+  "bin": {
+    "bc-confined-space-mcp": "server.js"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "zod": "^3.24.0"
+  }
+}
