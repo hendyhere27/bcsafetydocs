@@ -26,6 +26,10 @@ Key facts:
 - [Starter Bundle](https://bcsafetydocs.com/bundle.html): Confined Space Entry Permit plus JSA template at a discount.
 - [Pro Bundle](https://bcsafetydocs.com/bundle-pro.html): All BC Safety Docs templates in one package.
 
+## Blog
+
+- [Your Oxygen Reading Says 20.9%. Here's Why That Doesn't Mean You're Safe.](https://bcsafetydocs.com/blog/oxygen-reading-20-9-confined-space.html): Why a normal oxygen reading clears exactly one hazard — the 14,000 ppm math, catalytic bead sensor dependence on O2, and what a proper pre-entry testing sequence looks like under WorkSafeBC OHS Regulation Part 9.
+
 ## Optional
 
 - [Terms & Privacy](https://bcsafetydocs.com/terms.html): Terms of use and privacy policy.
