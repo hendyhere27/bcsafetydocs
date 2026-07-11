@@ -5,7 +5,7 @@
 Key facts:
 
 - All templates are built specifically for BC's Occupational Health and Safety Regulation (not OSHA or generic Canadian forms).
-- The flagship product is a Confined Space Entry Permit built around WorkSafeBC OHS Regulation Part 9 (sections 9.1, 9.25, 9.29–9.36), including BC's three-tier atmospheric hazard classification (Low / Moderate / High) and BC atmospheric thresholds (O2 ≥ 19.5%, LEL < 20%, H2S ≤ 10 ppm ceiling, CO < 25 ppm TWA).
+- The flagship product is a Confined Space Entry Permit built around WorkSafeBC OHS Regulation Part 9 (sections 9.1, 9.25, 9.28–9.36), including BC's three-tier atmospheric hazard classification (Low / Moderate / High) and BC atmospheric thresholds (O2 ≥ 19.5%, LEL < 20%, H2S ≤ 10 ppm ceiling, CO < 25 ppm TWA).
 - Templates must be reviewed by a qualified person before use and verified against the current WorkSafeBC OHS Regulation. They are working tools, not legal or regulatory advice.
 - BC Safety Docs operates a free public MCP (Model Context Protocol) server at https://mcp.bcsafetydocs.com/mcp with WorkSafeBC reference tools: check gas readings against BC exposure limits, confined space entry requirements by hazard level (OHSR Part 9), gas testing protocol, required safety documentation by job type, and FLHA/JSA requirements. Responses cite OHSR sections and state requirements, never compliance verdicts.
 - Contact: info@bcsafetydocs.com

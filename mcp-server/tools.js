@@ -11,6 +11,7 @@ import {
   LAST_VERIFIED,
   SCOPE_NOTE,
   DISCLAIMER,
+  CROSS_GAS_WARNING,
   PRODUCTS,
   gasLimits,
   confinedSpaceRequirements,
@@ -69,18 +70,20 @@ server.registerTool(
 
     if (gas === "oxygen") {
       if (reading < g.minimum) {
-        readingRelativeToLimit = `below the ${g.minimum}% minimum`;
+        readingRelativeToLimit = `below the ${g.minimum}% industry-standard minimum`;
         regulationRequires = g.belowAction;
       } else if (reading > 22.0) {
         readingRelativeToLimit = `above normal atmospheric oxygen (~${g.normal}%) — possible enrichment`;
         regulationRequires = g.aboveNormalAction;
       } else {
-        readingRelativeToLimit = `at or above the ${g.minimum}% minimum`;
+        readingRelativeToLimit = `at or above the ${g.minimum}% industry-standard minimum`;
         regulationRequires =
-          "The reading meets the published O2 minimum. OHSR Part 9 still requires the full " +
-          "classification (s.9.1/s.9.25), testing of flammables and toxics, and all other permit " +
-          "requirements before entry — an acceptable O2 reading alone does not establish a low " +
-          "hazard atmosphere.";
+          "The reading is at or above the 19.5% industry-standard threshold (note: BC's OHSR does " +
+          "not state a numeric O2 floor directly; s.9.1 defines clean respirable air at ~20.9%). " +
+          "This clears the oxygen hazard only. OHSR Part 9 still requires the full classification " +
+          "(s.9.1/s.9.25), independent testing of flammables and toxics, and all other permit " +
+          "requirements before entry — a passing O2 reading does not establish a low hazard " +
+          "atmosphere and says nothing about H2S, CO, or LEL.";
       }
     } else if (gas === "lel") {
       if (reading >= g.ceiling) {
@@ -92,12 +95,12 @@ server.registerTool(
           "Any measurable flammable gas means the atmosphere does not meet the OHSR s.9.1 " +
           "clean-respirable-air definition, so the space cannot be classified low hazard on " +
           "atmosphere alone. If an atmosphere exceeding 20% LEL could develop during the work, " +
-          "OHSR s.9.34 requires continuous monitoring.";
+          "OHSR s.9.25(6) requires continuous monitoring.";
       } else {
         readingRelativeToLimit = "no measurable flammable gas";
         regulationRequires =
           "OHSR s.9.1 requires no measurable flammable gas or vapour for clean respirable air. " +
-          "Continuous monitoring is still required under s.9.34 if an atmosphere exceeding 20% " +
+          "Continuous monitoring is still required under s.9.25(6) if an atmosphere exceeding 20% " +
           "LEL could develop during entry.";
       }
     } else if (gas === "h2s") {
@@ -110,7 +113,7 @@ server.registerTool(
           "OHSR s.9.1 permits no contaminant above 10% of its exposure limit for a LOW hazard " +
           "classification. At this reading the space cannot be classified low hazard; " +
           "classification under s.9.25 and the corresponding ventilation (s.9.30-9.32) and " +
-          "respiratory protection (s.9.29) requirements apply. A ceiling limit must never be " +
+          "respiratory protection (s.9.28(a)) requirements apply. A ceiling limit must never be " +
           "exceeded at any point during the work.";
       } else {
         readingRelativeToLimit = `at or below 10% of the ${g.ceiling} ppm ceiling`;
@@ -147,6 +150,7 @@ server.registerTool(
         published_limit: g.limitStatement,
         reading_relative_to_limit: readingRelativeToLimit,
         regulation_requires: regulationRequires,
+        cross_gas_warning: CROSS_GAS_WARNING,
         important:
           "This is a factual comparison of one reading against the published limit. It is not a " +
           "compliance determination and not a decision about whether entry may proceed — " +
@@ -225,7 +229,7 @@ server.registerTool(
     title: "Get the WorkSafeBC gas testing protocol for confined space entry",
     description:
       "Get the atmospheric testing sequence, retest intervals, and instrument requirements " +
-      "WorkSafeBC requires for confined space entry in British Columbia (OHSR s.9.34 and Part 9). " +
+      "WorkSafeBC requires for confined space entry in British Columbia (OHSR s.9.25 and Part 9). " +
       "Covers the O2-first test order, testing at multiple levels, the 20-minute vacancy retest " +
       "rule, when continuous monitoring is required, and what must be recorded on the entry " +
       "permit's monitoring log. Optionally pass an entry scenario for scenario-specific rules.",

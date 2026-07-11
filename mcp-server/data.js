@@ -5,7 +5,13 @@
 // Design rule: every tool response states what the regulation REQUIRES — never whether a
 // specific situation is compliant. Compliance determinations require a qualified person.
 
-export const LAST_VERIFIED = "2026-07-08";
+export const LAST_VERIFIED = "2026-07-10";
+
+export const CROSS_GAS_WARNING =
+  "A normal O2 reading does not indicate a safe atmosphere. H2S and CO are lethal at " +
+  "concentrations too small to measurably affect the oxygen percentage — a fatal CO or H2S " +
+  "concentration will not move O2 outside its normal range. All four readings (O2, LEL, H2S, CO) " +
+  "must independently meet their limits; a passing O2 reading clears nothing else.";
 
 export const SCOPE_NOTE =
   "Reference information only. This states what the OHS Regulation requires — it is not a " +
@@ -66,13 +72,18 @@ export const gasLimits = {
     minimum: 19.5,
     normal: 20.9,
     limitStatement:
-      "OHSR Part 9 requires a minimum of 19.5% oxygen. 'Clean respirable air' is defined at " +
-      "approximately 20.9% O2 (OHSR s.9.1).",
+      "OHSR s.9.1 defines clean respirable air at approximately 20.9% O2 and requires no " +
+      "contaminant above 10% of its exposure limit. BC's OHSR does not state a numeric O2 floor " +
+      "directly (unlike OSHA 1910.146). 19.5% is the universal industry-standard threshold " +
+      "(aligned with OSHA/ACGIH convention) used by a qualified person to determine an atmosphere " +
+      "no longer meets the low-hazard definition.",
+    crossGasWarning: CROSS_GAS_WARNING,
     ohsrReferences: ["OHSR s.9.1 (definition of clean respirable air)", "OHSR Part 9"],
     belowAction:
-      "OHSR Part 9 requires that an atmosphere below 19.5% O2 not be treated as low hazard. The " +
+      "An atmosphere below the 19.5% industry-standard threshold clearly does not meet the OHSR " +
+      "s.9.1 clean-respirable-air definition (~20.9% O2) and cannot be treated as low hazard. The " +
       "space must be classified moderate or high hazard (s.9.25), ventilated (s.9.30-9.32), and " +
-      "supplied-air respirator or SCBA requirements under s.9.29 apply. Retest before any entry.",
+      "supplied-air respirator or SCBA requirements under s.9.28(a) apply. Retest before any entry.",
     aboveNormalAction:
       "A reading materially above 20.9% indicates possible oxygen enrichment, which increases fire " +
       "and explosion risk. OHSR Part 9 requires identifying the enrichment source and having a " +
@@ -84,12 +95,13 @@ export const gasLimits = {
     unit: "% of Lower Explosive Limit",
     ceiling: 20,
     limitStatement:
-      "OHSR Part 9 sets 20% LEL as the action threshold. 'Clean respirable air' requires no " +
-      "measurable flammable gas or vapour (s.9.1). Continuous monitoring is required if a " +
-      "flammable/explosive atmosphere exceeding 20% LEL could develop during entry (s.9.34).",
-    ohsrReferences: ["OHSR s.9.1", "OHSR s.9.34 (continuous monitoring)"],
+      "OHSR Part 9 sets 20% LEL as the action threshold (s.9.25(6) / s.9.28(b)). 'Clean " +
+      "respirable air' requires no measurable flammable gas or vapour (s.9.1). Continuous " +
+      "monitoring is required if a flammable/explosive atmosphere exceeding 20% LEL could " +
+      "develop during entry (s.9.25(6)).",
+    ohsrReferences: ["OHSR s.9.1", "OHSR s.9.25(6) (continuous monitoring)", "OHSR s.9.28(b)"],
     exceedsAction:
-      "OHSR s.9.34 requires continuous monitoring where an atmosphere exceeding 20% LEL could " +
+      "OHSR s.9.25(6) requires continuous monitoring where an atmosphere exceeding 20% LEL could " +
       "develop. A reading at or above 20% LEL means the atmosphere does not meet the low-hazard " +
       "criteria (s.9.1); classification under s.9.25, ventilation under s.9.30-9.32, and ignition " +
       "source control requirements apply. Any measurable flammable gas means the s.9.1 " +
@@ -108,7 +120,7 @@ export const gasLimits = {
       "A ceiling limit must never be exceeded. OHSR requires that an atmosphere over the exposure " +
       "limit not be classified low hazard (s.9.1 allows no contaminant above 10% of its exposure " +
       "limit for low hazard); classification per s.9.25, ventilation per s.9.30-9.32, and " +
-      "supplied-air/SCBA requirements per s.9.29 apply.",
+      "supplied-air/SCBA requirements per s.9.28(a) apply.",
   },
   co: {
     gas: "Carbon monoxide (CO)",
@@ -146,16 +158,16 @@ export const confinedSpaceRequirements = {
     ],
     ventilation:
       "Minimum 85 m³/h (50 cfm) of clean respirable air per worker via mechanical ventilation, " +
-      "unless all low-hazard exceptions are met (OHSR s.9.30-9.32).",
+      "unless all low-hazard exceptions are met (OHSR s.9.31(1)).",
     standby:
       "1 standby person; continuous means to summon rescue; checks on workers at least every " +
-      "20 minutes (OHSR s.9.35).",
+      "20 minutes (OHSR s.9.34).",
     rescue:
       "Documented rescue plan: rescue method (non-entry retrieval or entry rescue), rescue " +
       "equipment on site, emergency contact, nearest hospital/AED location.",
     monitoring:
-      "Retest required if all workers are absent from the space for more than 20 minutes (OHSR s.9.34).",
-    ohsrReferences: ["s.9.1", "s.9.30-9.32", "s.9.34", "s.9.35"],
+      "Retest required if all workers are absent from the space for more than 20 minutes (OHSR s.9.25(3)).",
+    ohsrReferences: ["s.9.1", "s.9.25(3)", "s.9.31(1)", "s.9.34"],
   },
   moderate: {
     hazardLevel: "MODERATE HAZARD",
@@ -164,11 +176,11 @@ export const confinedSpaceRequirements = {
       "or the respirator fails (OHSR s.9.25).",
     permit: [
       "All low-hazard permit elements, plus:",
-      "Supplied-air respirator or SCBA determination recorded (required per OHSR s.9.29)",
+      "Supplied-air respirator or SCBA determination recorded (required per OHSR s.9.28(a))",
       "Respiratory/supplied-air details: type, tank pressure, duration, cylinder number",
     ],
     ventilation:
-      "Continuous mechanical ventilation supplying clean respirable air required at all times (OHSR s.9.31).",
+      "Continuous mechanical ventilation supplying clean respirable air required at all times (OHSR s.9.30).",
     standby:
       "1 or more standby persons at or near the entrance; visual checks at least every 20 minutes; " +
       "continuous means to summon rescue (OHSR s.9.35).",
@@ -176,9 +188,9 @@ export const confinedSpaceRequirements = {
       "Documented rescue plan as for low hazard; rescue capability must match the increased risk " +
       "of the atmosphere.",
     monitoring:
-      "Retest if all workers absent more than 20 minutes; continuous monitoring if an atmosphere " +
-      "exceeding 20% LEL could develop during entry (OHSR s.9.34).",
-    ohsrReferences: ["s.9.25", "s.9.29", "s.9.31", "s.9.34", "s.9.35"],
+      "Retest if all workers absent more than 20 minutes (OHSR s.9.25(3)); continuous monitoring " +
+      "if an atmosphere exceeding 20% LEL could develop during entry (OHSR s.9.25(6)).",
+    ohsrReferences: ["s.9.25", "s.9.28(a)", "s.9.30", "s.9.35"],
   },
   high: {
     hazardLevel: "HIGH HAZARD",
@@ -191,8 +203,9 @@ export const confinedSpaceRequirements = {
       "Permit amendment signatures required if conditions change mid-job (re-evaluate and re-authorize)",
     ],
     ventilation:
-      "Continuous mechanical ventilation required; natural ventilation NOT permitted. Supplied-air " +
-      "respirator or SCBA required when ventilation is insufficient (OHSR s.9.29 / s.9.32).",
+      "Continuous mechanical ventilation required; natural ventilation NOT permitted " +
+      "(OHSR s.9.33(2)(a)). Supplied-air respirator or SCBA required when ventilation is " +
+      "insufficient (OHSR s.9.28(a) / s.9.32).",
     standby:
       "1 or more standby persons AT the entrance continuously attending; continuously monitoring " +
       "workers; capable of immediate rescue; must prevent lifeline entanglement (OHSR s.9.35 / s.9.36).",
@@ -200,9 +213,9 @@ export const confinedSpaceRequirements = {
       "Documented rescue plan with immediate-rescue capability: retrieval equipment (tripod, " +
       "harness, lifeline), SCBA for rescuers if entry rescue, stretcher/AED locations, emergency contacts.",
     monitoring:
-      "Retest if all workers absent more than 20 minutes; continuous monitoring if an atmosphere " +
-      "exceeding 20% LEL could develop during entry (OHSR s.9.34).",
-    ohsrReferences: ["s.9.25", "s.9.29", "s.9.32", "s.9.34", "s.9.35", "s.9.36"],
+      "Retest if all workers absent more than 20 minutes (OHSR s.9.25(3)); continuous monitoring " +
+      "if an atmosphere exceeding 20% LEL could develop during entry (OHSR s.9.25(6)).",
+    ohsrReferences: ["s.9.25", "s.9.28(a)", "s.9.32", "s.9.33(2)(a)", "s.9.35", "s.9.36"],
   },
   unknown: {
     hazardLevel: "NOT YET CLASSIFIED",
@@ -215,9 +228,9 @@ export const confinedSpaceRequirements = {
       "Documented classification rationale on the entry permit",
     ],
     ventilation: "Determined by classification (OHSR s.9.30-9.32).",
-    standby: "Determined by classification (OHSR s.9.35 / s.9.36).",
+    standby: "Determined by classification (OHSR s.9.34 / s.9.35 / s.9.36).",
     rescue: "A documented rescue plan is required for every classification level.",
-    monitoring: "OHSR s.9.34 testing and retest rules apply once entry begins.",
+    monitoring: "OHSR s.9.25 testing and retest rules apply once entry begins.",
     ohsrReferences: ["s.9.1", "s.9.25"],
   },
 };
@@ -234,13 +247,13 @@ export const gasTestingProtocol = {
       why:
         "Test O2 first: combustible-gas (LEL) sensors read low in oxygen-deficient atmospheres, " +
         "so an LEL reading is only reliable once O2 is confirmed adequate.",
-      limit: ">= 19.5% (clean respirable air is ~20.9%, OHSR s.9.1)",
+      limit: ">= 19.5% (industry-standard threshold; clean respirable air is ~20.9%, OHSR s.9.1)",
     },
     {
       step: 2,
       test: "Flammable gas/vapour (LEL)",
       why: "Fire/explosion risk must be ruled out before assessing toxics.",
-      limit: "< 20% LEL; no measurable flammable gas for low hazard (OHSR s.9.1, s.9.34)",
+      limit: "< 20% LEL; no measurable flammable gas for low hazard (OHSR s.9.1, s.9.25(6), s.9.28(b))",
     },
     {
       step: 3,
@@ -255,30 +268,30 @@ export const gasTestingProtocol = {
     "Record test time, readings, instrument used, and calibration date for every test — the permit's monitoring log requires equipment and calibration date per row.",
   ],
   retestRules: [
-    "Retest required if all workers have been absent from the space for more than 20 minutes (OHSR s.9.34).",
-    "Continuous monitoring required if a flammable/explosive atmosphere exceeding 20% LEL could develop during entry (OHSR s.9.34).",
+    "Retest required if all workers have been absent from the space for more than 20 minutes (OHSR s.9.25(3)).",
+    "Continuous monitoring required if a flammable/explosive atmosphere exceeding 20% LEL could develop during entry (OHSR s.9.25(6)).",
     "If conditions change mid-job (new hazard introduced, ventilation interrupted), OHSR requires re-evaluation and re-authorization — the permit must be amended and re-signed.",
   ],
   instrumentRequirements: [
     "Calibrated multi-gas monitor (O2 / LEL / H2S / CO at minimum); calibration date must be recorded on the permit",
     "Bump test per manufacturer's instructions before use",
-    "Personal gas monitor on entrants; continuous area monitor where continuous monitoring is required (s.9.34)",
+    "Personal gas monitor on entrants; continuous area monitor where continuous monitoring is required (s.9.25(6))",
     "Intrinsically safe equipment where a flammable atmosphere is possible",
   ],
   scenarios: {
     initial_entry: "Full 3-step sequence at all levels, recorded on the permit before authorization.",
     reentry_after_vacancy:
       "If all workers were out of the space for more than 20 minutes, a full retest is required " +
-      "before re-entry (OHSR s.9.34).",
+      "before re-entry (OHSR s.9.25(3)).",
     flammable_risk:
       "Where an atmosphere exceeding 20% LEL could develop during the work (e.g. coating, " +
       "hot work nearby, sludge disturbance), continuous monitoring is required for the duration " +
-      "of entry (OHSR s.9.34).",
+      "of entry (OHSR s.9.25(6)).",
     ongoing_work:
       "The permit's extended monitoring log (16 rows) records periodic readings for the duration " +
       "of entry: time, O2, LEL, H2S, CO, other gas, equipment and calibration date, tester signature.",
   },
-  ohsrReferences: ["s.9.1", "s.9.30-9.32", "s.9.34", "s.5.48"],
+  ohsrReferences: ["s.9.1", "s.9.25(3)", "s.9.25(6)", "s.9.30-9.32", "s.5.48"],
 };
 
 // ---------------------------------------------------------------------------
@@ -315,7 +328,7 @@ export const requiredDocumentation = {
         order: 4,
         document: "Atmospheric monitoring log",
         purpose: "Ongoing readings during entry with instrument and calibration details",
-        basis: "OHSR s.9.34",
+        basis: "OHSR s.9.25",
         product: "confinedSpace",
       },
       {
@@ -353,7 +366,7 @@ export const requiredDocumentation = {
     ],
     note:
       "Hot work inside or adjacent to a confined space also triggers the full confined space " +
-      "documentation set, and continuous atmospheric monitoring under OHSR s.9.34.",
+      "documentation set, and continuous atmospheric monitoring under OHSR s.9.25(6).",
   },
   excavation: {
     jobType: "Excavation / trenching",
