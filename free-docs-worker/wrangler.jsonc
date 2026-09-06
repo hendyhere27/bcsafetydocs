@@ -1,0 +1,11 @@
+{
+  "name": "bcsafetydocs-free-docs",
+  "main": "worker.js",
+  "compatibility_date": "2026-01-01",
+  "routes": [
+    { "pattern": "bcsafetydocs.com/api/*", "zone_name": "bcsafetydocs.com" }
+  ],
+  "observability": {
+    "enabled": true
+  }
+}
