@@ -30,6 +30,10 @@ const PRODUCTS = {
     title: "Incident Investigation Report",
     filename: "BC_Incident_Investigation_Report.docx",
   },
+  "emergency-response": {
+    title: "Emergency Response Plan",
+    filename: "BC_Emergency_Response_Plan.docx",
+  },
 };
 
 const GENERAL_SEGMENT_ID = "f0329a1b-f3c8-4497-af7c-8db460dbbabe";
