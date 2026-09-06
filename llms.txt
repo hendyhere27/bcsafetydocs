@@ -15,7 +15,7 @@ Key facts:
 - [Confined Space Entry Permit](https://bcsafetydocs.com/index.html): Two-page BC confined space entry permit per WorkSafeBC OHS Regulation Part 9 — hazard classification, atmospheric testing log, standby person requirements, rescue plan, and entrant sign-in log.
 - [JSA / Field Level Hazard Assessment](https://bcsafetydocs.com/jsa.html): Job safety analysis and field-level hazard assessment template for BC worksites.
 - [Hot Work Permit](https://bcsafetydocs.com/hot-work-permit.html): Free hot work permit template per WorkSafeBC OHS Regulation Part 12 (welding, cutting, and allied processes) — fire and explosion hazard assessment, equipment/PPE checklist, fire watch, and authorization sign-off. Delivered by email after a free signup.
-- [Lockout / Tagout Procedure](https://bcsafetydocs.com/loto.html): Lockout/tagout procedure template (coming soon).
+- [Lockout / Tagout Procedure](https://bcsafetydocs.com/loto.html): Free lockout/tagout procedure template per WorkSafeBC OHS Regulation Part 10 (de-energization and lockout) — energy identification and isolation, personal lock application, verification, group lockout, and lock removal. BC uses a lock-based system (personal, individually identifiable locks per s.10.4), not a tag-based one. Delivered by email after a free signup.
 - [Daily FLHA Form](https://bcsafetydocs.com/flha.html): Daily field-level hazard assessment form (coming soon).
 - [Safe Work Procedure](https://bcsafetydocs.com/safe-work-procedure.html): Safe work procedure template (coming soon).
 - [Incident Investigation Report](https://bcsafetydocs.com/incident-report.html): Incident investigation report template (coming soon).

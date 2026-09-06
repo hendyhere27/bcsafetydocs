@@ -14,6 +14,10 @@ const PRODUCTS = {
     title: "Hot Work Permit Template",
     filename: "BC_Hot_Work_Permit_Part12.docx",
   },
+  loto: {
+    title: "Lockout / Tagout Procedure Template",
+    filename: "BC_LOTO_Procedure_Part10.docx",
+  },
 };
 
 const GENERAL_SEGMENT_ID = "f0329a1b-f3c8-4497-af7c-8db460dbbabe";
