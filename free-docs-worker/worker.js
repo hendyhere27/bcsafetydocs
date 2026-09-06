@@ -18,6 +18,10 @@ const PRODUCTS = {
     title: "Lockout / Tagout Procedure Template",
     filename: "BC_LOTO_Procedure_Part10.docx",
   },
+  flha: {
+    title: "Daily Field Level Hazard Assessment",
+    filename: "BC_Daily_FLHA_Form.docx",
+  },
 };
 
 const GENERAL_SEGMENT_ID = "f0329a1b-f3c8-4497-af7c-8db460dbbabe";
