@@ -26,6 +26,10 @@ const PRODUCTS = {
     title: "Safe Work Procedure Template",
     filename: "BC_Safe_Work_Procedure_Template.docx",
   },
+  "incident-report": {
+    title: "Incident Investigation Report",
+    filename: "BC_Incident_Investigation_Report.docx",
+  },
 };
 
 const GENERAL_SEGMENT_ID = "f0329a1b-f3c8-4497-af7c-8db460dbbabe";

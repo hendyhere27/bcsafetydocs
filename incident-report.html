@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Incident Investigation Report Template — Coming Soon | BC Safety Docs</title>
-  <meta name="description" content="BC Safety Docs Incident Investigation Report template for WorkSafeBC OHS Regulation Part 3 s.172–175. WorkSafeBC requires a written investigation for any workplace incident. Built for small BC contractors who need to document quickly and correctly. Coming soon."/>
-  <meta name="keywords" content="BC incident investigation report, WorkSafeBC incident investigation report template, BC contractor safety"/>
+  <title>Free Incident Investigation Report Template | BC Safety Docs</title>
+  <meta name="description" content="Free BC Safety Docs Incident Investigation Report template per the Workers Compensation Act, Part 2, Division 10 (ss.68-72). Immediate-reporting flag, preliminary and full investigation sections, corrective action tracking, and report distribution."/>
+  <meta name="keywords" content="BC incident investigation report, free incident report template, WorkSafeBC incident report, workers compensation act investigation"/>
   <link rel="canonical" href="https://bcsafetydocs.com/incident-report.html"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -20,7 +20,7 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body { font-family: 'Inter', sans-serif; font-size: 16px; color: #1A1A1A; background: #fff; line-height: 1.6; -webkit-font-smoothing: antialiased; }
-:root { --black:#1A1A1A; --yellow:#F5C400; --white:#FFFFFF; --grey:#4A4A4A; --light:#F4F4F4; --red:#C0392B; --blue:#1A5276; --border:#DDDDDD; --mid:#BDC3C7; }
+:root { --black:#1A1A1A; --yellow:#F5C400; --white:#FFFFFF; --grey:#4A4A4A; --light:#F4F4F4; --red:#C0392B; --blue:#1A5276; --green:#27AE60; --border:#DDDDDD; --mid:#BDC3C7; }
 nav { position:fixed; top:0; left:0; right:0; z-index:200; background:var(--black); height:56px; display:flex; align-items:center; padding:0 4%; gap:0; }
 .nav-logo { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:1.15rem; color:var(--white); letter-spacing:0.04em; text-decoration:none; margin-right:32px; white-space:nowrap; }
 .nav-logo span { color:var(--yellow); }
@@ -36,6 +36,8 @@ nav { position:fixed; top:0; left:0; right:0; z-index:200; background:var(--blac
 .dropdown a:hover { background:#1A1A1A; color:var(--white); }
 .dropdown .dd-label { font-size:0.68rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#555; padding:10px 18px 4px; cursor:default; display:block; }
 .dropdown a.highlight { color:var(--yellow); }
+.badge-free { display:inline-block; background:var(--green); color:#fff; font-size:0.62rem; font-weight:800; letter-spacing:0.04em; text-transform:uppercase; padding:2px 7px; border-radius:3px; margin-left:6px; vertical-align:1px; }
+.badge-soon { display:inline-block; background:var(--yellow); color:var(--black); font-size:0.62rem; font-weight:800; letter-spacing:0.04em; text-transform:uppercase; padding:2px 7px; border-radius:3px; margin-left:6px; vertical-align:1px; }
 .nav-cta { margin-left:auto; font-family:'Inter',sans-serif; font-size:0.8rem; font-weight:600; background:var(--yellow); color:var(--black); padding:8px 16px; border-radius:3px; text-decoration:none; white-space:nowrap; transition:opacity 0.15s; }
 .nav-cta:hover { opacity:0.85; }
 .nav-toggle { display:none; background:none; border:none; cursor:pointer; margin-left:auto; padding:8px; }
@@ -44,50 +46,36 @@ nav { position:fixed; top:0; left:0; right:0; z-index:200; background:var(--blac
 section { padding:72px 8%; }
 .section-label { font-family:'Barlow Condensed',sans-serif; font-size:0.75rem; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--red); margin-bottom:10px; }
 .section-title { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:clamp(1.8rem,3vw,2.5rem); line-height:1.1; color:var(--black); margin-bottom:14px; }
-.section-body { font-size:0.97rem; color:var(--grey); max-width:580px; line-height:1.7; }
-.trust-bar { background:var(--light); border-top:3px solid var(--yellow); padding:18px 8%; display:flex; align-items:center; justify-content:center; gap:40px; flex-wrap:wrap; }
-.trust-item { display:flex; align-items:center; gap:9px; font-size:0.83rem; font-weight:600; color:var(--grey); }
-.trust-icon { width:19px; height:19px; background:var(--yellow); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.65rem; font-weight:800; color:var(--black); flex-shrink:0; }
 .includes-list { list-style:none; }
 .includes-list li { display:flex; align-items:flex-start; gap:11px; padding:11px 0; border-bottom:1px solid var(--border); font-size:0.91rem; color:var(--grey); line-height:1.5; }
 .includes-list li:last-child { border-bottom:none; }
 .check { width:19px; height:19px; background:var(--yellow); border-radius:2px; display:flex; align-items:center; justify-content:center; font-size:0.62rem; font-weight:800; color:var(--black); flex-shrink:0; margin-top:2px; }
-.reg-card { background:var(--light); border-left:4px solid var(--red); padding:26px; border-radius:2px; }
-.reg-card h4 { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:1.05rem; color:var(--black); margin-bottom:14px; letter-spacing:0.02em; }
-.reg-row { display:flex; justify-content:space-between; align-items:center; padding:7px 0; border-bottom:1px solid var(--border); font-size:0.81rem; }
-.reg-row:last-child { border-bottom:none; }
-.reg-label { color:var(--grey); }
-.reg-val { font-weight:600; color:var(--black); font-family:'Barlow Condensed',sans-serif; font-size:0.93rem; letter-spacing:0.02em; }
-.btn-primary { display:inline-block; text-align:center; background:var(--yellow); color:var(--black); font-family:'Barlow Condensed',sans-serif; font-size:1.08rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; padding:15px 28px; border-radius:3px; text-decoration:none; transition:opacity 0.15s,transform 0.15s; }
-.btn-primary:hover { opacity:0.9; transform:translateY(-1px); }
-.btn-dark { display:inline-block; background:var(--black); color:var(--white); font-family:'Barlow Condensed',sans-serif; font-size:1.1rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:17px 44px; border-radius:3px; text-decoration:none; transition:opacity 0.15s,transform 0.15s; }
-.btn-dark:hover { opacity:0.85; transform:translateY(-1px); }
 .btn-outline { display:inline-block; background:transparent; color:var(--black); border:2px solid var(--black); font-family:'Barlow Condensed',sans-serif; font-size:1.05rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; padding:14px 32px; border-radius:3px; text-decoration:none; transition:background 0.15s,color 0.15s; }
 .btn-outline:hover { background:var(--black); color:var(--white); }
-.cta-section { background:var(--yellow); text-align:center; padding:72px 8%; }
-.cta-section .section-label { color:rgba(0,0,0,0.45); }
-.cta-section .section-title { color:var(--black); }
-.cta-section .section-body { color:rgba(0,0,0,0.65); margin:0 auto 32px; }
-.price-block { display:inline-flex; align-items:baseline; gap:5px; margin-bottom:24px; }
-.price-amount { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:3.4rem; color:var(--black); line-height:1; }
-.price-currency { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:1.3rem; color:var(--black); }
-.price-once { font-size:0.82rem; color:rgba(0,0,0,0.5); margin-left:4px; }
-.cta-disclaimer { font-size:0.73rem; color:rgba(0,0,0,0.45); max-width:480px; margin:14px auto 0; line-height:1.6; }
 footer { background:var(--black); padding:32px 8%; display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:20px; }
 .footer-logo { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:1rem; color:var(--white); letter-spacing:0.04em; }
 .footer-logo span { color:var(--yellow); }
 footer p { font-size:0.74rem; color:#555; line-height:1.65; max-width:420px; }
 footer a { color:#666; text-decoration:none; }
 footer a:hover { color:var(--yellow); }
-.coming-hero { min-height:calc(100vh - 56px); background:var(--black); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:60px 8%; }
-.coming-hero .eyebrow { font-family:'Barlow Condensed',sans-serif; font-size:0.78rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--yellow); margin-bottom:16px; }
-.coming-hero h1 { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:clamp(2.4rem,5vw,4rem); color:var(--white); line-height:1.05; margin-bottom:20px; }
-.coming-hero h1 em { font-style:normal; color:var(--yellow); }
-.coming-hero p { font-size:1rem; color:#888; max-width:480px; line-height:1.7; margin-bottom:36px; }
-.coming-links { display:flex; gap:14px; flex-wrap:wrap; justify-content:center; }
-@media(max-width:860px){ .nav-links,.nav-cta{display:none} .nav-toggle{display:block} nav.open .nav-links{display:flex;flex-direction:column;position:fixed;top:56px;left:0;right:0;background:#111;padding:12px 0 20px;gap:0;align-items:stretch;z-index:199} nav.open .nav-links > li > a, nav.open .nav-links > li > button{height:auto;padding:12px 20px;color:var(--white)} nav.open .dropdown{position:static;border-top:none;box-shadow:none;background:#0A0A0A} nav.open .nav-cta{display:block;margin:8px 20px 0} }
-@media(max-width:600px){ section{padding:44px 5%} .trust-bar{padding:16px 5%;gap:18px} footer{flex-direction:column} }
 
+.free-hero { min-height:calc(100vh - 56px); background:var(--black); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:60px 8%; }
+.free-hero .eyebrow { font-family:'Barlow Condensed',sans-serif; font-size:0.78rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--yellow); margin-bottom:16px; }
+.free-pill { display:inline-block; background:var(--green); color:#fff; font-family:'Barlow Condensed',sans-serif; font-size:0.95rem; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; padding:5px 16px; border-radius:20px; margin-bottom:18px; }
+.free-hero h1 { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:clamp(2.4rem,5vw,4rem); color:var(--white); line-height:1.05; margin-bottom:20px; }
+.free-hero h1 em { font-style:normal; color:var(--yellow); }
+.free-hero > p { font-size:1rem; color:#888; max-width:520px; line-height:1.7; margin-bottom:36px; }
+.free-form-card { background:var(--white); border-radius:6px; padding:28px; max-width:440px; width:100%; box-shadow:0 12px 44px rgba(0,0,0,0.35); }
+.free-form-row { display:flex; gap:10px; flex-wrap:wrap; }
+.free-email-input { flex:1 1 220px; min-width:0; height:48px; padding:0 14px; border:1px solid var(--border); border-radius:3px; font-family:'Inter',sans-serif; font-size:0.95rem; color:var(--black); }
+.free-submit-btn { flex:0 0 auto; background:var(--green); color:#fff; font-family:'Barlow Condensed',sans-serif; font-size:1.0rem; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; padding:0 24px; height:48px; border:none; border-radius:3px; cursor:pointer; transition:opacity 0.15s; }
+.free-submit-btn:hover { opacity:0.9; }
+.free-submit-btn:disabled { opacity:0.6; cursor:default; }
+.free-msg { font-size:0.83rem; margin-top:12px; min-height:1.2em; text-align:left; }
+.free-consent { font-size:0.72rem; color:#999; margin-top:14px; text-align:left; line-height:1.6; }
+.free-links { display:flex; gap:14px; flex-wrap:wrap; justify-content:center; margin-top:28px; }
+@media(max-width:860px){ .nav-links,.nav-cta{display:none} .nav-toggle{display:block} nav.open .nav-links{display:flex;flex-direction:column;position:fixed;top:56px;left:0;right:0;background:#111;padding:12px 0 20px;gap:0;align-items:stretch;z-index:199} nav.open .nav-links > li > a, nav.open .nav-links > li > button{height:auto;padding:12px 20px;color:var(--white)} nav.open .dropdown{position:static;border-top:none;box-shadow:none;background:#0A0A0A} nav.open .nav-cta{display:block;margin:8px 20px 0} }
+@media(max-width:600px){ section{padding:44px 5%} footer{flex-direction:column} .free-form-row{flex-direction:column} .free-submit-btn{width:100%} }
 
   </style>
 </head>
@@ -100,24 +88,24 @@ footer a:hover { color:var(--yellow); }
       <div class="dropdown">
         <span class="dd-label">Entry Permits</span>
         <a href="/index.html">Confined Space Entry Permit</a>
-        <a href="/hot-work-permit.html">Hot Work Permit <span style="display:inline-block;background:#27AE60;color:#fff;font-size:0.62rem;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-left:6px;vertical-align:1px;">Free</span></a>
+        <a href="/hot-work-permit.html">Hot Work Permit <span class="badge-free">Free</span></a>
         <span class="dd-label">Procedures</span>
-        <a href="/loto.html">Lockout / Tagout Procedure <span style="display:inline-block;background:#27AE60;color:#fff;font-size:0.62rem;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-left:6px;vertical-align:1px;">Free</span></a>
+        <a href="/loto.html">Lockout / Tagout Procedure <span class="badge-free">Free</span></a>
       </div>
     </li>
     <li>
       <button aria-haspopup="true">Assessments</button>
       <div class="dropdown">
         <a href="/jsa.html">JSA / Field Level Hazard Assessment</a>
-        <a href="/flha.html">Daily FLHA Form <span style="display:inline-block;background:#27AE60;color:#fff;font-size:0.62rem;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-left:6px;vertical-align:1px;">Free</span></a>
-        <a href="/safe-work-procedure.html">Safe Work Procedure <span style="display:inline-block;background:#27AE60;color:#fff;font-size:0.62rem;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-left:6px;vertical-align:1px;">Free</span></a>
+        <a href="/flha.html">Daily FLHA Form <span class="badge-free">Free</span></a>
+        <a href="/safe-work-procedure.html">Safe Work Procedure <span class="badge-free">Free</span></a>
       </div>
     </li>
     <li>
       <button aria-haspopup="true">Incident &amp; Emergency</button>
       <div class="dropdown">
-        <a href="/incident-report.html">Incident Investigation Report <span style="color:#F5C400;font-size:0.7rem;">Coming Soon</span></a>
-        <a href="/emergency-response.html">Emergency Response Plan <span style="color:#F5C400;font-size:0.7rem;">Coming Soon</span></a>
+        <a href="/incident-report.html">Incident Investigation Report <span class="badge-free">Free</span></a>
+        <a href="/emergency-response.html">Emergency Response Plan <span class="badge-soon">Coming Soon</span></a>
       </div>
     </li>
     <li>
@@ -142,17 +130,77 @@ footer a:hover { color:var(--yellow); }
 </script>
 
 <div class="page-top">
-  <div class="coming-hero">
-    <p class="eyebrow">WorkSafeBC OHS Regulation Part 3 s.172–175</p>
-    <h1>Incident Investigation Report<br><em>Coming Soon.</em></h1>
-    <p>WorkSafeBC requires a written investigation for any workplace incident. Built for small BC contractors who need to document quickly and correctly.</p>
-    <p style="color:#F5C400;font-size:0.88rem;font-weight:600;">Get notified when it's ready &rarr; <a href="mailto:info@bcsafetydocs.com?subject=Incident Investigation Report Notification" style="color:#F5C400;">info@bcsafetydocs.com</a></p>
-    <div class="coming-links">
-      <a href="/bundle.html" class="btn-primary">View Starter Bundle</a>
-      <a href="/index.html" class="btn-outline" style="color:white;border-color:#444;">See Available Documents</a>
+  <div class="free-hero">
+    <p class="eyebrow">Workers Compensation Act, Part 2, Division 10 (ss.68&ndash;72)</p>
+    <span class="free-pill">Free Download</span>
+    <h1>Incident Investigation<br><em>Report.</em></h1>
+    <p>Employers must investigate workplace incidents under the Workers Compensation Act. Built for small BC contractors who need to document quickly and correctly &mdash; with a clear flag for when to call WorkSafeBC immediately, before anything else.</p>
+
+    <div class="free-form-card">
+      <form id="freeForm">
+        <div class="free-form-row">
+          <input type="email" id="freeEmail" class="free-email-input" placeholder="you@company.com" required/>
+          <button type="submit" id="freeSubmitBtn" class="free-submit-btn">Send Me the Free Report</button>
+        </div>
+        <p class="free-msg" id="freeMsg"></p>
+        <p class="free-consent">We'll email the download link right away. We'll also occasionally send WorkSafeBC compliance updates relevant to your templates &mdash; unsubscribe anytime. See our <a href="/terms.html" style="color:#999;">Privacy Policy</a>.</p>
+      </form>
+    </div>
+
+    <div class="free-links">
+      <a href="/index.html" class="btn-outline" style="color:white;border-color:#444;">See Paid Documents</a>
     </div>
   </div>
+
+  <section aria-labelledby="includes-title">
+    <p class="section-label">What's included</p>
+    <h2 class="section-title" id="includes-title">Know what to do in the first five minutes.</h2>
+    <ul class="includes-list" style="max-width:640px;">
+      <li><span class="check">&#10003;</span> Two-page fillable Word document (.docx)</li>
+      <li><span class="check">&#10003;</span> Immediate-reporting flag: exactly which incidents require calling WorkSafeBC right away (s.68)</li>
+      <li><span class="check">&#10003;</span> Incident classification, persons involved, and description of events</li>
+      <li><span class="check">&#10003;</span> Preliminary investigation section (s.71) and full investigation section (s.72)</li>
+      <li><span class="check">&#10003;</span> Corrective action tracking table with responsible person and target date</li>
+      <li><span class="check">&#10003;</span> Investigation team sign-off and report distribution checklist</li>
+    </ul>
+  </section>
 </div>
+
+<script>
+  document.getElementById('freeForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    var email = document.getElementById('freeEmail').value.trim();
+    var btn = document.getElementById('freeSubmitBtn');
+    var msg = document.getElementById('freeMsg');
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+    msg.style.color = '#777';
+    msg.textContent = '';
+    try {
+      var resp = await fetch('/api/free-download', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, product: 'incident-report' })
+      });
+      var data = await resp.json();
+      if (data.ok) {
+        msg.style.color = '#27AE60';
+        msg.textContent = 'Check your inbox — your download link is on its way.';
+        document.getElementById('freeEmail').value = '';
+      } else {
+        msg.style.color = '#C0392B';
+        msg.textContent = data.error || 'Something went wrong. Please try again.';
+      }
+    } catch (err) {
+      msg.style.color = '#C0392B';
+      msg.textContent = 'Network error. Please try again or email info@bcsafetydocs.com.';
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Send Me the Free Report';
+    }
+  });
+</script>
+
 <footer>
   <div>
     <div class="footer-logo">BC<span>SAFETY</span>DOCS</div>
