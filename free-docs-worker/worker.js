@@ -22,6 +22,10 @@ const PRODUCTS = {
     title: "Daily Field Level Hazard Assessment",
     filename: "BC_Daily_FLHA_Form.docx",
   },
+  "safe-work-procedure": {
+    title: "Safe Work Procedure Template",
+    filename: "BC_Safe_Work_Procedure_Template.docx",
+  },
 };
 
 const GENERAL_SEGMENT_ID = "f0329a1b-f3c8-4497-af7c-8db460dbbabe";
