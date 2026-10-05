@@ -2,10 +2,10 @@
 // Route: bcsafetydocs.com/api/* (path-based, coexists with the Pages-served static site)
 //
 // Each free document page POSTs { email, product } to /api/free-download.
-// This worker emails the download link via Resend and adds the contact to
-// Resend's "General" segment (bcsafetydocs.com's Resend account is capped at
-// 3 segments and all are in use, so contacts are tagged via `properties`
-// instead of a dedicated segment) for future subscription marketing.
+// This worker emails the download link via Resend and records the signup in
+// the D1 database `bcsafetydocs-leads` (table `signups`). Leads are then
+// filed into Resend's "General" segment by a separate sync step — see
+// README.md for why, and how.
 
 // Product slug -> filename on bcsafetydocs.com. Add an entry here each time
 // a new free document ships.
@@ -36,7 +36,6 @@ const PRODUCTS = {
   },
 };
 
-const GENERAL_SEGMENT_ID = "f0329a1b-f3c8-4497-af7c-8db460dbbabe";
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function corsHeaders() {
@@ -126,38 +125,18 @@ async function handleFreeDownload(request, env) {
     return json({ ok: false, error: "Could not send the email. Please try again or email info@bcsafetydocs.com." }, 502);
   }
 
-  // Best-effort contact capture — never fail the user-facing request over this.
-  //
-  // Uses its own key: RESEND_API_KEY is a "Sending access" key (least
-  // privilege — it can only send email), and Resend rejects Contacts API
-  // calls from it with 401 restricted_api_key. That 401 was swallowed by this
-  // best-effort block, so no signup was ever filed until this was found.
-  // RESEND_CONTACTS_API_KEY needs permission to manage contacts.
+  // Record the signup in D1 — never fail the user-facing request over this
+  // (the download email has already gone out). This is the system of record
+  // for leads; they're filed into Resend's General segment afterwards (see
+  // README.md), because RESEND_API_KEY is Sending-access only and Resend
+  // rejects Contacts API calls from it (401 restricted_api_key).
   try {
-    if (!env.RESEND_CONTACTS_API_KEY) {
-      throw new Error("RESEND_CONTACTS_API_KEY is not set — signup not filed to Resend");
-    }
-    const contactResp = await fetch("https://api.resend.com/contacts", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${env.RESEND_CONTACTS_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email,
-        // Resend's API takes segments as an array of { id } objects, not bare
-        // ID strings — the string form is rejected, and since this call is
-        // best-effort the failure was silent (no signup was ever filed).
-        segments: [{ id: GENERAL_SEGMENT_ID }],
-        // Property keys must be defined in Resend first (Contacts > Properties).
-        properties: { lead_source: "free_download", last_free_product: product },
-      }),
-    });
-    if (!contactResp.ok) {
-      console.error("Resend create-contact non-OK:", contactResp.status, await contactResp.text());
-    }
+    await env.DB
+      .prepare("INSERT INTO signups (email, product) VALUES (?, ?)")
+      .bind(email.toLowerCase(), product)
+      .run();
   } catch (e) {
-    console.error("Resend create-contact threw:", e);
+    console.error("D1 signup insert failed:", e);
   }
 
   return json({ ok: true }, 200);

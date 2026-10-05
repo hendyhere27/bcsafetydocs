@@ -5,6 +5,13 @@
   "routes": [
     { "pattern": "bcsafetydocs.com/api/*", "zone_name": "bcsafetydocs.com" }
   ],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "bcsafetydocs-leads",
+      "database_id": "132ce894-0c23-4987-9380-c7f8f23fd4a7"
+    }
+  ],
   "observability": {
     "enabled": true
   }
