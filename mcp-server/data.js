@@ -73,14 +73,15 @@ export const gasLimits = {
     normal: 20.9,
     limitStatement:
       "OHSR s.9.1 defines clean respirable air at approximately 20.9% O2 and requires no " +
-      "contaminant above 10% of its exposure limit. BC's OHSR does not state a numeric O2 floor " +
-      "directly (unlike OSHA 1910.146). 19.5% is the universal industry-standard threshold " +
-      "(aligned with OSHA/ACGIH convention) used by a qualified person to determine an atmosphere " +
-      "no longer meets the low-hazard definition.",
+      "contaminant above 10% of its exposure limit. OHSR s.1.1 defines \"oxygen deficient\" as less " +
+      "than 19.5% oxygen by volume (or a partial pressure below 16.3 kPa), but Part 9 does not set " +
+      "a numeric O2 floor for entry (unlike OSHA 1910.146). In practice 19.5% is the threshold " +
+      "(also the OSHA/ACGIH convention) a qualified person uses to decide an atmosphere no longer " +
+      "meets the low-hazard definition.",
     crossGasWarning: CROSS_GAS_WARNING,
-    ohsrReferences: ["OHSR s.9.1 (definition of clean respirable air)", "OHSR Part 9"],
+    ohsrReferences: ["OHSR s.9.1 (definition of clean respirable air)", "OHSR s.1.1 (definition of oxygen deficient)", "OHSR Part 9"],
     belowAction:
-      "An atmosphere below the 19.5% industry-standard threshold clearly does not meet the OHSR " +
+      "An atmosphere below 19.5% is oxygen deficient (OHSR s.1.1) and clearly does not meet the OHSR " +
       "s.9.1 clean-respirable-air definition (~20.9% O2) and cannot be treated as low hazard. The " +
       "space must be classified moderate or high hazard (s.9.25), ventilated (s.9.30-9.32), and " +
       "supplied-air respirator or SCBA requirements under s.9.28(a) apply. Retest before any entry.",
@@ -247,7 +248,7 @@ export const gasTestingProtocol = {
       why:
         "Test O2 first: combustible-gas (LEL) sensors read low in oxygen-deficient atmospheres, " +
         "so an LEL reading is only reliable once O2 is confirmed adequate.",
-      limit: ">= 19.5% (industry-standard threshold; clean respirable air is ~20.9%, OHSR s.9.1)",
+      limit: ">= 19.5% (below this the air is \"oxygen deficient\", OHSR s.1.1; clean respirable air is ~20.9%, OHSR s.9.1)",
     },
     {
       step: 2,

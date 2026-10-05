@@ -70,16 +70,17 @@ server.registerTool(
 
     if (gas === "oxygen") {
       if (reading < g.minimum) {
-        readingRelativeToLimit = `below the ${g.minimum}% industry-standard minimum`;
+        readingRelativeToLimit = `below the ${g.minimum}% oxygen-deficiency threshold (OHSR s.1.1)`;
         regulationRequires = g.belowAction;
       } else if (reading > 22.0) {
         readingRelativeToLimit = `above normal atmospheric oxygen (~${g.normal}%) — possible enrichment`;
         regulationRequires = g.aboveNormalAction;
       } else {
-        readingRelativeToLimit = `at or above the ${g.minimum}% industry-standard minimum`;
+        readingRelativeToLimit = `at or above the ${g.minimum}% oxygen-deficiency threshold (OHSR s.1.1)`;
         regulationRequires =
-          "The reading is at or above the 19.5% industry-standard threshold (note: BC's OHSR does " +
-          "not state a numeric O2 floor directly; s.9.1 defines clean respirable air at ~20.9%). " +
+          "The reading is at or above the 19.5% oxygen-deficiency threshold (OHSR s.1.1 defines " +
+          "\"oxygen deficient\" as under 19.5%; Part 9 sets no separate numeric O2 entry floor, and " +
+          "s.9.1 defines clean respirable air at ~20.9%). " +
           "This clears the oxygen hazard only. OHSR Part 9 still requires the full classification " +
           "(s.9.1/s.9.25), independent testing of flammables and toxics, and all other permit " +
           "requirements before entry — a passing O2 reading does not establish a low hazard " +

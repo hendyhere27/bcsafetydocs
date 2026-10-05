@@ -17,7 +17,7 @@ function check(label, cond) {
 let b = parse(await client.callTool({ name: "check_atmospheric_limits", arguments: { gas: "oxygen", reading: 20.9 } }));
 check("O2 20.9 response carries standing cross_gas_warning", b.cross_gas_warning?.includes("clears nothing else"));
 check("O2 20.9 does NOT claim OHSR requires 19.5%", !JSON.stringify(b).includes("OHSR Part 9 requires a minimum of 19.5"));
-check("O2 limit statement says no direct numeric floor in OHSR", b.published_limit.includes("does not state a numeric O2 floor"));
+check("O2 limit statement cites s.1.1 and says Part 9 sets no numeric entry floor", b.published_limit.includes("s.1.1") && b.published_limit.includes("does not set a numeric O2 floor"));
 check("O2 20.9 response says it clears oxygen only", b.regulation_requires.includes("clears the oxygen hazard only"));
 check("last_verified bumped to 2026-07-10", b.last_verified === "2026-07-10");
 
