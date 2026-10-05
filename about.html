@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Starter Bundle — Confined Space Permit + JSA/FLHA | BC Safety Docs</title>
-  <meta name="description" content="BC Safety Docs Starter Bundle: Confined Space Entry Permit and JSA/FLHA template. Both WorkSafeBC-specific documents for $87 CAD — save $37 off individual prices."/>
-  <meta name="keywords" content="BC safety forms bundle, WorkSafeBC confined space JSA bundle, BC contractor safety documents, WorkSafeBC templates bundle"/>
-  <link rel="canonical" href="https://bcsafetydocs.com/bundle.html"/>
+  <title>About BC Safety Docs | Derek Henderson</title>
+  <meta name="description" content="BC Safety Docs is run by Derek Henderson, a BC firefighter with a background in energy infrastructure work. Why these WorkSafeBC document templates exist and how they are checked."/>
+    <link rel="canonical" href="https://bcsafetydocs.com/about.html"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/></noscript>
@@ -89,24 +88,74 @@ footer a:hover { color:var(--yellow); }
 @media(max-width:600px){ section{padding:44px 5%} .trust-bar{padding:16px 5%;gap:18px} footer{flex-direction:column} }
 
 
-.bundle-hero{background:var(--black);padding:80px 8%;text-align:center}
-.bundle-hero .eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--yellow);margin-bottom:14px}
-.bundle-hero h1{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(2.4rem,4.5vw,3.8rem);color:var(--white);line-height:1.05;margin-bottom:18px}
-.bundle-hero h1 em{font-style:normal;color:var(--yellow)}
-.bundle-hero p{font-size:1rem;color:#888;max-width:520px;margin:0 auto 36px;line-height:1.7}
-.bundle-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:52px}
-.bundle-card{background:var(--white);border:2px solid var(--border);border-radius:4px;overflow:hidden}
-.bundle-card-header{padding:18px 22px}
-.bundle-card-header h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.15rem;color:var(--white);margin-bottom:4px}
-.bundle-card-header p{font-size:0.78rem;color:rgba(255,255,255,0.65)}
-.bundle-card-body{padding:22px}
-.bundle-card-body ul{list-style:none}
-.bundle-card-body li{display:flex;gap:9px;padding:7px 0;border-bottom:1px solid var(--border);font-size:0.85rem;color:var(--grey)}
-.bundle-card-body li:last-child{border-bottom:none}
-.savings-bar{background:var(--yellow);padding:24px 8%;text-align:center}
-.savings-bar p{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.3rem;color:var(--black);letter-spacing:0.04em}
-@media(max-width:800px){.bundle-grid{grid-template-columns:1fr}}
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 56px);overflow:hidden}
+.hero-left{background:var(--black);padding:80px 6% 80px 8%;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2}
+.hero-left::after{content:'';position:absolute;top:0;right:-60px;width:120px;height:100%;background:var(--black);clip-path:polygon(0 0,50% 0,100% 100%,0 100%);z-index:3}
+.hero-right{background:var(--yellow);padding:80px 8% 80px 10%;display:flex;flex-direction:column;justify-content:center}
+.eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--yellow);margin-bottom:14px}
+.hero-headline{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(2.5rem,4.5vw,3.7rem);line-height:1.0;color:var(--white);margin-bottom:22px}
+.hero-headline em{font-style:normal;color:var(--yellow)}
+.hero-sub{font-size:0.97rem;color:#AAAAAA;line-height:1.65;max-width:420px;margin-bottom:34px}
+.hero-cta-group{display:flex;flex-direction:column;gap:10px;max-width:280px}
+.price-note{font-size:0.8rem;color:#666;text-align:center}
+.form-card{background:var(--white);border-radius:4px;box-shadow:0 8px 40px rgba(0,0,0,0.18);overflow:hidden;max-width:400px}
+.form-card-header{padding:13px 18px}
+.form-card-header h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;color:var(--white);letter-spacing:0.04em}
+.form-card-header p{font-size:0.7rem;color:rgba(255,255,255,0.7);margin-top:2px}
+.form-card-body{padding:18px}
+.form-field{margin-bottom:9px}
+.form-label{display:block;background:#ECF0F1;font-size:0.66rem;font-weight:600;color:#555;padding:3px 7px;letter-spacing:0.04em}
+.form-input{display:block;width:100%;height:26px;border:1px solid #DDD;border-top:none}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.hazard-row{display:flex;gap:14px;margin:10px 0 7px;font-size:0.76rem;font-weight:600}
+.hazard-row span{display:flex;align-items:center;gap:4px}
+.cb{width:11px;height:11px;border:1.5px solid #999;display:inline-block}
+.cb.checked{background:var(--red);border-color:var(--red)}
+.form-tag{display:inline-block;background:#EBF5FB;border:1px solid #AED6F1;font-size:0.63rem;color:#1A5276;padding:2px 7px;border-radius:2px;margin-top:5px;margin-right:4px}
+.problem{background:var(--black)}
+.problem .section-title{color:var(--white)}
+.problem .section-label{color:var(--yellow)}
+.problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:44px}
+.problem-card{border-top:3px solid var(--yellow);padding-top:18px}
+.problem-card h4{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.05rem;color:var(--white);margin-bottom:7px}
+.problem-card p{font-size:0.86rem;color:#777;line-height:1.65}
+.includes-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;margin-top:44px;align-items:start}
+.who-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:36px}
+.who-card{background:var(--white);border:1px solid var(--border);border-radius:3px;padding:22px}
+.who-card h4{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;color:var(--black);margin-bottom:7px}
+.who-card p{font-size:0.84rem;color:var(--grey);line-height:1.6}
+.products{background:var(--light)}
+.prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:36px}
+.prod-card{background:var(--white);border:1px solid var(--border);border-top:4px solid var(--black);border-radius:3px;padding:22px;display:flex;flex-direction:column}
+.prod-card.feat{border-top-color:var(--yellow);box-shadow:0 6px 24px rgba(0,0,0,0.10)}
+.prod-card .prod-tag{flex:none;line-height:1.3;font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--red);margin-bottom:6px}
+.prod-card h3{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.3rem;line-height:1.1;color:var(--black);margin-bottom:8px}
+.prod-card .prod-price{flex:none;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.9rem;color:var(--black);line-height:1;margin-bottom:10px}
+.prod-card .prod-price small{font-size:0.85rem;font-weight:700;margin-left:3px}
+.prod-card p{font-size:0.84rem;color:var(--grey);line-height:1.6;margin-bottom:16px;flex:1}
+.prod-card .btn-primary,.prod-card .btn-outline{padding:12px 16px;font-size:1rem;width:100%}
+.free-strip{margin-top:28px;font-size:0.88rem;color:var(--grey);line-height:2}
+.free-strip a{display:inline-block;color:var(--black);font-weight:600;text-decoration:none;border:1px solid var(--border);background:var(--white);border-radius:3px;padding:2px 10px;margin:0 6px 6px 0;line-height:1.7}
+.free-strip a:hover{border-color:var(--black)}
+.verified{background:var(--black)}
+.verified .section-title{color:var(--white)}
+.verified .section-label{color:var(--yellow)}
+.verified .section-body{color:#AAA;max-width:680px}
+.fix-list{list-style:none;margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:10px 28px}
+.fix-list li{font-size:0.86rem;color:#BBB;line-height:1.55;padding:10px 0;border-bottom:1px solid #2E2E2E}
+.fix-list b{color:var(--yellow);font-family:'Barlow Condensed',sans-serif;font-size:1rem;margin-right:6px}
+.verified-note{margin-top:22px;border-left:4px solid var(--yellow);padding:4px 0 4px 16px;font-size:0.88rem;color:#CCC;line-height:1.7;max-width:760px}
+@media(max-width:1100px){.prod-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.prod-grid{grid-template-columns:1fr}.fix-list{grid-template-columns:1fr}.hero-cta-group{max-width:none}.btn-primary,.btn-dark{display:block}.btn-dark{padding:16px 20px}.reg-row{gap:12px}.reg-val{text-align:right}}
+@media(max-width:900px){.hero{grid-template-columns:1fr;min-height:auto}.hero-left::after{display:none}.hero-left{padding:56px 5%}.hero-right{padding:36px 5%;background:#F9F9F9}.problem-grid{grid-template-columns:1fr}.includes-grid{grid-template-columns:1fr}.who-grid{grid-template-columns:1fr}}
 
+  .about{display:grid;grid-template-columns:minmax(0,340px) 1fr;gap:48px;align-items:start;max-width:1000px;margin:0 auto}
+.about img{width:100%;height:auto;display:block;border-radius:4px;border-bottom:6px solid var(--yellow)}
+.about figcaption{font-size:0.78rem;color:#777;margin-top:8px}
+.about-copy p{font-size:1rem;color:#333;line-height:1.75;margin-bottom:18px}
+.about-copy h2{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.5rem;color:var(--black);margin:30px 0 10px}
+.about-copy a{color:var(--blue)}
+@media(max-width:800px){.about{grid-template-columns:1fr;gap:26px}.about figure{max-width:380px}}
   </style>
 </head>
 <body>
@@ -163,75 +212,30 @@ footer a:hover { color:var(--yellow); }
 </script>
 
 <div class="page-top">
-  <div class="bundle-hero">
-    <p class="eyebrow">Starter Bundle &mdash; Best Value</p>
-    <h1>Two essential BC safety documents.<br><em>One discounted price.</em></h1>
-    <p>Get the Confined Space Entry Permit and the JSA / FLHA template together. Both built specifically for WorkSafeBC OHS Regulation. Both fully editable Word documents.</p>
-    <div style="display:flex;align-items:baseline;gap:16px;justify-content:center;margin-bottom:8px;">
-      <span style="font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;color:#555;text-decoration:line-through;">$124 CAD individually</span>
-      <span style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:3rem;color:var(--yellow);">$87 CAD</span>
-    </div>
-    <p style="color:#666;font-size:0.85rem;margin-bottom:32px;">Save $37 &mdash; one-time purchase, instant download</p>
-    <a href="https://buy.stripe.com/14A14m0MN3gvgexfldfEk04" class="btn-primary" style="font-size:1.1rem;padding:16px 40px;">Get the Starter Bundle &mdash; $87 CAD</a>
-  </div>
-
-  <div class="savings-bar">
-    <p>&#10003; Both documents delivered instantly &middot; Add your company name and logo &middot; Print-ready &middot; No subscription ever</p>
-  </div>
-
-  <section>
-    <p class="section-label">What's in the bundle</p>
-    <h2 class="section-title">Everything your crew needs before going underground.</h2>
-    <div class="bundle-grid">
-      <div class="bundle-card">
-        <div class="bundle-card-header" style="background:var(--red);">
-          <h3>Confined Space Entry Permit</h3>
-          <p>WorkSafeBC OHS Regulation Part 9 &middot; s.9.1, 9.25, 9.28&ndash;9.36</p>
-        </div>
-        <div class="bundle-card-body">
-          <ul>
-            <li><span class="check">&#10003;</span> BC atmospheric hazard classification (Low / Moderate / High)</li>
-            <li><span class="check">&#10003;</span> Atmospheric testing log with BC-specific thresholds</li>
-            <li><span class="check">&#10003;</span> Standby person requirements per hazard level</li>
-            <li><span class="check">&#10003;</span> Supplied-air and SCBA requirements (s.9.28(a))</li>
-            <li><span class="check">&#10003;</span> Isolation, lockout, and purge checklist</li>
-            <li><span class="check">&#10003;</span> Rescue plan and entrant sign-in log</li>
-            <li><span class="check">&#10003;</span> 16-row extended monitoring log (Page 2)</li>
-            <li><span class="check">&#10003;</span> Amendment signatures for mid-job changes</li>
-          </ul>
-        </div>
-      </div>
-      <div class="bundle-card">
-        <div class="bundle-card-header" style="background:#2C3E50;">
-          <h3>JSA / Field Level Hazard Assessment</h3>
-          <p>WorkSafeBC OHS Regulation Part 3 &middot; s.3.3 Risk Assessment</p>
-        </div>
-        <div class="bundle-card-body">
-          <ul>
-            <li><span class="check">&#10003;</span> 12-category hazard identification checklist</li>
-            <li><span class="check">&#10003;</span> 8-step analysis table with hierarchy of controls</li>
-            <li><span class="check">&#10003;</span> Residual risk rating (H/M/L) per step</li>
-            <li><span class="check">&#10003;</span> 8 work type checkboxes including confined space</li>
-            <li><span class="check">&#10003;</span> Supervisor authorization before work begins</li>
-            <li><span class="check">&#10003;</span> Toolbox talk briefing notes field</li>
-            <li><span class="check">&#10003;</span> 8-worker crew briefing sign-off table</li>
-            <li><span class="check">&#10003;</span> Works as JSA or daily FLHA</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+  <section style="background:var(--black);padding:56px 8% 40px;">
+    <p class="eyebrow" style="font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--yellow);margin-bottom:12px;">About</p>
+    <h1 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(2.2rem,5vw,3.4rem);line-height:1.05;color:var(--white);max-width:760px;">Safety paperwork written by someone who has <span style="color:var(--yellow);">worked the job.</span></h1>
   </section>
 
-  <section class="cta-section" id="buy">
-    <p class="section-label">Starter Bundle</p>
-    <h2 class="section-title">Confined Space Permit + JSA / FLHA</h2>
-    <p class="section-body">Both documents. One download. Add your company name, print, and use on site.</p>
-    <div style="display:flex;align-items:center;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:28px;">
-      <div class="price-block" style="margin-bottom:0;"><span class="price-currency">$</span><span class="price-amount">87</span><span class="price-currency">CAD</span><span class="price-once">one-time</span></div>
-      <span style="background:var(--black);color:var(--yellow);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.9rem;padding:6px 14px;border-radius:2px;letter-spacing:0.06em;">SAVE $37</span>
+  <section>
+    <div class="about">
+      <figure>
+        <img src="/derek-henderson.jpg" width="900" height="1200" alt="Derek Henderson working on an ice-covered rig at night" fetchpriority="high"/>
+        <figcaption>Derek Henderson</figcaption>
+      </figure>
+      <div class="about-copy">
+        <p>I'm Derek Henderson. I'm a firefighter, and I've worked in energy infrastructure. Both are jobs where conditions are rarely ideal and the paperwork has to hold up when it matters.</p>
+        <p>That's where BC Safety Docs comes from. The permits, procedures and forms crews are asked for are often either blank pages or US templates that don't match the WorkSafeBC OHS Regulation. I built these to be specific to BC, short enough to use on a real job, and traceable to the section they come from.</p>
+
+        <h2>How the documents are checked</h2>
+        <p>Every regulatory reference is checked against the live WorkSafeBC OHS Regulation or the Workers Compensation Act. When I find a wrong citation, I fix it and say so: in July 2026 an audit of our own permit found seven, and <a href="/index.html#verified">the corrected list is on the home page</a>.</p>
+
+        <h2>What these are, and aren't</h2>
+        <p>These are working templates, not legal or regulatory advice, and not a substitute for a qualified person's assessment of your site. Review them against the current Regulation before you rely on them. If you spot something that's wrong or out of date, email <a href="mailto:info@bcsafetydocs.com">info@bcsafetydocs.com</a> and I'll check it.</p>
+
+        <p style="margin-top:28px;"><a href="/cor-kit.html" class="btn-primary" style="color:var(--black);text-decoration:none;">See the COR Kit</a> &nbsp; <a href="/blog/" style="font-weight:600;">Read the guides &rarr;</a></p>
+      </div>
     </div>
-    <a href="https://buy.stripe.com/14A14m0MN3gvgexfldfEk04" class="btn-dark">Download the Bundle &mdash; Instant Access</a>
-    <p class="cta-disclaimer" style="margin-top:16px;">Both templates are professional working tools. All documents must be reviewed by a qualified person prior to use and verified against the current WorkSafeBC OHS Regulation. Not legal or regulatory advice.</p>
   </section>
 </div>
 <footer>

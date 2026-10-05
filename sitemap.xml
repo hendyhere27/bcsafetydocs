@@ -96,6 +96,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://bcsafetydocs.com/about.html</loc>
+    <lastmod>2026-10-05</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://bcsafetydocs.com/terms.html</loc>
     <lastmod>2026-07-08</lastmod>
     <priority>0.3</priority>
