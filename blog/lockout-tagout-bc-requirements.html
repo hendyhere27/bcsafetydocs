@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BC Lockout Requirements: What OHS Regulation Part 10 Says | BC Safety Docs</title>
+  <meta name="description" content="BC's lockout rules in OHS Regulation Part 10 in plain language: when lockout is required (s.10.3), personal locks (s.10.4), verification (s.10.6), lock removal (s.10.8) and group lockout (s.10.9)."/>
+  <link rel="canonical" href="https://bcsafetydocs.com/blog/lockout-tagout-bc-requirements"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/></noscript>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
+  <link rel="manifest" href="/site.webmanifest"/>
+  <link rel="shortcut icon" href="/favicon.ico"/>
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "BC Lockout Requirements: What OHS Regulation Part 10 Says",
+  "description": "BC's lockout rules in OHS Regulation Part 10 in plain language: when lockout is required (s.10.3), personal locks (s.10.4), verification (s.10.6), lock removal (s.10.8) and group lockout (s.10.9).",
+  "datePublished": "2026-10-05",
+  "author": {
+    "@type": "Organization",
+    "name": "BC Safety Docs"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "BC Safety Docs",
+    "url": "https://bcsafetydocs.com"
+  },
+  "mainEntityOfPage": "https://bcsafetydocs.com/blog/lockout-tagout-bc-requirements"
+}
+  </script>
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; font-size: 16px; color: #1A1A1A; background: #fff; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+:root { --black:#1A1A1A; --yellow:#F5C400; --white:#FFFFFF; --grey:#4A4A4A; --light:#F4F4F4; --red:#C0392B; --blue:#1A5276; --green:#27AE60; --border:#DDDDDD; --mid:#BDC3C7; }
+nav { position:fixed; top:0; left:0; right:0; z-index:200; background:var(--black); height:56px; display:flex; align-items:center; padding:0 4%; gap:0; }
+.nav-logo { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:1.15rem; color:var(--white); letter-spacing:0.04em; text-decoration:none; margin-right:32px; white-space:nowrap; }
+.nav-logo span { color:var(--yellow); }
+.nav-links { display:flex; align-items:center; gap:0; flex:1; list-style:none; }
+.nav-links > li { position:relative; }
+.nav-links > li > a, .nav-links > li > button { display:flex; align-items:center; gap:4px; font-family:'Inter',sans-serif; font-size:0.82rem; font-weight:500; color:#AAAAAA; text-decoration:none; padding:0 14px; height:56px; background:none; border:none; cursor:pointer; transition:color 0.15s; white-space:nowrap; }
+.nav-links > li > a:hover, .nav-links > li > button:hover, .nav-links > li > a.active { color:var(--white); }
+.nav-links > li > a.active { border-bottom:2px solid var(--yellow); }
+.nav-links > li > button::after { content:' ▾'; font-size:0.7rem; }
+.dropdown { display:none; position:absolute; top:56px; left:0; background:#111; border-top:2px solid var(--yellow); min-width:220px; z-index:300; box-shadow:0 8px 24px rgba(0,0,0,0.4); }
+.nav-links > li:hover .dropdown, .nav-links > li:focus-within .dropdown { display:block; }
+.dropdown a { display:block; font-size:0.82rem; color:#AAAAAA; text-decoration:none; padding:10px 18px; border-bottom:1px solid #222; transition:background 0.1s,color 0.1s; }
+.dropdown a:hover { background:#1A1A1A; color:var(--white); }
+.dropdown .dd-label { font-size:0.68rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#555; padding:10px 18px 4px; cursor:default; display:block; }
+.dropdown a.highlight { color:var(--yellow); }
+.badge-free { display:inline-block; background:var(--green); color:#fff; font-size:0.62rem; font-weight:800; letter-spacing:0.04em; text-transform:uppercase; padding:2px 7px; border-radius:3px; margin-left:6px; vertical-align:1px; }
+.nav-cta { margin-left:auto; font-family:'Inter',sans-serif; font-size:0.8rem; font-weight:600; background:var(--yellow); color:var(--black); padding:8px 16px; border-radius:3px; text-decoration:none; white-space:nowrap; transition:opacity 0.15s; }
+.nav-cta:hover { opacity:0.85; }
+.nav-toggle { display:none; background:none; border:none; cursor:pointer; margin-left:auto; padding:8px; }
+.nav-toggle span { display:block; width:22px; height:2px; background:var(--white); margin:4px 0; }
+.page-top { margin-top:56px; }
+@media(max-width:860px){ .nav-links,.nav-cta{display:none} .nav-toggle{display:block} nav.open .nav-links{display:flex;flex-direction:column;position:fixed;top:56px;left:0;right:0;background:#111;padding:12px 0 20px;gap:0;align-items:stretch;z-index:199} nav.open .nav-links > li > a, nav.open .nav-links > li > button{height:auto;padding:12px 20px;color:var(--white)} nav.open .dropdown{position:static;border-top:none;box-shadow:none;background:#0A0A0A} nav.open .nav-cta{display:block;margin:8px 20px 0} }
+
+.post-hero { background:var(--black); padding:64px 8% 48px; }
+.post-hero .eyebrow { font-family:'Barlow Condensed',sans-serif; font-size:0.78rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--yellow); margin-bottom:14px; }
+.post-hero h1 { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:clamp(2rem,4.5vw,3.4rem); line-height:1.05; color:var(--white); max-width:820px; margin-bottom:16px; }
+.post-hero h1 em { font-style:normal; color:var(--yellow); }
+.post-meta { font-size:0.82rem; color:#666; }
+.post-body { max-width:740px; margin:0 auto; padding:56px 8% 24px; }
+.post-body p { font-size:1.02rem; color:#333; line-height:1.75; margin-bottom:20px; }
+.post-body h2 { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:1.55rem; color:var(--black); margin:44px 0 14px; letter-spacing:0.01em; line-height:1.15; }
+.post-body ul { margin:0 0 20px 22px; }
+.post-body ul li { font-size:1.0rem; color:#333; line-height:1.7; margin-bottom:8px; }
+.post-body strong { color:var(--black); }
+.post-body a { color:var(--blue); }
+.callout { background:var(--light); border-left:4px solid var(--yellow); padding:20px 24px; margin:28px 0; border-radius:2px; }
+.callout p { margin:0; font-size:1.0rem; }
+.scale-table { width:100%; border-collapse:collapse; margin:8px 0 24px; font-size:0.92rem; }
+.scale-table th, .scale-table td { text-align:left; padding:10px 14px; border-bottom:1px solid var(--border); }
+.scale-table th { font-family:'Barlow Condensed',sans-serif; font-size:0.72rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--grey); }
+.scale-table td:first-child { font-weight:600; white-space:nowrap; }
+.scale-table tr:last-child td { border-bottom:none; }
+.refs { max-width:740px; margin:0 auto; padding:8px 8% 24px; }
+.refs .notice-box { background:var(--light); border-left:4px solid var(--red); padding:16px 20px; border-radius:2px; font-size:0.82rem; color:var(--grey); line-height:1.7; }
+.refs .notice-box strong { color:var(--black); }
+.post-cta { max-width:740px; margin:0 auto 24px; padding:0 8%; }
+.post-cta-box { background:var(--black); border-radius:4px; padding:32px; text-align:center; }
+.post-cta-box h3 { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:1.5rem; color:var(--white); margin-bottom:8px; }
+.post-cta-box p { font-size:0.9rem; color:#999; max-width:440px; margin:0 auto 20px; }
+.btn-primary { display:inline-block; text-align:center; background:var(--yellow); color:var(--black); font-family:'Barlow Condensed',sans-serif; font-size:1.08rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; padding:14px 28px; border-radius:3px; text-decoration:none; transition:opacity 0.15s,transform 0.15s; }
+.btn-primary:hover { opacity:0.9; transform:translateY(-1px); }
+.back-to-blog { max-width:740px; margin:0 auto; padding:0 8% 56px; font-size:0.9rem; }
+.back-to-blog a { color:var(--grey); text-decoration:none; }
+.back-to-blog a:hover { color:var(--black); }
+footer { background:var(--black); padding:28px 8%; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+.footer-logo { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:1rem; color:var(--white); letter-spacing:0.04em; }
+.footer-logo span { color:var(--yellow); }
+footer p { font-size:0.74rem; color:#555; }
+footer a { color:#666; text-decoration:none; }
+footer a:hover { color:var(--yellow); }
+@media(max-width:600px){ .post-body,.refs,.post-cta,.back-to-blog{padding-left:5%;padding-right:5%} .post-hero{padding:48px 5% 36px} .scale-table{font-size:0.82rem} .scale-table th, .scale-table td{padding:8px 8px} }
+  .related{max-width:740px;margin:0 auto;padding:8px 8% 8px}.related h3{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.2rem;margin-bottom:10px;color:var(--black)}.related ul{list-style:none;margin:0}.related li{border-bottom:1px solid var(--border)}.related a{display:block;padding:12px 0;color:var(--blue);font-weight:600;font-size:0.95rem;text-decoration:none}@media(max-width:600px){.related{padding-left:5%;padding-right:5%}.scale-table td:first-child{white-space:normal}.scale-table td,.scale-table th{overflow-wrap:anywhere}}
+  </style>
+</head>
+<body>
+<nav id="sitenav">
+  <a href="/index.html" class="nav-logo">BC<span>SAFETY</span>DOCS</a>
+  <ul class="nav-links">
+    <li>
+      <button aria-haspopup="true">Permits</button>
+      <div class="dropdown">
+        <span class="dd-label">Entry Permits</span>
+        <a href="/index.html">Confined Space Entry Permit</a>
+        <a href="/hot-work-permit.html">Hot Work Permit <span class="badge-free">Free</span></a>
+        <span class="dd-label">Procedures</span>
+        <a href="/loto.html">Lockout / Tagout Procedure <span class="badge-free">Free</span></a>
+      </div>
+    </li>
+    <li>
+      <button aria-haspopup="true">Assessments</button>
+      <div class="dropdown">
+        <a href="/jsa.html">JSA / Field Level Hazard Assessment</a>
+        <a href="/policy-statement.html">OHS Policy Statement <span style="display:inline-block;background:#27AE60;color:#fff;font-size:0.62rem;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-left:6px;vertical-align:1px;">Free</span></a>
+        <a href="/flha.html">Daily FLHA Form <span class="badge-free">Free</span></a>
+        <a href="/safe-work-procedure.html">Safe Work Procedure <span class="badge-free">Free</span></a>
+      </div>
+    </li>
+    <li>
+      <button aria-haspopup="true">Incident &amp; Emergency</button>
+      <div class="dropdown">
+        <a href="/incident-report.html">Incident Investigation Report <span class="badge-free">Free</span></a>
+        <a href="/emergency-response.html">Emergency Response Plan <span class="badge-free">Free</span></a>
+      </div>
+    </li>
+    <li>
+      <button aria-haspopup="true">Bundles</button>
+      <div class="dropdown">
+        <a href="/cor-kit.html" class="highlight">COR Kit &mdash; 18 Documents</a>
+        <a href="/bundle.html" class="highlight">Starter Bundle &mdash; Save $37</a>
+        <a href="/bundle-pro.html" class="highlight">Pro Bundle &mdash; All Documents</a>
+      </div>
+    </li>
+    <li><a href="/blog/" class="active">Blog</a></li>
+    <li><a href="mailto:info@bcsafetydocs.com">Contact</a></li>
+  </ul>
+  <a href="/bundle.html" class="nav-cta">Starter Bundle &mdash; $87 CAD</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<script>
+  const toggle = document.getElementById('navToggle');
+  const nav = document.getElementById('sitenav');
+  if(toggle) toggle.addEventListener('click', () => nav.classList.toggle('open'));
+</script>
+
+<div class="page-top">
+
+  <div class="post-hero">
+    <p class="eyebrow">Energy Control &middot; OHS Regulation Part 10</p>
+    <h1>Lockout in BC is <em>lock-based, personal and written.</em> Here's what Part 10 actually says.</h1>
+    <p class="post-meta">October 5, 2026 &nbsp;&middot;&nbsp; BC Safety Docs &nbsp;&middot;&nbsp; 6 min read</p>
+  </div>
+
+  <article class="post-body">
+
+<p>If you came to BC from an OSHA background, you may be used to thinking in terms of "lockout/tagout". BC's rule is built around locks. Part 10 of the OHS Regulation (De-energization and Lockout) is short, and most of the practical requirements fit on one page. Here they are in order, with section numbers.</p>
+
+<h2>The core rule</h2>
+<p>If the unexpected energization or startup of machinery or equipment, or the unexpected release of an energy source, could cause injury, the energy source must be isolated and effectively controlled (s.10.2). "Energy source" is broad: electrical, mechanical, hydraulic, pneumatic, chemical, thermal or any other source of energy of potential harm to workers (s.10.1).</p>
+
+<h2>When lockout is required</h2>
+<p>When machinery or equipment is shut down for maintenance, no work may be done until all parts and attachments are secured against inadvertent movement, any hazard from exposure to energy sources is effectively controlled, and the energy isolating devices have been locked out as required by Part 10 (s.10.3(1)). Equipment in normal production work is covered too if a work activity creates a risk of injury from movement or an energy source and the equipment is not effectively safeguarded (s.10.3(2)).</p>
+
+<h2>Written procedures and personal locks</h2>
+<ul>
+  <li>Devices must be secured in the safe position <strong>using locks</strong>, in accordance with procedures made available to all workers who work on the equipment (s.10.4(1)).</li>
+  <li>The employer must make sure each worker required to lock out has ready access to enough personal locks (s.10.4(2)).</li>
+  <li><strong>Combination locks must not be used</strong> (s.10.4(3)).</li>
+  <li>Each personal lock must be marked or tagged to identify the person applying it (s.10.4(4)).</li>
+  <li>Procedures must cover shift or personnel changes, including orderly transfer of control of locked-out devices (s.10.4(5)).</li>
+</ul>
+<p>A "personal lock" is defined in s.10.1 as a lock provided by the employer such that each lock when applied is operable only by a key in the worker's possession, and by a key under the control of the supervisor or manager in charge. If a personal lock is not practicable, another effective means may be used only if approved by the Board (s.10.4(6)).</p>
+
+<h2>Verify before you start work</h2>
+<p>Effective means of verifying lockout must be provided and used (s.10.6(1)), and before commencing work a worker must verify that all energy sources have been effectively locked out (s.10.6(2)). Each worker is responsible for locking out before starting work, removing personal locks on completing their work, and keeping immediate control of the keys throughout (s.10.7).</p>
+
+<h2>Removing someone else's lock</h2>
+<p>A personal lock must only be removed by the worker who installed it. If that is not possible, the matter must be referred to the supervisor or manager in charge, who must make every reasonable effort to contact the worker and make sure the equipment can be operated safely before removing it. The worker must be told at the start of their next shift if their lock was removed (s.10.8).</p>
+
+<h2>Group lockout</h2>
+<p>For large jobs with many workers or many isolation points, s.10.9 allows a group lockout procedure. Two qualified workers independently lock out the devices, secure the keys with personal locks or other approved positive sealing devices, and complete, sign and post a checklist of the covered components. Each worker then applies a personal lock to the key securing system before starting work, and removes it when finished. The written group procedure must be conspicuously posted where the system is in use.</p>
+
+<div class="callout"><p><strong>Where lockout isn't practicable or isn't required.</strong> Section 10.10 sets out alternatives (including emergency control of energy), and s.10.11 says a lock is not required if the energy isolating device is under the worker's exclusive and immediate control at all times, or a cord- or quick-release-connected tool is disconnected and its connection point stays under the worker's immediate control. Read those sections in full before relying on an exception.</p></div>
+
+<p>A written procedure is the document that ties all of this together. The free BC Safety Docs LOTO procedure template walks through energy identification and isolation, personal lock application, verification, group lockout and lock removal, the same steps Part 10 asks about. If you are putting together a full program, the confined space permit links lockout and isolation to entry.</p>
+
+  </article>
+
+  <div class="post-cta">
+    <div class="post-cta-box">
+      <h3>Need the written procedure?</h3>
+      <p>The Lockout/Tagout Procedure template is free: enter your email and we send the Word document. It is also included in the Pro Bundle and the COR Kit.</p>
+      <a href="/loto.html" class="btn-primary">Get the Free LOTO Template</a>
+    </div>
+  </div>
+
+  <div class="related">
+    <h3>Related</h3>
+    <ul><li><a href="/loto.html">Free Lockout / Tagout Procedure template &rarr;</a></li><li><a href="/blog/confined-space-entry-permit-bc-requirements">Confined space entry permit requirements &rarr;</a></li><li><a href="/cor-kit.html">COR Small-Employer Kit: 18 documents, $279 &rarr;</a></li></ul>
+  </div>
+
+  <div class="refs">
+    <div class="notice-box">
+      <strong>Regulatory references:</strong> WorkSafeBC Occupational Health and Safety Regulation, Part 10, ss. 10.1&ndash;10.12, checked against the online Regulation on October 5, 2026. The online Regulation is not the official version. This article is general information, not legal advice; your written procedures must reflect your own equipment and a qualified person's assessment.
+    </div>
+  </div>
+
+  <div class="back-to-blog"><a href="/blog/">&larr; All articles</a></div>
+
+</div>
+
+<footer>
+  <div class="footer-logo">BC<span>SAFETY</span>DOCS</div>
+  <p>&copy; 2026 BC Safety Docs. All rights reserved. &nbsp;&middot;&nbsp; <a href="/blog/">Blog</a> &nbsp;&middot;&nbsp; <a href="/terms.html">Terms &amp; Privacy</a></p>
+</footer>
+
+</body>
+</html>

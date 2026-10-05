@@ -125,6 +125,29 @@ footer a:hover { color:var(--yellow); }
 .who-card{background:var(--white);border:1px solid var(--border);border-radius:3px;padding:22px}
 .who-card h4{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;color:var(--black);margin-bottom:7px}
 .who-card p{font-size:0.84rem;color:var(--grey);line-height:1.6}
+.products{background:var(--light)}
+.prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:36px}
+.prod-card{background:var(--white);border:1px solid var(--border);border-top:4px solid var(--black);border-radius:3px;padding:22px;display:flex;flex-direction:column}
+.prod-card.feat{border-top-color:var(--yellow);box-shadow:0 6px 24px rgba(0,0,0,0.10)}
+.prod-card .prod-tag{flex:none;line-height:1.3;font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--red);margin-bottom:6px}
+.prod-card h3{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.3rem;line-height:1.1;color:var(--black);margin-bottom:8px}
+.prod-card .prod-price{flex:none;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.9rem;color:var(--black);line-height:1;margin-bottom:10px}
+.prod-card .prod-price small{font-size:0.85rem;font-weight:700;margin-left:3px}
+.prod-card p{font-size:0.84rem;color:var(--grey);line-height:1.6;margin-bottom:16px;flex:1}
+.prod-card .btn-primary,.prod-card .btn-outline{padding:12px 16px;font-size:1rem;width:100%}
+.free-strip{margin-top:28px;font-size:0.88rem;color:var(--grey);line-height:2}
+.free-strip a{display:inline-block;color:var(--black);font-weight:600;text-decoration:none;border:1px solid var(--border);background:var(--white);border-radius:3px;padding:2px 10px;margin:0 6px 6px 0;line-height:1.7}
+.free-strip a:hover{border-color:var(--black)}
+.verified{background:var(--black)}
+.verified .section-title{color:var(--white)}
+.verified .section-label{color:var(--yellow)}
+.verified .section-body{color:#AAA;max-width:680px}
+.fix-list{list-style:none;margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:10px 28px}
+.fix-list li{font-size:0.86rem;color:#BBB;line-height:1.55;padding:10px 0;border-bottom:1px solid #2E2E2E}
+.fix-list b{color:var(--yellow);font-family:'Barlow Condensed',sans-serif;font-size:1rem;margin-right:6px}
+.verified-note{margin-top:22px;border-left:4px solid var(--yellow);padding:4px 0 4px 16px;font-size:0.88rem;color:#CCC;line-height:1.7;max-width:760px}
+@media(max-width:1100px){.prod-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.prod-grid{grid-template-columns:1fr}.fix-list{grid-template-columns:1fr}.hero-cta-group{max-width:none}.btn-primary,.btn-dark{display:block}.btn-dark{padding:16px 20px}.reg-row{gap:12px}.reg-val{text-align:right}}
 @media(max-width:900px){.hero{grid-template-columns:1fr;min-height:auto}.hero-left::after{display:none}.hero-left{padding:56px 5%}.hero-right{padding:36px 5%;background:#F9F9F9}.problem-grid{grid-template-columns:1fr}.includes-grid{grid-template-columns:1fr}.who-grid{grid-template-columns:1fr}}
 
   </style>
@@ -228,6 +251,45 @@ footer a:hover { color:var(--yellow); }
     <div class="trust-item"><div class="trust-icon">&#10003;</div> Instant download</div>
   </div>
 
+  <section class="products" id="products" aria-labelledby="products-title">
+    <p class="section-label">Products</p>
+    <h2 class="section-title" id="products-title">Start with one permit, or get the whole program.</h2>
+    <p class="section-body">One-time purchases, editable Word documents, instant download. No subscription.</p>
+    <div class="prod-grid">
+      <div class="prod-card feat">
+        <p class="prod-tag">New &middot; For COR employers</p>
+        <h3>COR Small-Employer Kit</h3>
+        <p class="prod-price">$279<small>CAD</small></p>
+        <p>18 documents mapped to the 13 national COR audit elements, for BC employers with fewer than 20 workers. Includes the confined space permit, JSA/FLHA and the rest of the Pro set.</p>
+        <a href="/cor-kit.html" class="btn-primary">See the COR Kit</a>
+      </div>
+      <div class="prod-card">
+        <p class="prod-tag">All 8 templates</p>
+        <h3>Pro Bundle</h3>
+        <p class="prod-price">$127<small>CAD</small></p>
+        <p>Confined space, JSA/FLHA, hot work, LOTO, daily FLHA, safe work procedure, incident report and emergency response plan in one download.</p>
+        <a href="/bundle-pro.html" class="btn-outline">See the Pro Bundle</a>
+      </div>
+      <div class="prod-card">
+        <p class="prod-tag">Save $37</p>
+        <h3>Starter Bundle</h3>
+        <p class="prod-price">$87<small>CAD</small></p>
+        <p>The confined space entry permit plus the JSA/FLHA template. The two documents most BC crews are asked for first.</p>
+        <a href="/bundle.html" class="btn-outline">See the Starter Bundle</a>
+      </div>
+      <div class="prod-card">
+        <p class="prod-tag">This page</p>
+        <h3>Confined Space Permit</h3>
+        <p class="prod-price">$67<small>CAD</small></p>
+        <p>The two-page Part 9 permit with atmospheric log, standby requirements and rescue plan. Scroll down for what's inside.</p>
+        <a href="https://buy.stripe.com/5kQ7sKcvv4kz2nH1unfEk00" class="btn-outline">Buy the Permit</a>
+      </div>
+    </div>
+    <p class="free-strip"><strong style="color:var(--black);">Free templates (email delivery):</strong><br>
+      <a href="/policy-statement.html">OHS Policy Statement</a><a href="/hot-work-permit.html">Hot Work Permit</a><a href="/loto.html">Lockout / Tagout</a><a href="/flha.html">Daily FLHA</a><a href="/safe-work-procedure.html">Safe Work Procedure</a><a href="/incident-report.html">Incident Report</a><a href="/emergency-response.html">Emergency Response Plan</a>
+    </p>
+  </section>
+
   <section class="problem" aria-labelledby="problem-title">
     <p class="section-label">The problem</p>
     <h2 class="section-title" id="problem-title">Generic templates don't cut it on a BC worksite.</h2>
@@ -254,7 +316,7 @@ footer a:hover { color:var(--yellow); }
       <ul class="includes-list">
         <li><span class="check">&#10003;</span> Two-page fillable Word document (.docx) &mdash; edit on any device, print on site</li>
         <li><span class="check">&#10003;</span> BC atmospheric hazard classification (Low / Moderate / High) per s.9.1 and s.9.25</li>
-        <li><span class="check">&#10003;</span> Atmospheric testing log: O2 &ge;19.5%, LEL &lt;20%, H2S &le;10 ppm ceiling, CO &lt;25 ppm TWA</li>
+        <li><span class="check">&#10003;</span> Atmospheric testing log: O2 (industry-standard 19.5% floor), LEL &lt;20%, H2S &le;10 ppm ceiling, CO &lt;25 ppm TWA</li>
         <li><span class="check">&#10003;</span> Standby person requirements per hazard level &mdash; Low, Moderate, and High per s.9.35/s.9.36</li>
         <li><span class="check">&#10003;</span> Supplied-air and SCBA requirements referenced per s.9.28(a)</li>
         <li><span class="check">&#10003;</span> Isolation, lockout, and purge verification checklist</li>
@@ -267,7 +329,7 @@ footer a:hover { color:var(--yellow); }
       </ul>
       <div class="reg-card">
         <h4>BC-Specific Atmospheric Thresholds</h4>
-        <div class="reg-row"><span class="reg-label">O2 minimum</span><span class="reg-val">&ge; 19.5%</span></div>
+        <div class="reg-row"><span class="reg-label">O2 (industry-standard floor, not an OHSR number)</span><span class="reg-val">&ge; 19.5%</span></div>
         <div class="reg-row"><span class="reg-label">LEL action threshold</span><span class="reg-val">&lt; 20% LEL</span></div>
         <div class="reg-row"><span class="reg-label">H2S ceiling</span><span class="reg-val">&le; 10 ppm</span></div>
         <div class="reg-row"><span class="reg-label">CO TLV-TWA</span><span class="reg-val">&lt; 25 ppm</span></div>
@@ -280,15 +342,31 @@ footer a:hover { color:var(--yellow); }
     <div class="reg-card" style="border-left-color:var(--yellow); margin-top:36px;">
       <h4>Why &ldquo;good&rdquo; oxygen doesn't mean a safe atmosphere</h4>
       <p style="font-size:0.88rem; color:var(--grey); line-height:1.7; margin-bottom:10px;">A normal oxygen reading (19.5%&ndash;20.9%) can pass while H2S or CO is present at fatal concentrations. The math: going from 20.9% to the 19.5% floor represents about 14,000 ppm of total displacement. A lethal dose of H2S (IDLH ~100 ppm) or CO (fatal in hours at ~200 ppm) is well under 2% of that budget &mdash; small enough that it won't move your O2 reading outside the normal range at all. O2, LEL, H2S, and CO are four independent tests. A clean O2 number does not clear the other three.</p>
-      <p style="font-size:0.85rem; margin-bottom:0;"><a href="/blog/oxygen-reading-20-9-confined-space" style="color:var(--blue); font-weight:600;">Read the full breakdown &rarr;</a></p>
+      <p style="font-size:0.85rem; margin-bottom:0;"><a href="/blog/oxygen-reading-20-9-confined-space" style="color:var(--blue); font-weight:600;">Read the full breakdown &rarr;</a> &nbsp;&middot;&nbsp; <a href="/blog/confined-space-entry-permit-bc-requirements" style="color:var(--blue); font-weight:600;">When Part 9 requires a permit &rarr;</a></p>
     </div>
+  </section>
+
+  <section class="verified" aria-labelledby="verified-title">
+    <p class="section-label">Checked against the regulation</p>
+    <h2 class="section-title" id="verified-title">We audited our own templates. We found 7 citation errors and fixed them.</h2>
+    <p class="section-body">In July 2026 every Part 9 reference in our permit and tools was re-checked against the live WorkSafeBC OHS Regulation. Seven section references were wrong or overstated. All seven were corrected in the permit, on this site and in our free MCP server. The corrected references:</p>
+    <ol class="fix-list">
+      <li><b>1</b>Low-hazard standby person: now s.9.34 (was cited to the wrong section).</li>
+      <li><b>2</b>Retest after everyone has left for more than 20 minutes: now s.9.25(3).</li>
+      <li><b>3</b>Continuous monitoring where flammable gas could exceed 20% LEL: now s.9.25(6).</li>
+      <li><b>4</b>Moderate-hazard ventilation: now s.9.30 (was cited to s.9.31).</li>
+      <li><b>5</b>Supplied-air / SCBA determination: now s.9.28(a) (was cited to s.9.29, Inerting).</li>
+      <li><b>6</b>No natural ventilation for high-hazard atmospheres: now s.9.33(2)(a).</li>
+      <li><b>7</b>The 19.5% oxygen figure was presented as an OHSR requirement. It is the industry-standard threshold; the Regulation does not state a numeric O2 floor.</li>
+    </ol>
+    <p class="verified-note">We also added a standing warning to the permit's atmospheric log and our tools: a normal oxygen reading clears the oxygen hazard only. H2S, CO and flammable gas are separate tests. <a href="/blog/oxygen-reading-20-9-confined-space" style="color:var(--yellow);font-weight:600;">Why a 20.9% reading doesn't mean safe &rarr;</a></p>
   </section>
 
   <section style="background:var(--light);" aria-labelledby="who-title">
     <p class="section-label">Who it's for</p>
     <h2 class="section-title" id="who-title">Built for the trades that actually go underground.</h2>
     <div class="who-grid">
-      <div class="who-card"><h4>Utility &amp; Pipeline Contractors</h4><p>Valve chambers, meter pits, pipeline crossings. Any entry into an enclosed or partially enclosed space requires a permit under Part 9.</p></div>
+      <div class="who-card"><h4>Utility &amp; Pipeline Contractors</h4><p>Valve chambers, meter pits, pipeline crossings. Entry permits are required under s.9.13 for high hazard atmospheres, lockout or isolation, and entrapment or engulfment hazards.</p></div>
       <div class="who-card"><h4>Plumbing &amp; Drainage</h4><p>Manholes, sump pits, catch basins. WorkSafeBC inspectors know what a compliant BC permit looks like &mdash; make sure yours does too.</p></div>
       <div class="who-card"><h4>Hydrovac &amp; Excavation</h4><p>Excavations qualifying as confined spaces under Part 9 require the same controls. This permit covers classification and atmospheric testing.</p></div>
       <div class="who-card"><h4>Safety Officers &amp; Owner-Operators</h4><p>Building a safety program for a small BC contractor without a dedicated safety coordinator? This is your professionally formatted, regulation-referenced starting point.</p></div>
@@ -303,6 +381,7 @@ footer a:hover { color:var(--yellow); }
     <a href="https://buy.stripe.com/5kQ7sKcvv4kz2nH1unfEk00" class="btn-dark">Download Now &mdash; Instant Access</a><br>
     <p style="font-size:0.8rem;color:rgba(0,0,0,0.45);margin-top:8px;">Word document (.docx) &middot; Instant download &middot; No subscription</p>
     <p style="margin-top:12px;"><a href="/bundle.html" style="font-size:0.85rem;color:rgba(0,0,0,0.55);text-decoration:underline;">Need the JSA too? Save $37 with the Starter Bundle &rarr;</a></p>
+    <p style="margin-top:8px;"><a href="/cor-kit.html" style="font-size:0.85rem;color:rgba(0,0,0,0.55);text-decoration:underline;">Working toward COR? See the 18-document COR Small-Employer Kit &rarr;</a></p>
     <p class="cta-disclaimer">This template is a professional working tool. All documents must be reviewed by a qualified person prior to use and verified against the current WorkSafeBC OHS Regulation. Not legal or regulatory advice.</p>
   </section>
 </div>

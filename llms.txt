@@ -31,6 +31,10 @@ Key facts:
 
 ## Blog
 
+- [BC confined space entry permit: when Part 9 requires one, and what goes on it.](https://bcsafetydocs.com/blog/confined-space-entry-permit-bc-requirements): When s.9.13 requires a permit, what s.9.14 says it must contain, who can change it, how long to keep it, and the standby and testing rules behind it.
+- [Lockout in BC is lock-based, personal and written. Here's what Part 10 actually says.](https://bcsafetydocs.com/blog/lockout-tagout-bc-requirements): Personal locks, no combination locks, verification, removing someone else's lock, and group lockout, with the section numbers.
+- [Hot work permits in BC: what the Regulation requires, and what it leaves to you.](https://bcsafetydocs.com/blog/hot-work-permit-bc-requirements): The Part 12 welding and cutting sections (ss.12.112-12.126), the s.12.116 testing rule near flammables, and where a permit fits.
+- [After a workplace incident in BC: immediate notice, 48 hours, 30 days.](https://bcsafetydocs.com/blog/incident-reporting-investigation-bc-deadlines): What ss.68-73 of the Workers Compensation Act require: who to notify, which incidents must be investigated, and the two report deadlines.
 - [The Rotten-Egg Smell Just Disappeared. That's Exactly When Sewer Gas Becomes Deadly.](https://bcsafetydocs.com/blog/sewer-gas-h2s-smell-warning): Why hydrogen sulphide (H2S) olfactory fatigue knocks out your sense of smell around 100 ppm — the same concentration that's immediately dangerous to life — and what WorkSafeBC OHS Regulation Part 9 (s.9.25) requires for testing through a sewer/wastewater confined space entry because of it. BC's H2S ceiling limit is 10 ppm (OHSR s.5.48).
 - [Your Oxygen Reading Says 20.9%. Here's Why That Doesn't Mean You're Safe.](https://bcsafetydocs.com/blog/oxygen-reading-20-9-confined-space): Why a normal oxygen reading clears exactly one hazard — the 14,000 ppm math, catalytic bead sensor dependence on O2, and what a proper pre-entry testing sequence looks like under WorkSafeBC OHS Regulation Part 9.
 

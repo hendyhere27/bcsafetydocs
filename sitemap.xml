@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://bcsafetydocs.com/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
@@ -62,7 +62,27 @@
   </url>
   <url>
     <loc>https://bcsafetydocs.com/blog/</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-10-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bcsafetydocs.com/blog/confined-space-entry-permit-bc-requirements</loc>
+    <lastmod>2026-10-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bcsafetydocs.com/blog/lockout-tagout-bc-requirements</loc>
+    <lastmod>2026-10-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bcsafetydocs.com/blog/hot-work-permit-bc-requirements</loc>
+    <lastmod>2026-10-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bcsafetydocs.com/blog/incident-reporting-investigation-bc-deadlines</loc>
+    <lastmod>2026-10-05</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
