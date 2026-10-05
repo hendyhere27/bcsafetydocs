@@ -34,6 +34,10 @@ const PRODUCTS = {
     title: "Emergency Response Plan",
     filename: "BC_Emergency_Response_Plan.docx",
   },
+  "policy-statement": {
+    title: "Occupational Health & Safety Policy Statement",
+    filename: "BC_COR_Policy_Statement.docx",
+  },
 };
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Free Incident Investigation Report Template | BC Safety Docs</title>
-  <meta name="description" content="Free BC Safety Docs Incident Investigation Report template per the Workers Compensation Act, Part 2, Division 10 (ss.68-72). Immediate-reporting flag, preliminary and full investigation sections, corrective action tracking, and report distribution."/>
-  <meta name="keywords" content="BC incident investigation report, free incident report template, WorkSafeBC incident report, workers compensation act investigation"/>
-  <link rel="canonical" href="https://bcsafetydocs.com/incident-report.html"/>
+  <title>Free OHS Policy Statement Template (COR Element 1) | BC Safety Docs</title>
+  <meta name="description" content="Free BC Safety Docs Occupational Health &amp; Safety Policy Statement template per WorkSafeBC OHS Regulation s.3.3(a) — the first document a COR auditor asks for. Complete starter policy language, signature block, and review log."/>
+  <meta name="keywords" content="BC OHS policy statement template, health and safety policy statement BC, COR policy statement, WorkSafeBC safety policy template, certificate of recognition BC"/>
+  <link rel="canonical" href="https://bcsafetydocs.com/policy-statement.html"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/></noscript>
@@ -133,16 +133,16 @@ footer a:hover { color:var(--yellow); }
 
 <div class="page-top">
   <div class="free-hero">
-    <p class="eyebrow">Workers Compensation Act, Part 2, Division 10 (ss.68&ndash;72)</p>
+    <p class="eyebrow">COR Audit Element 1 &middot; WorkSafeBC OHS Regulation s.3.3(a)</p>
     <span class="free-pill">Free Download</span>
-    <h1>Incident Investigation<br><em>Report.</em></h1>
-    <p>Employers must investigate workplace incidents under the Workers Compensation Act. Built for small BC contractors who need to document quickly and correctly &mdash; with a clear flag for when to call WorkSafeBC immediately, before anything else.</p>
+    <h1>OHS Policy<br><em>Statement.</em></h1>
+    <p>The first document a COR auditor asks for: a signed statement of your company's health and safety commitment and who is responsible for what. Complete starter policy language you adapt and sign &mdash; not a blank form.</p>
 
     <div class="free-form-card">
       <form id="freeForm">
         <div class="free-form-row">
           <input type="email" id="freeEmail" class="free-email-input" placeholder="you@company.com" required/>
-          <button type="submit" id="freeSubmitBtn" class="free-submit-btn">Send Me the Free Report</button>
+          <button type="submit" id="freeSubmitBtn" class="free-submit-btn">Send Me the Free Policy Statement</button>
         </div>
         <p class="free-msg" id="freeMsg"></p>
         <p class="free-consent">We'll email the download link right away. We'll also occasionally send WorkSafeBC compliance updates relevant to your templates &mdash; unsubscribe anytime. See our <a href="/terms.html" style="color:#999;">Privacy Policy</a>.</p>
@@ -150,21 +150,21 @@ footer a:hover { color:var(--yellow); }
     </div>
 
     <div class="free-links">
-      <a href="/index.html" class="btn-outline" style="color:white;border-color:#444;">See Paid Documents</a>
+      <a href="/cor-kit.html" class="btn-outline" style="color:white;border-color:#444;">Part of the COR Small-Employer Kit &rarr;</a>
     </div>
   </div>
 
   <section aria-labelledby="includes-title">
     <p class="section-label">What's included</p>
-    <h2 class="section-title" id="includes-title">Know what to do in the first five minutes.</h2>
+    <h2 class="section-title" id="includes-title">A policy statement that holds up in an audit interview.</h2>
     <ul class="includes-list" style="max-width:640px;">
-      <li><span class="check">&#10003;</span> Two-page fillable Word document (.docx)</li>
-      <li><span class="check">&#10003;</span> Immediate-reporting flag: exactly which incidents require calling WorkSafeBC right away (s.68)</li>
-      <li><span class="check">&#10003;</span> Incident classification, persons involved, and description of events</li>
-      <li><span class="check">&#10003;</span> Preliminary investigation section (s.71) and full investigation section (s.72)</li>
-      <li><span class="check">&#10003;</span> Corrective action tracking table with responsible person and target date</li>
-      <li><span class="check">&#10003;</span> Investigation team sign-off and report distribution checklist</li>
+      <li><span class="check">&#10003;</span> Editable Word document (.docx) with complete starter policy language</li>
+      <li><span class="check">&#10003;</span> Responsibilities of the employer, supervisors, and workers &mdash; the content s.3.3(a) calls for</li>
+      <li><span class="check">&#10003;</span> Commitments covering legal compliance, hazard control, training, PPE, incident investigation, and consultation with your joint committee or worker representative</li>
+      <li><span class="check">&#10003;</span> Signature block and a dated review &amp; revision log &mdash; auditors look for review history</li>
     </ul>
+    <p style="max-width:640px;margin-top:22px;font-size:0.9rem;color:#4A4A4A;line-height:1.7;">A formal written health and safety program is a legal requirement for employers with 20 or more workers at a moderate- or high-hazard workplace, or 50 or more workers (OHS Regulation s.3.1). Smaller employers aren't required to have one by that section, but COR certification asks for it regardless of size.</p>
+    <p style="max-width:640px;margin-top:14px;font-size:0.9rem;color:#4A4A4A;line-height:1.7;">This is element 1 of 13. The <a href="/cor-kit.html" style="color:#1A5276;font-weight:600;">COR Small-Employer Kit</a> covers the other twelve.</p>
   </section>
 </div>
 
@@ -182,7 +182,7 @@ footer a:hover { color:var(--yellow); }
       var resp = await fetch('/api/free-download', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, product: 'incident-report' })
+        body: JSON.stringify({ email: email, product: 'policy-statement' })
       });
       var data = await resp.json();
       if (data.ok) {
@@ -198,7 +198,7 @@ footer a:hover { color:var(--yellow); }
       msg.textContent = 'Network error. Please try again or email info@bcsafetydocs.com.';
     } finally {
       btn.disabled = false;
-      btn.textContent = 'Send Me the Free Report';
+      btn.textContent = 'Send Me the Free Policy Statement';
     }
   });
 </script>
