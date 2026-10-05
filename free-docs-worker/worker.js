@@ -127,16 +127,29 @@ async function handleFreeDownload(request, env) {
   }
 
   // Best-effort contact capture — never fail the user-facing request over this.
+  //
+  // Uses its own key: RESEND_API_KEY is a "Sending access" key (least
+  // privilege — it can only send email), and Resend rejects Contacts API
+  // calls from it with 401 restricted_api_key. That 401 was swallowed by this
+  // best-effort block, so no signup was ever filed until this was found.
+  // RESEND_CONTACTS_API_KEY needs permission to manage contacts.
   try {
+    if (!env.RESEND_CONTACTS_API_KEY) {
+      throw new Error("RESEND_CONTACTS_API_KEY is not set — signup not filed to Resend");
+    }
     const contactResp = await fetch("https://api.resend.com/contacts", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${env.RESEND_API_KEY}`,
+        Authorization: `Bearer ${env.RESEND_CONTACTS_API_KEY}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
         email,
-        segments: [GENERAL_SEGMENT_ID],
+        // Resend's API takes segments as an array of { id } objects, not bare
+        // ID strings — the string form is rejected, and since this call is
+        // best-effort the failure was silent (no signup was ever filed).
+        segments: [{ id: GENERAL_SEGMENT_ID }],
+        // Property keys must be defined in Resend first (Contacts > Properties).
         properties: { lead_source: "free_download", last_free_product: product },
       }),
     });
