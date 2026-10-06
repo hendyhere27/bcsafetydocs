@@ -4,7 +4,7 @@
 // Google Ads (the part after AW-18496519512/) into LEAD_LABEL.
 (function () {
   var AW = 'AW-18496519512';
-  var LEAD_LABEL = '';
+  var LEAD_LABEL = 'MR_8CPCrx5IdENj66fNE';
   window.bcsdLead = function (product) {
     try {
       if (typeof gtag !== 'function') return;
