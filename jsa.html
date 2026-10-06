@@ -10,6 +10,7 @@
 
   gtag('config', 'AW-18496519512');
 </script>
+<script src="/track.js" defer></script>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Free BC JSA Template | Field Level Hazard Assessment | WorkSafeBC Part 3 | BC Safety Docs</title>
@@ -362,7 +363,7 @@ document.querySelectorAll('form.dl-form').forEach(function (form) {
     try {
       var resp = await fetch('/api/free-download', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: input.value.trim(), product: form.dataset.product }) });
       var data = await resp.json();
-      if (data.ok) { msg.style.color = '#27AE60'; msg.textContent = 'Check your inbox \u2014 your download link is on its way.'; input.value = ''; }
+      if (data.ok) { msg.style.color = '#27AE60'; msg.textContent = 'Check your inbox \u2014 your download link is on its way.'; input.value = ''; if (window.bcsdLead) bcsdLead(form.dataset.product); }
       else { msg.style.color = '#C0392B'; msg.textContent = data.error || 'Something went wrong. Please try again.'; }
     } catch (err) { msg.style.color = '#C0392B'; msg.textContent = 'Network error. Please try again or email info@bcsafetydocs.com.'; }
     finally { btn.disabled = false; btn.textContent = label; }

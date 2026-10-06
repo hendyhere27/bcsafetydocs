@@ -10,6 +10,7 @@
 
   gtag('config', 'AW-18496519512');
 </script>
+<script src="/track.js" defer></script>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Free Emergency Response Plan Template | BC Safety Docs</title>
@@ -201,6 +202,7 @@ footer a:hover { color:var(--yellow); }
       if (data.ok) {
         msg.style.color = '#27AE60';
         msg.textContent = 'Check your inbox — your download link is on its way.';
+        if (window.bcsdLead) bcsdLead('emergency-response');
         document.getElementById('freeEmail').value = '';
       } else {
         msg.style.color = '#C0392B';
