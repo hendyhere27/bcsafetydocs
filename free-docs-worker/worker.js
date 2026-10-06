@@ -34,6 +34,14 @@ const PRODUCTS = {
     title: "Emergency Response Plan",
     filename: "BC_Emergency_Response_Plan.docx",
   },
+  "confined-space": {
+    title: "Confined Space Entry Permit Template",
+    filename: "BC_Confined_Space_Entry_Permit_Part9.docx",
+  },
+  jsa: {
+    title: "JSA / FLHA Template",
+    filename: "BC_JSA_FLHA_Template_Part3.docx",
+  },
   "policy-statement": {
     title: "Occupational Health & Safety Policy Statement",
     filename: "BC_COR_Policy_Statement.docx",
