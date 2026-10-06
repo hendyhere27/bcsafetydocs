@@ -1,19 +1,19 @@
 # BC Safety Docs
 
-> BC Safety Docs provides WorkSafeBC OHS Regulation–specific safety document templates for British Columbia contractors and safety officers. Templates are regulation-referenced, fully editable Word documents (.docx) sold as one-time purchases — no subscriptions.
+> BC Safety Docs provides WorkSafeBC OHS Regulation–specific safety document templates for British Columbia contractors and safety officers. Templates are regulation-referenced, fully editable Word documents (.docx). The eight single field templates are free (email delivery); the COR Small-Employer Kit is a one-time purchase — no subscriptions.
 
 Key facts:
 
 - All templates are built specifically for BC's Occupational Health and Safety Regulation (not OSHA or generic Canadian forms).
-- The flagship product is a Confined Space Entry Permit built around WorkSafeBC OHS Regulation Part 9 (sections 9.1, 9.25, 9.28–9.36), including BC's three-tier atmospheric hazard classification (Low / Moderate / High) and BC atmospheric thresholds (O2 ≥ 19.5%, LEL < 20%, H2S ≤ 10 ppm ceiling, CO < 25 ppm TWA).
+- The flagship free template is a Confined Space Entry Permit built around WorkSafeBC OHS Regulation Part 9 (sections 9.1, 9.25, 9.28–9.36), including BC's three-tier atmospheric hazard classification (Low / Moderate / High) and BC atmospheric thresholds (O2 ≥ 19.5%, LEL < 20%, H2S ≤ 10 ppm ceiling, CO < 25 ppm TWA).
 - Templates must be reviewed by a qualified person before use and verified against the current WorkSafeBC OHS Regulation. They are working tools, not legal or regulatory advice.
 - BC Safety Docs operates a free public MCP (Model Context Protocol) server at https://mcp.bcsafetydocs.com/mcp with WorkSafeBC reference tools: check gas readings against BC exposure limits, confined space entry requirements by hazard level (OHSR Part 9), gas testing protocol, required safety documentation by job type, and FLHA/JSA requirements. Responses cite OHSR sections and state requirements, never compliance verdicts.
 - Contact: info@bcsafetydocs.com
 
 ## Documents
 
-- [Confined Space Entry Permit](https://bcsafetydocs.com/index.html): Two-page BC confined space entry permit per WorkSafeBC OHS Regulation Part 9 — hazard classification, atmospheric testing log, standby person requirements, rescue plan, and entrant sign-in log.
-- [JSA / Field Level Hazard Assessment](https://bcsafetydocs.com/jsa.html): Job safety analysis and field-level hazard assessment template for BC worksites.
+- [Confined Space Entry Permit](https://bcsafetydocs.com/index.html): Free (email delivery). Two-page BC confined space entry permit per WorkSafeBC OHS Regulation Part 9 — hazard classification, atmospheric testing log, standby person requirements, rescue plan, and entrant sign-in log.
+- [JSA / Field Level Hazard Assessment](https://bcsafetydocs.com/jsa.html): Free (email delivery). Job safety analysis and field-level hazard assessment template for BC worksites.
 - [Hot Work Permit](https://bcsafetydocs.com/hot-work-permit.html): Free hot work permit template per WorkSafeBC OHS Regulation Part 12 (welding, cutting, and allied processes) — fire and explosion hazard assessment, equipment/PPE checklist, fire watch, and authorization sign-off. Delivered by email after a free signup.
 - [Lockout / Tagout Procedure](https://bcsafetydocs.com/loto.html): Free lockout/tagout procedure template per WorkSafeBC OHS Regulation Part 10 (de-energization and lockout) — energy identification and isolation, personal lock application, verification, group lockout, and lock removal. BC uses a lock-based system (personal, individually identifiable locks per s.10.4), not a tag-based one. Delivered by email after a free signup.
 - [Daily FLHA Form](https://bcsafetydocs.com/flha.html): Free one-page daily Field Level Hazard Assessment for BC worksites — a quick shift-level hazard check-in (weather, other trades, equipment, PPE, crew sign-off), distinct from the full step-by-step JSA template. "FLHA" is industry terminology, not an OHSR-defined term; grounded in Workers Compensation Act s.21 and OHSR Part 3 (ss.3.3, 3.5, 3.9, 3.10, 3.23-3.25). Delivered by email after a free signup.
@@ -23,11 +23,9 @@ Key facts:
 
 - [OHS Policy Statement](https://bcsafetydocs.com/policy-statement.html): Free occupational health and safety policy statement template per WorkSafeBC OHS Regulation s.3.3(a) (statement of aims and the responsibilities of employer, supervisors, and workers) — COR audit element 1. Complete starter policy language, signature block, and review log. A formal written program is legally required for employers with 20+ workers at a moderate/high-hazard workplace or 50+ workers (s.3.1); COR asks for it regardless of size. Delivered by email after a free signup.
 
-## Bundles
+## Paid kit
 
 - [COR Small-Employer Kit](https://bcsafetydocs.com/cor-kit.html): 18 editable Word documents ($279 CAD, one-time, sold only as a package) covering the 13 national COR (Certificate of Recognition) audit elements, cited to the WorkSafeBC OHS Regulation and Workers Compensation Act, for BC employers with fewer than 20 workers (BCCSA Small COR is 19 or fewer). Includes 10 COR program documents (policy statement, formal hazard assessment register, company rules, PPE program, preventive maintenance, orientation/training record, safety meeting report and communication log, workplace inspection checklist, records and statistics, legislation access register) plus the confined space permit, JSA/FLHA, daily FLHA, safe work procedure, hot work permit, lockout/tagout, incident investigation, and emergency response templates. Not certification or an audit and no guarantee of COR certification or any WorkSafeBC incentive; certifying partners (BCCSA, AgSafe, go2HR, etc.) have their own audit tools. Not designed for forestry (SAFE Companies) or oil and gas (Energy Safety Canada), whose audit structures differ.
-- [Starter Bundle](https://bcsafetydocs.com/bundle.html): Confined Space Entry Permit plus JSA/FLHA template in one $87 CAD download — $37 off the individual prices.
-- [Pro Bundle](https://bcsafetydocs.com/bundle-pro.html): All 8 BC Safety Docs templates (Confined Space Entry Permit, JSA/FLHA, Hot Work Permit, LOTO, Daily FLHA, Safe Work Procedure, Incident Investigation Report, and Emergency Response Plan) in one instant $127 CAD download. Six of the eight are also available free individually; the Pro Bundle is a convenience purchase, not exclusive content.
 
 ## Blog
 
