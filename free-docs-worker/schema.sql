@@ -7,7 +7,8 @@ CREATE TABLE IF NOT EXISTS signups (
   email      TEXT    NOT NULL,              -- lowercased
   product    TEXT    NOT NULL,              -- PRODUCTS key, e.g. "loto"
   created_at TEXT    NOT NULL DEFAULT (datetime('now')),  -- UTC
-  synced     INTEGER NOT NULL DEFAULT 0     -- 1 once filed into Resend General
+  synced     INTEGER NOT NULL DEFAULT 0,    -- 1 once filed into Resend General
+  marketing_opt_in INTEGER NOT NULL DEFAULT 0  -- 1 only if the optional follow-up box was ticked (added 2026-10-09; existing DBs: ALTER TABLE ... ADD COLUMN)
 );
 CREATE INDEX IF NOT EXISTS idx_signups_email  ON signups (email);
 CREATE INDEX IF NOT EXISTS idx_signups_synced ON signups (synced);

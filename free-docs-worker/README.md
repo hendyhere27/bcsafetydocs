@@ -165,3 +165,12 @@ List-Unsubscribe one-click target) cancels pending rows. A past unsubscribe is n
 it nothing is queued. Set it with `wrangler secret put MAILING_ADDRESS`. Replies go to
 info@bcsafetydocs.com. Edit wording in `sequence.js` (keep every claim within what the audit quick
 reference verified), then redeploy.
+
+## Consent and the Resend sync (updated 2026-10-09)
+
+Every signup form has an unticked, optional follow-up checkbox (CASL express consent). The download
+or report email always goes out; `signups.marketing_opt_in` is 1 only if the box was ticked.
+Rows from before 2026-10-09 have 0 (consent unclear). **When syncing into Resend's General
+segment, only sync rows with `marketing_opt_in = 1`**, e.g.
+`SELECT DISTINCT email FROM signups WHERE synced = 0 AND marketing_opt_in = 1`.
+The calculator, gap check and FireSmart endpoints only write to `signups` when the box was ticked.

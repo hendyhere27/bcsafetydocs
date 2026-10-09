@@ -89,7 +89,8 @@ footer a:hover { color:var(--yellow); }
 
   .learn-more{background:var(--light)}.learn-list{list-style:none;margin-top:8px;max-width:640px}.learn-list li{border-bottom:1px solid var(--border)}.learn-list a{display:block;padding:13px 0;color:var(--blue);font-weight:600;font-size:0.95rem;text-decoration:none}.learn-list a span{display:block;font-weight:400;color:var(--grey);font-size:0.82rem;margin-top:2px}
   .free-form-row .free-email-input{min-width:0}
-  </style>
+  .free-optin-row{display:flex;gap:8px;align-items:flex-start;font-size:0.78rem;color:#777;line-height:1.5;margin-top:12px;text-align:left;cursor:pointer}.free-optin-row input{margin-top:3px;flex-shrink:0}
+</style>
 </head>
 <body>
 <nav id="sitenav">
@@ -154,7 +155,7 @@ footer a:hover { color:var(--yellow); }
           <button type="submit" id="freeSubmitBtn" class="free-submit-btn">Send Me the Free Policy Statement</button>
         </div>
         <p class="free-msg" id="freeMsg"></p>
-        <p class="free-consent">We'll email the download link right away. We'll also occasionally send WorkSafeBC compliance updates relevant to your templates &mdash; unsubscribe anytime. See our <a href="/terms.html" style="color:#999;">Privacy Policy</a>.</p>
+        <label class="free-optin-row"><input type="checkbox" class="free-optin"> <span>Also send me occasional WorkSafeBC compliance updates. Unsubscribe any time. (Optional &mdash; leave unticked and you'll get only your download.)</span></label><p class="free-consent">We'll email the download link right away. See our <a href="/terms.html" style="color:#999;">Privacy Policy</a>.</p>
       </form>
     </div>
 
@@ -198,7 +199,7 @@ footer a:hover { color:var(--yellow); }
       var resp = await fetch('/api/free-download', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, product: 'policy-statement' })
+        body: JSON.stringify({ email: email, product: 'policy-statement', marketingOptIn: !!document.querySelector('#freeForm .free-optin:checked') })
       });
       var data = await resp.json();
       if (data.ok) {

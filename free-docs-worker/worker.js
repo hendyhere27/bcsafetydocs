@@ -120,6 +120,7 @@ async function handleFreeDownload(request, env) {
 
   const email = typeof body.email === "string" ? body.email.trim() : "";
   const product = typeof body.product === "string" ? body.product : "";
+  const optIn = body.marketingOptIn === true ? 1 : 0; // unticked box by default (CASL)
 
   if (!EMAIL_RE.test(email)) {
     return json({ ok: false, error: "Please enter a valid email address." }, 400);
@@ -173,8 +174,8 @@ async function handleFreeDownload(request, env) {
   // rejects Contacts API calls from it (401 restricted_api_key).
   try {
     await env.DB
-      .prepare("INSERT INTO signups (email, product) VALUES (?, ?)")
-      .bind(email.toLowerCase(), product)
+      .prepare("INSERT INTO signups (email, product, marketing_opt_in) VALUES (?, ?, ?)")
+      .bind(email.toLowerCase(), product, optIn)
       .run();
   } catch (e) {
     console.error("D1 signup insert failed:", e);
@@ -262,7 +263,7 @@ async function handleFiresmartReport(request, env) {
     // Only people who ticked the optional box go on the list that feeds Resend (CASL).
     if (optIn) {
       await env.DB
-        .prepare("INSERT INTO signups (email, product) VALUES (?, ?)")
+        .prepare("INSERT INTO signups (email, product, marketing_opt_in) VALUES (?, ?, 1)")
         .bind(email.toLowerCase(), "firesmart-assessment")
         .run();
     }
@@ -352,7 +353,7 @@ async function handleRebateReport(request, env) {
       .run();
     if (optIn) {
       await env.DB
-        .prepare("INSERT INTO signups (email, product) VALUES (?, ?)")
+        .prepare("INSERT INTO signups (email, product, marketing_opt_in) VALUES (?, ?, 1)")
         .bind(email.toLowerCase(), "cor-rebate-calculator")
         .run();
     }
@@ -449,7 +450,7 @@ async function handleGapReport(request, env) {
       .run();
     if (optIn) {
       await env.DB
-        .prepare("INSERT INTO signups (email, product) VALUES (?, ?)")
+        .prepare("INSERT INTO signups (email, product, marketing_opt_in) VALUES (?, ?, 1)")
         .bind(email.toLowerCase(), "cor-gap-check")
         .run();
     }
