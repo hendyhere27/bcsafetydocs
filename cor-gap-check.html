@@ -12,10 +12,10 @@
 </script>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>COR Incentive Calculator &mdash; What Could COR Be Worth? | BC Safety Docs</title>
-  <meta name="description" content="Free BC COR incentive calculator. Enter your payroll and WorkSafeBC base rate to see what WorkSafeBC's published 10% COR incentive formula could be worth each year, with the minimum rule and per-worker cap applied."/>
-  <meta name="keywords" content="COR rebate calculator BC, WorkSafeBC COR incentive, certificate of recognition rebate, COR incentive calculator, WorkSafeBC base rate"/>
-  <link rel="canonical" href="https://bcsafetydocs.com/cor-rebate-calculator"/>
+  <title>COR Gap Check &mdash; How Audit-Ready Is Your Safety Program? | BC Safety Docs</title>
+  <meta name="description" content="Free BC COR gap check. Answer 13 quick questions to see which of the 13 COR audit elements you have covered and which are gaps, with the documents that close each one."/>
+  <meta name="keywords" content="COR gap check BC, COR audit readiness, certificate of recognition checklist, COR 13 elements, COR self assessment BC"/>
+  <link rel="canonical" href="https://bcsafetydocs.com/cor-gap-check"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/></noscript>
@@ -30,19 +30,18 @@
     "@graph": [
       {
         "@type": "WebApplication",
-        "name": "BC COR Incentive Calculator",
-        "url": "https://bcsafetydocs.com/cor-rebate-calculator",
+        "name": "BC COR Gap Check",
+        "url": "https://bcsafetydocs.com/cor-gap-check",
         "applicationCategory": "BusinessApplication",
         "operatingSystem": "Any",
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "CAD" },
-        "description": "Estimates the annual WorkSafeBC Certificate of Recognition incentive from payroll and base rate using WorkSafeBC's published formula."
+        "description": "A 13-question readiness check against the national 13-element Certificate of Recognition framework, mapping each gap to the documents that cover it."
       },
       {
         "@type": "FAQPage",
         "mainEntity": [
-          { "@type": "Question", "name": "How is the COR incentive calculated?", "acceptedAnswer": { "@type": "Answer", "text": "WorkSafeBC calculates it as assessable payroll x (classification unit base rate / 100) x 10%, for each classification unit in your COR. The minimum incentive is the lesser of $1,000 or 75 percent of the premiums you paid." } },
-          { "@type": "Question", "name": "When is the COR incentive paid?", "acceptedAnswer": { "@type": "Answer", "text": "WorkSafeBC starts considering incentive payments in the second quarter of the year after certification, and expects to credit your assessment account by the end of June." } },
-          { "@type": "Question", "name": "Does a COR guarantee an incentive?", "acceptedAnswer": { "@type": "Answer", "text": "No. You must pass a certification audit, keep the certificate valid, and have no eligibility exceptions such as late payroll reporting. WorkSafeBC decides the amount." } }
+          { "@type": "Question", "name": "Is the gap check an audit score?", "acceptedAnswer": { "@type": "Answer", "text": "No. It is a self-check against the national 13-element COR framework based only on your answers. Certifying partners publish their own audit tools, so it cannot predict whether you would pass." } },
+          { "@type": "Question", "name": "How much record history do I need before a COR audit?", "acceptedAnswer": { "@type": "Answer", "text": "It depends on your certifying partner. BCCSA says at least 6 months of supporting evidence with 12 months recommended; the BC Forest Safety Council reviews the 12 months before an audit. Ask your partner." } }
         ]
       }
     ]
@@ -150,7 +149,6 @@ footer a:hover { color:var(--yellow); }
 .faq a{color:var(--blue)}
 @media(max-width:800px){.fit-grid,.doc-cols{grid-template-columns:1fr}}
 @media(max-width:600px){.kit-section{padding:44px 5%}}
-
 .calc-wrap{max-width:920px;margin:0 auto}
 .calc-card{background:var(--white);border:1px solid var(--border);border-top:4px solid var(--yellow);border-radius:3px;padding:28px}
 .calc-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}
@@ -191,6 +189,32 @@ footer a:hover { color:var(--yellow); }
 .how-list li strong{color:var(--black)}
 @media(max-width:800px){.calc-grid{grid-template-columns:1fr}}
 @media(max-width:600px){.calc-card{padding:20px 16px}.res-main{padding:20px 18px}}
+
+.q{padding:18px 0;border-bottom:1px solid var(--border)}
+.q:last-of-type{border-bottom:none}
+.q .qn{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.05rem;color:var(--black)}
+.q .qn small{font-family:'Inter',sans-serif;font-weight:400;font-size:0.72rem;color:#888;margin-left:8px}
+.q .qt{font-size:0.92rem;color:var(--grey);line-height:1.6;margin:4px 0 10px}
+.opts{display:flex;gap:8px;flex-wrap:wrap}
+.opts label{position:relative;cursor:pointer}
+.opts input{position:absolute;opacity:0;width:100%;height:100%;left:0;top:0;cursor:pointer;margin:0}
+.opts span{display:inline-block;border:1px solid var(--mid);border-radius:3px;padding:9px 16px;font-size:0.86rem;font-weight:600;color:var(--grey);background:#fff}
+.opts input:focus-visible + span{outline:2px solid var(--yellow);outline-offset:2px}
+.opts input:checked + span{color:var(--black);border-color:var(--black)}
+.opts .o-have input:checked + span{background:#E8F6EC;border-color:var(--green)}
+.opts .o-partial input:checked + span{background:#FDF2E4;border-color:#E67E22}
+.opts .o-none input:checked + span{background:#FDEDEC;border-color:var(--red)}
+.sector{max-width:340px;margin-bottom:6px}
+.sector select{width:100%;font:inherit;font-size:1rem;padding:12px 14px;border:1px solid var(--mid);border-radius:3px;background:#fff}
+.progress{font-size:0.82rem;color:var(--grey);margin-top:14px}
+.el-list{list-style:none;margin-top:16px}
+.el-list li{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--border);font-size:0.92rem}
+.chip{font-weight:700;font-size:0.8rem;white-space:nowrap}
+.chip.have{color:var(--green)}.chip.partial{color:#E67E22}.chip.none{color:var(--red)}
+.free-links{margin:10px 0 0 18px;font-size:0.9rem}
+.free-links a{color:var(--blue);font-weight:600}
+.print-btn{margin-top:16px;background:none;border:2px solid var(--black);cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-size:0.95rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:9px 20px;border-radius:3px;color:var(--black)}
+@media print{nav,.bundle-hero,#gap-form,#gate,#kit-box,.print-btn,footer,.cta-section,.kit-section.alt{display:none!important}.page-top{margin-top:0}.result{display:block!important}}
   </style>
 </head>
 <body>
@@ -246,65 +270,59 @@ footer a:hover { color:var(--yellow); }
 <div class="page-top">
   <div class="bundle-hero">
     <p class="eyebrow">Free tool &mdash; BC Certificate of Recognition</p>
-    <h1>What could a COR<br><em>be worth</em> to your business?</h1>
-    <p>Enter your payroll and your WorkSafeBC base rate. See what WorkSafeBC's published COR incentive formula could pay you each year &mdash; before you spend anything on certification.</p>
+    <h1>How audit-ready is<br>your <em>safety program?</em></h1>
+    <p>Thirteen quick questions, about two minutes. See which of the 13 COR elements you already have covered, which are gaps, and which documents close each one.</p>
   </div>
 
   <section class="kit-section">
     <div class="calc-wrap">
-      <p class="section-label">Your numbers</p>
-      <h2 class="section-title">Estimate your annual COR incentive.</h2>
+      <p class="section-label">Your program today</p>
+      <h2 class="section-title">Check your COR readiness.</h2>
       <div class="calc-card">
-        <form id="calc-form" novalidate>
-          <div class="calc-grid">
-            <div class="field">
-              <label for="payroll">Annual payroll (CA$)</label>
-              <input type="text" id="payroll" inputmode="numeric" placeholder="650,000" autocomplete="off" required>
-              <p class="help">Wages you report to WorkSafeBC for the year (assessable payroll). A rough figure is fine.</p>
-            </div>
-            <div class="field">
-              <label for="workers">Number of workers <span class="opt">(optional)</span></label>
-              <input type="text" id="workers" inputmode="numeric" placeholder="8" autocomplete="off">
-              <p class="help">Lets us apply WorkSafeBC's per-worker earnings cap ($127,500 for 2026).</p>
-            </div>
-            <div class="field">
-              <label for="rate">Base rate per $100 of payroll</label>
-              <input type="text" id="rate" inputmode="decimal" placeholder="1.55" autocomplete="off" required>
-              <p class="help">Your classification unit's <strong>base</strong> rate, not your net rate. It's on your WorkSafeBC assessment rate notification (online services &rarr; Insurance &rarr; View rate information), or use <a href="https://www.worksafebc.com/en/insurance/know-coverage-costs/find-classification-industry-rate" target="_blank" rel="noopener">WorkSafeBC's rate lookup</a>. The 2026 average base rate is $1.55.</p>
-            </div>
+        <form id="gap-form" novalidate>
+          <div class="field sector">
+            <label for="sector">Your industry</label>
+            <select id="sector"></select>
+            <p class="help">Used only to add the right certifying-partner notes to your report.</p>
           </div>
-          <button type="submit" class="calc-btn" id="calc-go">Calculate</button>
-          <p class="calc-err" id="calc-err" role="alert"></p>
+          <p class="cov-note" style="margin-top:14px">For each element answer <strong>Yes</strong> if it is written down, in use, and you could show records; <strong>Partly</strong> if something exists but it is informal, out of date, or has no records; <strong>No</strong> if nothing is in place.</p>
+          <div id="questions"></div>
+          <p class="progress" id="progress" aria-live="polite"></p>
+          <button type="submit" class="calc-btn" id="gap-go">See my results</button>
+          <p class="calc-err" id="gap-err" role="alert"></p>
         </form>
 
         <div class="result" id="result" aria-live="polite">
           <div class="res-main">
-            <p class="lbl">Estimated COR incentive</p>
-            <p class="big">Up to <span id="r-annual"></span> a year</p>
-            <p class="sub">About <strong id="r-three"></strong> over three incentive years, if you get certified and stay certified.</p>
+            <p class="lbl" id="g-level">Your readiness</p>
+            <p class="big"><span id="g-have"></span> of 13 elements in place</p>
+            <p class="sub" id="g-sub"></p>
           </div>
-          <ul class="res-notes" id="r-notes"></ul>
+          <ul class="el-list" id="g-list"></ul>
+          <p class="cov-note">This is a self-check against the national 13-element framework, not an audit score. It can't tell you whether you would pass.</p>
+          <button type="button" class="print-btn" id="print-btn">Print or save as PDF</button>
 
           <div class="gate" id="gate">
-            <h3>Get the full breakdown by email</h3>
-            <p>Step-by-step arithmetic, a three-year schedule, when the money actually arrives, what can hold it back, and what certification costs that this estimate leaves out.</p>
+            <h3>Get the full report by email</h3>
+            <p>For every gap: what to have ready for an audit, the exact documents that cover it, a suggested order to tackle them, and how much record history your certifying partner expects.</p>
             <form id="send-form" novalidate>
               <div class="row field">
                 <input type="email" id="email" placeholder="you@example.com" aria-label="Email address" autocomplete="email" required>
-                <button type="submit" id="send-btn">Email my breakdown</button>
+                <button type="submit" id="send-btn">Email my report</button>
               </div>
-              <label class="consent"><input type="checkbox" id="optin"> <span>Also send me a few short emails about getting audit-ready for COR. Unsubscribe any time. (Optional &mdash; leave unticked and you'll get only your breakdown.)</span></label>
+              <label class="consent"><input type="checkbox" id="optin"> <span>Also send me a few short emails about getting audit-ready for COR. Unsubscribe any time. (Optional &mdash; leave unticked and you'll get only your report.)</span></label>
             </form>
             <p class="calc-err" id="send-err" role="alert"></p>
-            <p class="done" id="send-done">Sent. Check your inbox (and spam folder) for your breakdown.</p>
+            <p class="done" id="send-done">Sent. Check your inbox (and spam folder) for your report.</p>
           </div>
 
           <div class="kit-box" id="kit-box">
             <p class="kb-line" id="kb-line"></p>
             <p id="kb-sub"></p>
-            <p>The kit is the written safety program a COR audit looks for: 18 editable Word documents cited to the OHS Regulation, plus a bonus audit quick reference. It is <strong>not</strong> certification &mdash; you still need an audit through your sector's certifying partner.</p>
+            <ul class="free-links" id="kb-free"></ul>
+            <p style="margin-top:12px">The COR kit is the written program a COR audit looks for: 18 editable Word documents cited to the OHS Regulation, plus a bonus audit quick reference. It is <strong>not</strong> certification &mdash; you still need an audit through your certifying partner.</p>
             <a href="/cor-kit.html" class="btn-dark">See what's in the COR kit</a>
-            <p style="margin-top:12px">Also useful: <a href="/cor-gap-check" style="color:var(--black);font-weight:600;">how audit-ready is your safety program? &rarr;</a></p>
+            <p style="margin-top:12px">Also useful: <a href="/cor-rebate-calculator" style="color:var(--black);font-weight:600;">what could COR be worth to you? &rarr;</a></p>
           </div>
         </div>
       </div>
@@ -313,96 +331,133 @@ footer a:hover { color:var(--yellow); }
 
   <section class="kit-section alt">
     <div class="kit-inner">
-      <p class="section-label">How the incentive works</p>
-      <h2 class="section-title">The rules behind the number.</h2>
+      <p class="section-label">What this is (and isn't)</p>
+      <h2 class="section-title">A readiness check, not an audit.</h2>
       <ul class="how-list">
-        <li><strong>Formula.</strong> Assessable payroll &times; (classification unit base rate &divide; 100) &times; 10%, worked out for each classification unit in your COR.</li>
-        <li><strong>Minimum.</strong> WorkSafeBC pays at least the lesser of $1,000 or 75% of the premiums you paid. For a small employer this often is the number.</li>
-        <li><strong>Timing.</strong> You have to be certified first. WorkSafeBC starts considering payments in the second quarter of the year after certification and expects to credit your assessment account by the end of June.</li>
-        <li><strong>Conditions.</strong> A valid certificate, an active account in good standing, and no exceptions such as late payroll reporting, an administrative penalty or a health and safety conviction.</li>
-        <li><strong>Per-worker cap.</strong> Assessable earnings are capped per worker ($127,500 for 2026), so very high payrolls spread over few workers count for less.</li>
+        <li><strong>The 13 elements.</strong> They follow the national COR framework: policy, hazard assessment, safe work practices, safe job procedures, company rules, PPE, preventive maintenance, training and communication, inspections, investigations, emergency preparedness, statistics and records, and legislation.</li>
+        <li><strong>Partners differ.</strong> Each certifying partner publishes its own audit tool and the element lists are not identical (Energy Safety Canada, for example, uses 10). Check yours before you start; the written-program content overlaps heavily.</li>
+        <li><strong>Documents are half of it.</strong> Auditors look for records that show the system has been running, not just papers. BCCSA says at least 6 months of supporting evidence, with 12 months recommended; the BC Forest Safety Council reviews the 12 months before an audit.</li>
+        <li><strong>Many fixes are free.</strong> Several of the documents behind these elements are free downloads. The report tells you which are free and which are only in the kit.</li>
       </ul>
-      <p class="cov-note">Source: <a href="https://www.worksafebc.com/en/health-safety/create-manage/certificate-recognition/incentives" style="color:var(--blue);" target="_blank" rel="noopener">WorkSafeBC &mdash; COR incentives</a>, checked 9 October 2026.</p>
     </div>
   </section>
 
   <section class="kit-section">
     <div class="kit-inner faq">
       <p class="section-label">Questions</p>
-      <h2 class="section-title">Before you rely on the number.</h2>
-      <details><summary>Is the incentive guaranteed?</summary><p>No. You have to pass a certification audit through your sector's certifying partner, keep the certificate valid with annual maintenance audits, and stay eligible. WorkSafeBC decides the amount. This is an estimate from the figures you enter and WorkSafeBC's published rules.</p></details>
-      <details><summary>Why does my result say $1,000?</summary><p>Because of the minimum. If 10% of your base premium is under $1,000, WorkSafeBC pays the lesser of $1,000 or 75% of the premiums you paid. A business with a premium of a few thousand dollars lands on that minimum.</p></details>
-      <details><summary>Base rate or net rate?</summary><p>WorkSafeBC's formula uses the classification unit base rate. Your net rate also includes experience-rating discounts or surcharges from your claims history, so it can differ. Use the base rate shown on your assessment rate notification.</p></details>
-      <details><summary>What does getting certified cost?</summary><p>This estimate leaves it out. Budget for your time, any registration or program fee from your certifying partner, an external auditor if you use one, and training for an internal auditor. Fees differ by partner and change over time, so ask yours.</p></details>
-      <details><summary>Do I need the COR kit to get certified?</summary><p>No. COR is awarded by your certifying partner after an audit, and many partners publish free templates. The kit is an editable, regulation-cited starting set of the written program documents; it's for people who would rather adapt than draft from scratch.</p></details>
-      <details><summary>What do you do with my email?</summary><p>We email you the breakdown. If you tick the box we'll also send a few short COR-readiness emails, and you can unsubscribe any time. We store your email, the figures you entered, and the result. See the <a href="/terms.html">privacy policy</a>.</p></details>
+      <h2 class="section-title">Before you rely on the result.</h2>
+      <details><summary>Is this my COR audit score?</summary><p>No. It's a quick self-check based only on your answers. Certifying partners score audits with their own tools, which also check interviews and observation, so this can't predict a pass or fail.</p></details>
+      <details><summary>How is the result worked out?</summary><p>Each element counts 2 for Yes, 1 for Partly and 0 for No. The headline is how many elements you answered Yes to, with your partly-covered and missing elements listed in a suggested order: foundations like the policy and hazard assessment first.</p></details>
+      <details><summary>Do I need to buy anything to close a gap?</summary><p>Not necessarily. The report marks which documents are free templates and which are only in the COR kit. Several elements can be covered with free downloads.</p></details>
+      <details><summary>What do you do with my email?</summary><p>We email you the report. If you tick the box we'll also send a few short COR-readiness emails, and you can unsubscribe any time. We store your email, your answers and your industry. See the <a href="/terms.html">privacy policy</a>.</p></details>
     </div>
   </section>
 
   <section class="cta-section" style="padding:56px 8%">
     <p class="section-label">Independent and not affiliated</p>
-    <p class="cta-disclaimer" style="max-width:640px">This calculator gives an estimate based on the figures you enter and WorkSafeBC's published incentive rules (checked 9 October 2026). BC Safety Docs is independent and not affiliated with WorkSafeBC or any certifying partner. WorkSafeBC decides eligibility and the amount. Not financial, legal or regulatory advice.</p>
+    <p class="cta-disclaimer" style="max-width:640px">This gap check is a self-assessment against the national 13-element COR framework, based only on your answers. It is not an audit and does not predict whether you would pass. BC Safety Docs is independent and not affiliated with WorkSafeBC or any certifying partner. Not legal or regulatory advice.</p>
   </section>
 </div>
 
 <script type="module">
-import { calculate, fmt, CONSTANTS } from '/cor-rebate-logic.js';
+import { ELEMENTS, SECTORS, assess } from '/cor-gap-logic.js';
 const $ = (id) => document.getElementById(id);
 let current = null;
 
+// sector select
+Object.entries(SECTORS).forEach(([k, v]) => { const o = document.createElement('option'); o.value = k; o.textContent = v; $('sector').appendChild(o); });
+$('sector').value = 'other';
+
+// questions
+const OPTS = [['have', 'Yes'], ['partial', 'Partly'], ['none', 'No']];
+ELEMENTS.forEach((el) => {
+  const wrap = document.createElement('fieldset'); wrap.className = 'q'; wrap.style.border = 'none';
+  const lg = document.createElement('legend'); lg.className = 'qn';
+  lg.textContent = el.id + '. ' + el.name;
+  const sm = document.createElement('small'); sm.textContent = el.basis; lg.appendChild(sm);
+  const qt = document.createElement('p'); qt.className = 'qt'; qt.textContent = el.q;
+  const opts = document.createElement('div'); opts.className = 'opts';
+  OPTS.forEach(([val, label]) => {
+    const l = document.createElement('label'); l.className = 'o-' + val;
+    const i = document.createElement('input'); i.type = 'radio'; i.name = 'q' + el.id; i.value = val;
+    i.addEventListener('change', updateProgress);
+    const s = document.createElement('span'); s.textContent = label;
+    l.appendChild(i); l.appendChild(s); opts.appendChild(l);
+  });
+  wrap.appendChild(lg); wrap.appendChild(qt); wrap.appendChild(opts);
+  $('questions').appendChild(wrap);
+});
+
+function readAnswers() {
+  const a = {};
+  ELEMENTS.forEach((el) => { const c = document.querySelector('input[name=q' + el.id + ']:checked'); if (c) a[el.id] = c.value; });
+  return a;
+}
+function updateProgress() { $('progress').textContent = Object.keys(readAnswers()).length + ' of 13 answered'; }
+updateProgress();
+
+const STAT = { have: 'In place', partial: 'Partly', none: 'Missing' };
+
 function showResult(r) {
   current = r;
-  $('r-annual').textContent = fmt(r.annual);
-  $('r-three').textContent = fmt(r.threeYear);
-  const notes = [];
-  if (r.floorApplied) notes.push('At your size the minimum applies: WorkSafeBC pays at least the lesser of $1,000 or 75% of premiums paid, which is more than 10% of your base premium.');
-  if (r.capApplied) notes.push('The per-worker earnings cap reduced your assessable payroll to ' + fmt(r.assessablePayroll) + '.');
-  notes.push('Paid after you are certified: WorkSafeBC starts considering payments in the second quarter of the year after certification.');
-  notes.push('Not included: the cost of getting certified (your time, partner fees, any external auditor, training).');
-  const ul = $('r-notes'); ul.textContent = '';
-  notes.forEach((t) => { const li = document.createElement('li'); li.textContent = t; ul.appendChild(li); });
-  $('kb-line').textContent = 'The kit costs ' + fmt(CONSTANTS.KIT_PRICE) + '. Your estimated incentive is ' + fmt(r.annual) + ' a year.';
-  $('kb-sub').textContent = r.annual >= CONSTANTS.KIT_PRICE
-    ? 'One year of the estimated incentive is about ' + r.kitMultiple + '× the kit price — if you get certified and stay eligible.'
-    : 'At that estimate, it would take about ' + r.paybackYears + ' years of incentives to equal the kit price — so decide on whether the kit saves you drafting time, not on the rebate alone.';
+  $('g-have').textContent = r.counts.have;
+  $('g-level').textContent = r.level.label;
+  $('g-sub').textContent = r.counts.partial + ' partly in place, ' + r.counts.none + ' missing. ' + r.level.blurb;
+  const ul = $('g-list'); ul.textContent = '';
+  r.elements.forEach((e) => {
+    const li = document.createElement('li');
+    const n = document.createElement('span'); n.textContent = e.id + '. ' + e.name;
+    const c = document.createElement('span'); c.className = 'chip ' + e.status; c.textContent = STAT[e.status];
+    li.appendChild(n); li.appendChild(c); ul.appendChild(li);
+  });
+  const free = r.freeDocs, kit = r.kitDocs;
+  const fl = $('kb-free'); fl.textContent = '';
+  if (!r.gaps.length) {
+    $('kb-line').textContent = 'No gaps flagged. The work now is keeping the records going.';
+    $('kb-sub').textContent = 'Auditors look for evidence the system has been running over time. Ask your certifying partner how much history it expects.';
+  } else {
+    $('kb-line').textContent = 'Your gaps map to ' + r.gapDocs.length + ' documents: ' + free.length + ' free, ' + kit.length + ' in the COR kit.';
+    $('kb-sub').textContent = kit.length
+      ? 'Download the free ones now. The kit ($279 CAD) adds the other ' + kit.length + ' (' + kit.map((d) => d.title).join(', ') + ').'
+      : 'Every document for your gaps has a free template, so you can start today without buying anything.';
+    free.forEach((d) => { const li = document.createElement('li'); const a = document.createElement('a'); a.href = d.url; a.textContent = d.title; li.appendChild(a); fl.appendChild(li); });
+  }
   $('result').classList.add('show');
   $('result').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-$('calc-form').addEventListener('submit', (e) => {
+$('gap-form').addEventListener('submit', (e) => {
   e.preventDefault();
-  $('calc-err').textContent = '';
-  const r = calculate({ payroll: $('payroll').value, workers: $('workers').value, baseRate: $('rate').value });
-  if (!r.ok) { $('calc-err').textContent = r.error; $('result').classList.remove('show'); return; }
+  $('gap-err').textContent = '';
+  const r = assess({ answers: readAnswers(), sector: $('sector').value });
+  if (!r.ok) { $('gap-err').textContent = r.error; $('result').classList.remove('show'); return; }
   showResult(r);
 });
+
+$('print-btn').addEventListener('click', () => window.print());
 
 $('send-form').addEventListener('submit', async (e) => {
   e.preventDefault();
   $('send-err').textContent = '';
   if (!current) return;
-  const btn = $('send-btn'); btn.disabled = true; btn.textContent = 'Sending…';
+  const btn = $('send-btn'); btn.disabled = true; btn.textContent = 'Sending\u2026';
   try {
-    const resp = await fetch('/api/cor-rebate-report', {
+    const resp = await fetch('/api/cor-gap-report', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        email: $('email').value.trim(),
-        payroll: current.inputs.payroll, workers: current.inputs.workers, baseRate: current.inputs.baseRate,
-        marketingOptIn: $('optin').checked,
-      }),
+      body: JSON.stringify({ email: $('email').value.trim(), answers: current.answers, sector: current.sector, marketingOptIn: $('optin').checked }),
     });
     const data = await resp.json().catch(() => ({}));
     if (resp.ok && data.ok) {
       $('send-done').style.display = 'block';
       $('send-form').style.display = 'none';
-      if (window.bcsdLead) window.bcsdLead('cor-rebate-calculator');
+      if (window.bcsdLead) window.bcsdLead('cor-gap-check');
     } else {
       $('send-err').textContent = data.error || 'Something went wrong. Please try again or email info@bcsafetydocs.com.';
-      btn.disabled = false; btn.textContent = 'Email my breakdown';
+      btn.disabled = false; btn.textContent = 'Email my report';
     }
   } catch (err) {
     $('send-err').textContent = 'Network error. Please try again or email info@bcsafetydocs.com.';
-    btn.disabled = false; btn.textContent = 'Email my breakdown';
+    btn.disabled = false; btn.textContent = 'Email my report';
   }
 });
 </script>
@@ -422,7 +477,7 @@ $('send-form').addEventListener('submit', async (e) => {
   </div>
   <div>
     <p style="color:#666;font-size:0.78rem;font-weight:600;margin-bottom:8px;">COR KIT</p>
-    <p><a href="/cor-kit.html">COR Small-Employer Kit</a><br><a href="/cor-rebate-calculator">COR Incentive Calculator</a></p>
+    <p><a href="/cor-kit.html">COR Small-Employer Kit</a><br><a href="/cor-rebate-calculator">COR Incentive Calculator</a><br><a href="/cor-gap-check">COR Gap Check</a></p>
     <p style="margin-top:16px;"><a href="/terms.html">Terms &amp; Privacy</a></p>
   </div>
   <p style="width:100%;color:#333;font-size:0.7rem;border-top:1px solid #222;padding-top:16px;margin-top:8px;">

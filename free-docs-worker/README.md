@@ -138,3 +138,16 @@ consenting addresses. Limits: 3 estimates per email and 10 per network address p
 Update each January in `cor-rebate-logic.js`: `MAX_WAGE` / `MAX_WAGE_YEAR` (WorkSafeBC
 maximum wage rate, $127,500 for 2026) and `CHECKED`. Redeploy this worker AND push the
 site (the page loads the logic file directly).
+
+## COR gap check (`POST /api/cor-gap-report`)
+
+Powers `cor-gap-check.html`. The page sends `{ email, answers: {1..13: have|partial|none},
+sector, marketingOptIn }`. The worker re-scores with `../cor-gap-logic.js` (the same file the
+page loads), builds the email with `gap-email.js`, sends it through Resend, and records the
+result in `cor_gap_checks`. Follow-up consent works exactly as for the rebate calculator
+(unticked box; only opted-in addresses reach `signups`, product `cor-gap-check`). Limits: 3 per
+email and 10 per network address per 24 hours.
+
+Edit questions, element wording, document mapping and partner notes in `cor-gap-logic.js`,
+then redeploy this worker AND push the site. Re-check `PARTNER_NOTES` against the partners' pages
+whenever the audit quick reference is refreshed.

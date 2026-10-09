@@ -43,3 +43,21 @@ CREATE TABLE IF NOT EXISTS cor_rebate_calcs (
 );
 CREATE INDEX IF NOT EXISTS idx_cr_email ON cor_rebate_calcs (email, created_at);
 CREATE INDEX IF NOT EXISTS idx_cr_ip    ON cor_rebate_calcs (ip_hash, created_at);
+
+-- COR readiness gap check results (cor-gap-check.html).
+-- marketing_opt_in = 1 only if the follow-up box was ticked (CASL); only those
+-- people are also written to `signups`.
+CREATE TABLE IF NOT EXISTS cor_gap_checks (
+  id               INTEGER PRIMARY KEY AUTOINCREMENT,
+  email            TEXT    NOT NULL,          -- lowercased
+  sector           TEXT    NOT NULL,
+  have_count       INTEGER NOT NULL,
+  partial_count    INTEGER NOT NULL,
+  none_count       INTEGER NOT NULL,
+  answers_json     TEXT    NOT NULL,
+  marketing_opt_in INTEGER NOT NULL DEFAULT 0,
+  ip_hash          TEXT,                      -- truncated SHA-256, rate limiting only
+  created_at       TEXT    NOT NULL DEFAULT (datetime('now'))
+);
+CREATE INDEX IF NOT EXISTS idx_cg_email ON cor_gap_checks (email, created_at);
+CREATE INDEX IF NOT EXISTS idx_cg_ip    ON cor_gap_checks (ip_hash, created_at);

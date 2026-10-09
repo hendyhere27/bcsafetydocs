@@ -11,6 +11,8 @@ import { assess } from "../firesmart-logic.js";
 import { buildReportEmail } from "./firesmart-email.js";
 import { calculate } from "../cor-rebate-logic.js";
 import { buildRebateEmail } from "./rebate-email.js";
+import { assess as assessGap } from "../cor-gap-logic.js";
+import { buildGapEmail } from "./gap-email.js";
 
 // Product slug -> filename on bcsafetydocs.com. Add an entry here each time
 // a new free document ships.
@@ -88,6 +90,10 @@ export default {
 
     if (url.pathname === "/api/cor-rebate-report" && request.method === "POST") {
       return handleRebateReport(request, env);
+    }
+
+    if (url.pathname === "/api/cor-gap-report" && request.method === "POST") {
+      return handleGapReport(request, env);
     }
 
     return json({ ok: false, error: "Not found" }, 404);
@@ -338,6 +344,95 @@ async function handleRebateReport(request, env) {
     }
   } catch (e) {
     console.error("D1 cor-rebate insert failed:", e);
+  }
+
+  return json({ ok: true }, 200);
+}
+
+// POST /api/cor-gap-report  { email, answers: {1..13: have|partial|none}, sector, marketingOptIn }
+// Re-scores server-side, emails the full report, records the lead. As with the
+// rebate calculator, only people who ticked the follow-up box reach `signups`.
+async function handleGapReport(request, env) {
+  let body;
+  try {
+    body = await request.json();
+  } catch {
+    return json({ ok: false, error: "Invalid request." }, 400);
+  }
+
+  const email = typeof body.email === "string" ? body.email.trim() : "";
+  if (!EMAIL_RE.test(email) || email.length > 200) {
+    return json({ ok: false, error: "Please enter a valid email address." }, 400);
+  }
+
+  const result = assessGap({ answers: body.answers, sector: body.sector });
+  if (!result.ok) {
+    return json({ ok: false, error: result.error }, 400);
+  }
+  const optIn = body.marketingOptIn === true ? 1 : 0;
+
+  if (!env.RESEND_API_KEY) {
+    console.error("RESEND_API_KEY secret is not set on this worker.");
+    return json({ ok: false, error: "Delivery is temporarily unavailable. Please email info@bcsafetydocs.com." }, 500);
+  }
+
+  // Max 3 reports per email and 10 per network address per 24 hours.
+  const ip = request.headers.get("CF-Connecting-IP") || "unknown";
+  const ipHash = await sha256Hex(ip);
+  try {
+    const perEmail = await env.DB
+      .prepare("SELECT COUNT(*) AS n FROM cor_gap_checks WHERE email = ? AND created_at > datetime('now','-1 day')")
+      .bind(email.toLowerCase())
+      .first();
+    const perIp = await env.DB
+      .prepare("SELECT COUNT(*) AS n FROM cor_gap_checks WHERE ip_hash = ? AND created_at > datetime('now','-1 day')")
+      .bind(ipHash)
+      .first();
+    if ((perEmail && perEmail.n >= 3) || (perIp && perIp.n >= 10)) {
+      return json({ ok: false, error: "That's the daily limit for reports. Please try again tomorrow." }, 429);
+    }
+  } catch (e) {
+    console.error("Rate-limit check failed (continuing):", e);
+  }
+
+  const { subject, html, text } = buildGapEmail(result);
+
+  const emailResp = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${env.RESEND_API_KEY}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      from: "BC Safety Docs <info@bcsafetydocs.com>",
+      to: [email],
+      subject,
+      html,
+      text,
+    }),
+  });
+
+  if (!emailResp.ok) {
+    const errText = await emailResp.text();
+    console.error("Resend send-email failed (cor-gap):", emailResp.status, errText);
+    return json({ ok: false, error: "Could not send the email. Please try again or email info@bcsafetydocs.com." }, 502);
+  }
+
+  try {
+    await env.DB
+      .prepare(
+        "INSERT INTO cor_gap_checks (email, sector, have_count, partial_count, none_count, answers_json, marketing_opt_in, ip_hash) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
+      )
+      .bind(email.toLowerCase(), result.sector, result.counts.have, result.counts.partial, result.counts.none, JSON.stringify(result.answers), optIn, ipHash)
+      .run();
+    if (optIn) {
+      await env.DB
+        .prepare("INSERT INTO signups (email, product) VALUES (?, ?)")
+        .bind(email.toLowerCase(), "cor-gap-check")
+        .run();
+    }
+  } catch (e) {
+    console.error("D1 cor-gap insert failed:", e);
   }
 
   return json({ ok: true }, 200);
