@@ -174,3 +174,8 @@ Rows from before 2026-10-09 have 0 (consent unclear). **When syncing into Resend
 segment, only sync rows with `marketing_opt_in = 1`**, e.g.
 `SELECT DISTINCT email FROM signups WHERE synced = 0 AND marketing_opt_in = 1`.
 The calculator, gap check and FireSmart endpoints only write to `signups` when the box was ticked.
+
+Delivery backup (2026-10-09): the Cloudflare cron trigger had not fired after 35+ minutes, so every
+API request (and a `GET /api/tick` beacon on the calculator, gap-check and kit pages) also calls
+`processDue`, which sends any due follow-ups. Runs are logged in `cron_log` (source `lazy` or the
+cron expression). Keep both: the daily cron (`0 16 * * *`) is the intended path.

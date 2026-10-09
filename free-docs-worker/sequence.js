@@ -172,6 +172,7 @@ export async function runDueSequence(env) {
   const due = await env.DB
     .prepare("SELECT id, email, kind, step, payload_json, attempts FROM sequence_emails WHERE status = 'pending' AND send_at <= datetime('now') ORDER BY send_at, id LIMIT 50")
     .all();
+  let sent = 0;
   for (const row of due.results || []) {
     try {
       const sub = await env.DB.prepare("SELECT token, unsubscribed FROM sequence_subs WHERE email = ?").bind(row.email).first();
@@ -204,6 +205,7 @@ export async function runDueSequence(env) {
       if (resp.ok) {
         const out = await resp.json().catch(() => ({}));
         await env.DB.prepare("UPDATE sequence_emails SET status = 'sent', resend_id = ?, sent_at = datetime('now') WHERE id = ?").bind(out.id || null, row.id).run();
+        sent++;
       } else {
         const errText = (await resp.text()).slice(0, 200);
         console.error("Sequence send failed:", row.id, resp.status, errText);
@@ -217,6 +219,7 @@ export async function runDueSequence(env) {
       console.error("runDueSequence row failed:", row.id, e);
     }
   }
+  return { due: (due.results || []).length, sent };
 }
 
 const pageHtml = (title, body) =>

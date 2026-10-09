@@ -74,7 +74,10 @@ function json(obj, status) {
 }
 
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
+    // Backup for the cron trigger: any API hit also sends follow-ups that are due.
+    ctx.waitUntil(processDue(env, "lazy"));
+
     if (request.method === "OPTIONS") {
       return new Response(null, { headers: corsHeaders() });
     }
@@ -97,6 +100,10 @@ export default {
       return handleGapReport(request, env);
     }
 
+    if (url.pathname === "/api/tick" && request.method === "GET") {
+      return json({ ok: true }, 200);
+    }
+
     if (url.pathname === "/api/unsubscribe" && (request.method === "GET" || request.method === "POST")) {
       return handleUnsubscribe(request, env);
     }
@@ -106,7 +113,7 @@ export default {
 
   // Daily cron (see wrangler.jsonc): send any due follow-up emails.
   async scheduled(event, env, ctx) {
-    ctx.waitUntil(runDueSequence(env));
+    ctx.waitUntil(processDue(env, event.cron || "cron", true));
   },
 };
 
@@ -482,4 +489,30 @@ async function handleGapReport(request, env) {
 async function sha256Hex(text) {
   const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
   return [...new Uint8Array(buf)].slice(0, 8).map((b) => b.toString(16).padStart(2, "0")).join("");
+}
+
+
+// Sends due follow-up emails and records the run. Cron runs always log; lazy runs
+// (triggered by any API request) only log when something was actually due.
+async function processDue(env, source, always = false) {
+  try {
+    const n = await env.DB
+      .prepare("SELECT COUNT(*) AS n FROM sequence_emails WHERE status = 'pending' AND send_at <= datetime('now')")
+      .first();
+    if (!always && (!n || n.n === 0)) return;
+    let result = { due: 0, sent: 0 };
+    let error = null;
+    try {
+      result = await runDueSequence(env);
+    } catch (e) {
+      error = String(e && e.message ? e.message : e).slice(0, 300);
+      console.error("runDueSequence failed:", e);
+    }
+    await env.DB
+      .prepare("INSERT INTO cron_log (cron, due, sent, error) VALUES (?, ?, ?, ?)")
+      .bind(source, result.due, result.sent, error)
+      .run();
+  } catch (e) {
+    console.error("processDue failed:", e);
+  }
 }
