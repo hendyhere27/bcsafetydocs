@@ -9,6 +9,8 @@
 
 import { assess } from "../firesmart-logic.js";
 import { buildReportEmail } from "./firesmart-email.js";
+import { calculate } from "../cor-rebate-logic.js";
+import { buildRebateEmail } from "./rebate-email.js";
 
 // Product slug -> filename on bcsafetydocs.com. Add an entry here each time
 // a new free document ships.
@@ -82,6 +84,10 @@ export default {
 
     if (url.pathname === "/api/firesmart-report" && request.method === "POST") {
       return handleFiresmartReport(request, env);
+    }
+
+    if (url.pathname === "/api/cor-rebate-report" && request.method === "POST") {
+      return handleRebateReport(request, env);
     }
 
     return json({ ok: false, error: "Not found" }, 404);
@@ -245,6 +251,96 @@ async function handleFiresmartReport(request, env) {
   }
 
   return json({ ok: true, score: result.score }, 200);
+}
+
+// POST /api/cor-rebate-report  { email, payroll, workers?, baseRate, marketingOptIn }
+// Re-computes the estimate server-side, emails the full breakdown, and records
+// the lead. The follow-up sequence needs its own opt-in (CASL): only people who
+// ticked the box are also added to `signups`, which feeds the Resend sync.
+async function handleRebateReport(request, env) {
+  let body;
+  try {
+    body = await request.json();
+  } catch {
+    return json({ ok: false, error: "Invalid request." }, 400);
+  }
+
+  const email = typeof body.email === "string" ? body.email.trim() : "";
+  if (!EMAIL_RE.test(email) || email.length > 200) {
+    return json({ ok: false, error: "Please enter a valid email address." }, 400);
+  }
+
+  const result = calculate({ payroll: body.payroll, workers: body.workers, baseRate: body.baseRate });
+  if (!result.ok) {
+    return json({ ok: false, error: result.error }, 400);
+  }
+  const optIn = body.marketingOptIn === true ? 1 : 0;
+
+  if (!env.RESEND_API_KEY) {
+    console.error("RESEND_API_KEY secret is not set on this worker.");
+    return json({ ok: false, error: "Delivery is temporarily unavailable. Please email info@bcsafetydocs.com." }, 500);
+  }
+
+  // Max 3 estimates per email and 10 per network address per 24 hours.
+  const ip = request.headers.get("CF-Connecting-IP") || "unknown";
+  const ipHash = await sha256Hex(ip);
+  try {
+    const perEmail = await env.DB
+      .prepare("SELECT COUNT(*) AS n FROM cor_rebate_calcs WHERE email = ? AND created_at > datetime('now','-1 day')")
+      .bind(email.toLowerCase())
+      .first();
+    const perIp = await env.DB
+      .prepare("SELECT COUNT(*) AS n FROM cor_rebate_calcs WHERE ip_hash = ? AND created_at > datetime('now','-1 day')")
+      .bind(ipHash)
+      .first();
+    if ((perEmail && perEmail.n >= 3) || (perIp && perIp.n >= 10)) {
+      return json({ ok: false, error: "That's the daily limit for estimates. Please try again tomorrow." }, 429);
+    }
+  } catch (e) {
+    console.error("Rate-limit check failed (continuing):", e);
+  }
+
+  const { subject, html, text } = buildRebateEmail(result);
+
+  const emailResp = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${env.RESEND_API_KEY}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      from: "BC Safety Docs <info@bcsafetydocs.com>",
+      to: [email],
+      subject,
+      html,
+      text,
+    }),
+  });
+
+  if (!emailResp.ok) {
+    const errText = await emailResp.text();
+    console.error("Resend send-email failed (cor-rebate):", emailResp.status, errText);
+    return json({ ok: false, error: "Could not send the email. Please try again or email info@bcsafetydocs.com." }, 502);
+  }
+
+  try {
+    await env.DB
+      .prepare(
+        "INSERT INTO cor_rebate_calcs (email, payroll, workers, base_rate, annual_incentive, marketing_opt_in, ip_hash) VALUES (?, ?, ?, ?, ?, ?, ?)"
+      )
+      .bind(email.toLowerCase(), result.inputs.payroll, result.inputs.workers, result.inputs.baseRate, result.annual, optIn, ipHash)
+      .run();
+    if (optIn) {
+      await env.DB
+        .prepare("INSERT INTO signups (email, product) VALUES (?, ?)")
+        .bind(email.toLowerCase(), "cor-rebate-calculator")
+        .run();
+    }
+  } catch (e) {
+    console.error("D1 cor-rebate insert failed:", e);
+  }
+
+  return json({ ok: true }, 200);
 }
 
 async function sha256Hex(text) {

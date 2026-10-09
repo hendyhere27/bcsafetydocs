@@ -26,3 +26,20 @@ CREATE TABLE IF NOT EXISTS firesmart_assessments (
 );
 CREATE INDEX IF NOT EXISTS idx_fs_email ON firesmart_assessments (email, created_at);
 CREATE INDEX IF NOT EXISTS idx_fs_ip    ON firesmart_assessments (ip_hash, created_at);
+
+-- COR incentive calculator results (cor-rebate-calculator.html).
+-- marketing_opt_in = 1 only if the person ticked the follow-up-emails box (CASL);
+-- only those people are also written to `signups` for the Resend sync.
+CREATE TABLE IF NOT EXISTS cor_rebate_calcs (
+  id               INTEGER PRIMARY KEY AUTOINCREMENT,
+  email            TEXT    NOT NULL,          -- lowercased
+  payroll          REAL    NOT NULL,
+  workers          INTEGER,                   -- optional
+  base_rate        REAL    NOT NULL,          -- per $100
+  annual_incentive INTEGER NOT NULL,
+  marketing_opt_in INTEGER NOT NULL DEFAULT 0,
+  ip_hash          TEXT,                      -- truncated SHA-256, rate limiting only
+  created_at       TEXT    NOT NULL DEFAULT (datetime('now'))
+);
+CREATE INDEX IF NOT EXISTS idx_cr_email ON cor_rebate_calcs (email, created_at);
+CREATE INDEX IF NOT EXISTS idx_cr_ip    ON cor_rebate_calcs (ip_hash, created_at);

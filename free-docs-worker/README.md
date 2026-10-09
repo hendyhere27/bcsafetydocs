@@ -123,3 +123,18 @@ Limits: 3 reports per email and 10 per network address per 24 hours.
 To change the recommendations, scoring or email wording, edit
 `firesmart-logic.js` (rules, text, weights) or `firesmart-email.js` (layout), then
 redeploy this worker AND push the site (the page loads the logic file directly).
+
+## COR incentive calculator (`POST /api/cor-rebate-report`)
+
+Powers `cor-rebate-calculator.html`. The page sends `{ email, payroll, workers?,
+baseRate, marketingOptIn }`. The worker re-runs the arithmetic in
+`../cor-rebate-logic.js` (the same file the page loads), builds the email with
+`rebate-email.js`, sends it through Resend, and records the result in
+`cor_rebate_calcs`. Only people who ticked the follow-up-emails box
+(`marketingOptIn: true`, unticked by default for CASL) are also written to
+`signups` (product `cor-rebate-calculator`), so the Resend sync only ever picks up
+consenting addresses. Limits: 3 estimates per email and 10 per network address per 24 hours.
+
+Update each January in `cor-rebate-logic.js`: `MAX_WAGE` / `MAX_WAGE_YEAR` (WorkSafeBC
+maximum wage rate, $127,500 for 2026) and `CHECKED`. Redeploy this worker AND push the
+site (the page loads the logic file directly).
