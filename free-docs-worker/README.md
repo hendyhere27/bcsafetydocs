@@ -108,3 +108,18 @@ wrangler deploy
 ```
 
 (Bindings: `DB` → D1 `bcsafetydocs-leads`, configured in `wrangler.jsonc`.)
+
+## FireSmart self-check report (`POST /api/firesmart-report`)
+
+Powers `blog/bc-firesmart-assessment-tool.html`. The page sends `{ email, answers }`
+(answers are enumerated codes plus only the first three characters of the postal
+code). The worker re-runs the scoring in `../firesmart-logic.js` (the same file the
+page loads), builds the email with `firesmart-email.js`, sends it through Resend,
+and records the lead in two places: `firesmart_assessments` (answers, score, level,
+fsa, truncated IP hash for rate limiting) and `signups` with product
+`firesmart-assessment` (so the normal Resend-General sync picks it up).
+Limits: 3 reports per email and 10 per network address per 24 hours.
+
+To change the recommendations, scoring or email wording, edit
+`firesmart-logic.js` (rules, text, weights) or `firesmart-email.js` (layout), then
+redeploy this worker AND push the site (the page loads the logic file directly).
