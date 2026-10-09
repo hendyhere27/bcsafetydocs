@@ -22,7 +22,8 @@ CREATE TABLE IF NOT EXISTS firesmart_assessments (
   level        TEXT    NOT NULL,
   answers_json TEXT    NOT NULL,
   ip_hash      TEXT,                          -- truncated SHA-256, rate limiting only
-  created_at   TEXT    NOT NULL DEFAULT (datetime('now'))
+  created_at   TEXT    NOT NULL DEFAULT (datetime('now')),
+  marketing_opt_in INTEGER NOT NULL DEFAULT 0 -- added 2026-10-09 (existing DBs: ALTER TABLE ... ADD COLUMN)
 );
 CREATE INDEX IF NOT EXISTS idx_fs_email ON firesmart_assessments (email, created_at);
 CREATE INDEX IF NOT EXISTS idx_fs_ip    ON firesmart_assessments (ip_hash, created_at);
@@ -61,3 +62,28 @@ CREATE TABLE IF NOT EXISTS cor_gap_checks (
 );
 CREATE INDEX IF NOT EXISTS idx_cg_email ON cor_gap_checks (email, created_at);
 CREATE INDEX IF NOT EXISTS idx_cg_ip    ON cor_gap_checks (ip_hash, created_at);
+
+-- COR follow-up sequence (sequence.js): per-address unsubscribe token + the queued
+-- emails a daily cron sends (an unsubscribe cancels what is still pending).
+CREATE TABLE IF NOT EXISTS sequence_subs (
+  email           TEXT PRIMARY KEY,          -- lowercased
+  token           TEXT NOT NULL UNIQUE,      -- random 32-hex, used in unsubscribe links
+  unsubscribed    INTEGER NOT NULL DEFAULT 0,
+  created_at      TEXT NOT NULL DEFAULT (datetime('now')),
+  unsubscribed_at TEXT
+);
+CREATE TABLE IF NOT EXISTS sequence_emails (
+  id           INTEGER PRIMARY KEY AUTOINCREMENT,
+  email        TEXT NOT NULL,
+  kind         TEXT NOT NULL,                  -- rebate | gap
+  step         INTEGER NOT NULL,               -- 1..3 (day 2, 5, 10)
+  send_at      TEXT NOT NULL,                  -- UTC; the daily cron sends rows that are due
+  payload_json TEXT NOT NULL,                  -- { kind, data } used to build the email
+  status       TEXT NOT NULL DEFAULT 'pending', -- pending | sent | canceled | failed
+  attempts     INTEGER NOT NULL DEFAULT 0,
+  last_error   TEXT,
+  resend_id    TEXT,
+  sent_at      TEXT,
+  created_at   TEXT NOT NULL DEFAULT (datetime('now'))
+);
+CREATE INDEX IF NOT EXISTS idx_seq_email ON sequence_emails (email, status);

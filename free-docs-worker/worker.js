@@ -13,6 +13,7 @@ import { calculate } from "../cor-rebate-logic.js";
 import { buildRebateEmail } from "./rebate-email.js";
 import { assess as assessGap } from "../cor-gap-logic.js";
 import { buildGapEmail } from "./gap-email.js";
+import { scheduleSequence, handleUnsubscribe, runDueSequence } from "./sequence.js";
 
 // Product slug -> filename on bcsafetydocs.com. Add an entry here each time
 // a new free document ships.
@@ -96,7 +97,16 @@ export default {
       return handleGapReport(request, env);
     }
 
+    if (url.pathname === "/api/unsubscribe" && (request.method === "GET" || request.method === "POST")) {
+      return handleUnsubscribe(request, env);
+    }
+
     return json({ ok: false, error: "Not found" }, 404);
+  },
+
+  // Daily cron (see wrangler.jsonc): send any due follow-up emails.
+  async scheduled(event, env, ctx) {
+    ctx.waitUntil(runDueSequence(env));
   },
 };
 
@@ -194,6 +204,7 @@ async function handleFiresmartReport(request, env) {
   if (!result.ok) {
     return json({ ok: false, error: result.error }, 400);
   }
+  const optIn = body.marketingOptIn === true ? 1 : 0;
 
   if (!env.RESEND_API_KEY) {
     console.error("RESEND_API_KEY secret is not set on this worker.");
@@ -245,13 +256,16 @@ async function handleFiresmartReport(request, env) {
 
   try {
     await env.DB
-      .prepare("INSERT INTO firesmart_assessments (email, fsa, score, level, answers_json, ip_hash) VALUES (?, ?, ?, ?, ?, ?)")
-      .bind(email.toLowerCase(), result.answers.fsa, result.score, result.level.id, JSON.stringify(result.answers), ipHash)
+      .prepare("INSERT INTO firesmart_assessments (email, fsa, score, level, answers_json, ip_hash, marketing_opt_in) VALUES (?, ?, ?, ?, ?, ?, ?)")
+      .bind(email.toLowerCase(), result.answers.fsa, result.score, result.level.id, JSON.stringify(result.answers), ipHash, optIn)
       .run();
-    await env.DB
-      .prepare("INSERT INTO signups (email, product) VALUES (?, ?)")
-      .bind(email.toLowerCase(), "firesmart-assessment")
-      .run();
+    // Only people who ticked the optional box go on the list that feeds Resend (CASL).
+    if (optIn) {
+      await env.DB
+        .prepare("INSERT INTO signups (email, product) VALUES (?, ?)")
+        .bind(email.toLowerCase(), "firesmart-assessment")
+        .run();
+    }
   } catch (e) {
     console.error("D1 firesmart insert failed:", e);
   }
@@ -346,6 +360,14 @@ async function handleRebateReport(request, env) {
     console.error("D1 cor-rebate insert failed:", e);
   }
 
+  if (optIn) {
+    await scheduleSequence(env, {
+      email,
+      kind: "rebate",
+      data: { annual: result.annual, threeYear: result.threeYear },
+    });
+  }
+
   return json({ ok: true }, 200);
 }
 
@@ -433,6 +455,24 @@ async function handleGapReport(request, env) {
     }
   } catch (e) {
     console.error("D1 cor-gap insert failed:", e);
+  }
+
+  if (optIn) {
+    await scheduleSequence(env, {
+      email,
+      kind: "gap",
+      data: {
+        have: result.counts.have,
+        partial: result.counts.partial,
+        none: result.counts.none,
+        freeCount: result.freeDocs.length,
+        kitCount: result.kitDocs.length,
+        top: result.top.map((g) => {
+          const d = g.docs.find((x) => x.free) || g.docs[0];
+          return { name: g.name, docTitle: d.title, docUrl: d.url || "", free: !!d.free };
+        }),
+      },
+    });
   }
 
   return json({ ok: true }, 200);

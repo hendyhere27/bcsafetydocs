@@ -211,6 +211,7 @@ footer a:hover { color:var(--yellow); }
 .fs-email button{flex:0 0 auto;height:50px;border:0;border-radius:4px;background:#27AE60;color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:1.05rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:0 22px;cursor:pointer}
 .fs-email button:disabled{opacity:.6}
 .fs-email .msg{min-height:1.3em;font-size:.9rem;margin-top:10px}
+.fs-email .fs-consent{display:flex;gap:10px;align-items:flex-start;margin-top:14px;font-size:.82rem;color:#CCC;line-height:1.5}.fs-email .fs-consent input{margin-top:3px;flex-shrink:0}
 .fs-email .fine{font-size:.74rem;color:#999;margin-top:10px}.fs-email .fine a{color:#999}
 .fs-note{background:var(--light);border-left:4px solid var(--red);padding:14px 18px;font-size:.85rem;color:var(--grey);line-height:1.65;border-radius:2px;margin:0 0 28px}
 .fs-zones{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0 8px}
@@ -445,7 +446,8 @@ function showResults() {
        <p>${more} more actions, grouped by zone from your house outward, plus official FireSmart BC links and how to ask your local government about an assessment and rebates.</p>
        <form id="fs-form"><div class="row"><input type="email" id="fs-email" placeholder="you@example.com" aria-label="Email address" required autocomplete="email"><button type="submit" id="fs-send">Email my report</button></div>
        <div class="msg" id="fs-msg" role="status"></div>
-       <p class="fine">We email the report right away and may occasionally send WorkSafeBC and wildfire-safety updates; unsubscribe any time. We keep your email, answers, score and only the first three characters of your postal code. See our <a href="/terms.html">Privacy Policy</a>.</p></form></div>
+       <label class="fs-consent"><input type="checkbox" id="fs-optin"> <span>Also send me occasional wildfire-safety and WorkSafeBC updates. Unsubscribe any time. (Optional &mdash; leave unticked and you'll get only your report.)</span></label>
+       <p class="fine">We email the report right away. We keep your email, answers, score and only the first three characters of your postal code. See our <a href="/terms.html">Privacy Policy</a>.</p></form></div>
      <div class="fs-nav" style="margin-top:18px"><button type="button" class="fs-btn ghost" id="fs-restart">Start over</button><span></span></div>`;
   $('fs-restart').addEventListener('click', () => { Object.assign(answers, { postal:'',roof:'',roofDebris:'',siding:'',vents:'',outbuildings:'',outbuildingDistance:'',water:'',fuels:[],land:'' }); step = 0; render(); scrollCard(); });
   $('fs-form').addEventListener('submit', sendReport);
@@ -457,7 +459,7 @@ async function sendReport(e) {
   const btn = $('fs-send'), msg = $('fs-msg');
   btn.disabled = true; btn.textContent = 'Sending...'; msg.style.color = '#BBB'; msg.textContent = '';
   try {
-    const resp = await fetch('/api/firesmart-report', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: $('fs-email').value.trim(), answers: lastResult.payload }) });
+    const resp = await fetch('/api/firesmart-report', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: $('fs-email').value.trim(), answers: lastResult.payload, marketingOptIn: $('fs-optin').checked }) });
     const data = await resp.json();
     if (data.ok) {
       msg.style.color = '#5FD38D'; msg.textContent = 'Sent. Check your inbox (and spam folder) for your full report.';

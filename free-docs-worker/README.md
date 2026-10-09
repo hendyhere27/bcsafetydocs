@@ -151,3 +151,17 @@ email and 10 per network address per 24 hours.
 Edit questions, element wording, document mapping and partner notes in `cor-gap-logic.js`,
 then redeploy this worker AND push the site. Re-check `PARTNER_NOTES` against the partners' pages
 whenever the audit quick reference is refreshed.
+
+## Follow-up sequence (`sequence.js`, `GET/POST /api/unsubscribe`)
+
+People who tick the optional box on the incentive calculator or gap check get three short
+emails (day 2, 5, 10), personalised with their figures. At opt-in the worker queues three rows in
+`sequence_emails`; a daily cron (`0 16 * * *` UTC, see `wrangler.jsonc`) sends whatever is due and
+skips anyone unsubscribed. We send from our own queue because Resend scheduled sends cannot be
+cancelled with the sending-only API key. `sequence_subs` holds a random unsubscribe token per
+address; `/api/unsubscribe` (GET shows a confirm button, POST unsubscribes and is also the
+List-Unsubscribe one-click target) cancels pending rows. A past unsubscribe is never overridden.
+**Requires the worker secret `MAILING_ADDRESS`** (CASL: sender postal address in every email); without
+it nothing is queued. Set it with `wrangler secret put MAILING_ADDRESS`. Replies go to
+info@bcsafetydocs.com. Edit wording in `sequence.js` (keep every claim within what the audit quick
+reference verified), then redeploy.
