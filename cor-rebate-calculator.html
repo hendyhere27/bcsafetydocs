@@ -364,8 +364,8 @@ function showResult(r) {
   notes.forEach((t) => { const li = document.createElement('li'); li.textContent = t; ul.appendChild(li); });
   const kitP = CONSTANTS.KIT_PRICE;
   $('kb-line').textContent = 'Your estimated incentive: ' + fmt(r.annual) + '/yr. Kit: ' + fmt(kitP) + ', ' + (r.annual >= kitP
-    ? 'about ' + Math.round((kitP / r.annual) * 100) + "% of one year's estimate."
-    : "more than one year's estimate (about " + r.paybackYears + ' years).');
+    ? 'about ' + Math.round((kitP / r.annual) * 100) + '% of your first-year incentive.'
+    : 'more than your first-year incentive (about ' + r.paybackYears + ' years of it).');
   $('kb-sub').textContent = r.annual >= kitP
     ? 'If you get certified and stay eligible, one year of the estimated incentive is about ' + r.kitMultiple + '\u00d7 the kit price. It is paid the year after you certify, and it does not include the cost of certifying.'
     : 'At that estimate the incentive alone would take a while to match the kit price, so decide on whether the kit saves you drafting time, not on the rebate alone.';

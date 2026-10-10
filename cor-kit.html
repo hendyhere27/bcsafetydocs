@@ -144,6 +144,10 @@ footer a:hover { color:var(--yellow); }
 .pv-card img{display:block;width:100%;height:auto}
 .pv-card figcaption{margin-top:10px;font-size:0.84rem;color:var(--grey);line-height:1.5}
 .pv-card figcaption strong{display:block;color:var(--black);font-family:'Barlow Condensed',sans-serif;font-size:1.02rem;font-weight:700}
+.pv-buy{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:30px}
+.pv-buy span{font-size:0.85rem;color:var(--grey)}
+.pv-free{margin-top:14px;font-size:0.88rem;color:var(--grey);line-height:1.8}
+.pv-free a{color:var(--blue);font-weight:600}
 .kit-hero-img{display:block;width:100%;max-width:780px;height:auto;margin:40px auto 0}
 @media(max-width:1000px){.pv-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.pv-grid{grid-template-columns:1fr}}
@@ -230,12 +234,9 @@ footer a:hover { color:var(--yellow); }
     <div style="display:flex;align-items:baseline;gap:12px;justify-content:center;margin-bottom:8px;">
       <span style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:3rem;color:var(--yellow);">$279 CAD</span>
     </div>
-    <p style="color:#666;font-size:0.85rem;margin-bottom:28px;">One-time purchase, instant download &mdash; no subscription</p>
+    <p style="color:#666;font-size:0.85rem;margin-bottom:28px;">One-time purchase, instant download &mdash; no subscription &middot; 14-day refund, no questions asked</p>
     <a href="https://buy.stripe.com/14A9AScvvdV94vP0qjfEk07" class="btn-primary" style="font-size:1.1rem;padding:16px 40px;">Get the COR Kit &mdash; $279 CAD</a>
-    <p style="margin:22px auto 0;font-size:0.85rem;color:#888;">Want to see the quality first? <a href="/policy-statement.html" style="color:var(--yellow);">Get the OHS Policy Statement free &rarr;</a></p>
-    <p style="margin:10px auto 0;font-size:0.85rem;color:#888;">Wondering what COR could be worth to you? <a href="/cor-rebate-calculator" style="color:var(--yellow);">Estimate your annual incentive with the free calculator &rarr;</a></p>
-    <p style="margin:10px auto 0;font-size:0.85rem;color:#888;">Not sure where you stand? <a href="/cor-gap-check" style="color:var(--yellow);">Take the free 2-minute COR gap check &rarr;</a></p>
-    <p style="margin:10px auto 0;font-size:0.85rem;color:#888;">Questions first? <a href="#call" style="color:var(--yellow);">Book a free 15-minute call &rarr;</a></p>
+    <p style="margin:22px auto 0;font-size:0.85rem;color:#888;">Questions first? <a href="#call" style="color:var(--yellow);">Book a free 15-minute call &rarr;</a></p>
     <img class="kit-hero-img" src="/images/hero-cor-kit.webp" width="1000" height="699" fetchpriority="high" alt="Pages from the COR Small-Employer Kit: the Workplace Inspection Checklist in front of the Worker Orientation and Training Record and the Formal Hazard Assessment Register"/>
   </div>
 
@@ -255,6 +256,11 @@ footer a:hover { color:var(--yellow); }
       <figure class="pv-card"><a href="/images/preview-safety-meeting-log.webp" target="_blank" rel="noopener"><img src="/images/preview-safety-meeting-log.webp" width="900" height="1117" loading="lazy" decoding="async" alt="First page of the Safety Meeting Report and Communication Log: meeting details, program statement, attendance and agenda"/></a><figcaption><strong>Safety Meeting Report &amp; Communication Log</strong>Meeting report, attendance and communication log for committees, worker reps or small crews. WCA ss.37, 43&ndash;45.</figcaption></figure>
       </div>
       <p class="cov-note">Auditors check documents, interviews and what they observe on site, so these only count once they match how your company really works.</p>
+      <div class="pv-buy">
+        <a href="https://buy.stripe.com/14A9AScvvdV94vP0qjfEk07" class="btn-primary">Get the COR Kit &mdash; $279 CAD</a>
+        <span>Instant download &middot; 14-day refund, no questions asked</span>
+      </div>
+      <p class="pv-free">Not ready yet? Try these first: <a href="/policy-statement.html">get the OHS Policy Statement free</a> &middot; <a href="/cor-rebate-calculator">estimate your incentive</a> &middot; <a href="/cor-gap-check">take the 2-minute gap check</a></p>
     </div>
   </section>
 
@@ -373,6 +379,7 @@ footer a:hover { color:var(--yellow); }
         </div>
         <div class="call-card">
           <h3>Request a free 15-minute call</h3>
+          <p class="call-fine" style="margin:-4px 0 6px;color:#555;font-size:0.84rem;">I'll reply within 48 hours (I work shifts).</p>
           <form class="call-form" data-topic="question" novalidate>
           <label for="kc-name">Your name</label>
           <input type="text" id="kc-name" name="name" autocomplete="name" required>
@@ -400,6 +407,7 @@ footer a:hover { color:var(--yellow); }
       <details><summary>Does this get me certified?</summary><p>No. It gives you the written program documents. Certification is awarded through your sector's certifying partner (for example BCCSA for construction) after an audit of your actual program. We can't promise you'll pass, or that you'll receive any WorkSafeBC incentive.</p></details>
       <details><summary>Do I still need an audit?</summary><p>Yes. You arrange your audit through your certifying partner. Small employers answer a reduced question set, but still need documentation touching every element, and a minimum score in each one.</p></details>
       <details><summary>Can I buy individual documents?</summary><p>The ten COR program documents are sold only as this kit. The eight field templates in it are free to download on their own: <a href="/confined-space-permit.html">Confined Space Entry Permit</a>, <a href="/jsa.html">JSA / FLHA</a>, <a href="/hot-work-permit.html">Hot Work Permit</a>, <a href="/loto.html">Lockout / Tagout</a>, <a href="/flha.html">Daily FLHA</a>, <a href="/safe-work-procedure.html">Safe Work Procedure</a>, <a href="/incident-report.html">Incident Report</a> and <a href="/emergency-response.html">Emergency Response Plan</a>. The OHS Policy Statement is also <a href="/policy-statement.html">free</a>. What you pay for is the other COR documents and the element-by-element mapping.</p></details>
+      <details><summary>What if it isn't what I expected?</summary><p>Email <a href="mailto:info@bcsafetydocs.com">info@bcsafetydocs.com</a> within 14 days of purchase and I'll refund the full price, no questions asked.</p></details>
       <details><summary>How is it delivered?</summary><p>Instantly, by email: a download link to a zip file of 18 Word (.docx) documents plus a short start-here guide and the bonus COR Audit Quick Reference.</p></details>
       <details><summary>What if my sector or size isn't listed as a good fit?</summary><p>Look at your certifying partner's audit tool before buying and compare it with the coverage table above. Email <a href="mailto:info@bcsafetydocs.com">info@bcsafetydocs.com</a> if you're not sure &mdash; we'd rather tell you it isn't a fit.</p></details>
     </div>
