@@ -671,8 +671,8 @@
         <p>WorkSafeBC's own sample documents are intentionally generic. They don't have your atmospheric reading columns, standby person requirements per hazard level, or the amendment signature blocks you need for a real entry.</p>
       </div>
       <div class="problem-card">
-        <h4>Enterprise safety software is overkill</h4>
-        <p>Platforms like SafetyCulture and SafetyEvolution charge $25–$30 per user per month. For a crew of four doing one confined space entry a week, that's $100+/month for a permit you could have for $67 once.</p>
+        <h4>A permit is one document, not a program</h4>
+        <p>A confined space permit covers one task. If you also need the written safety program behind it, see the COR kit.</p>
       </div>
     </div>
   </section>
