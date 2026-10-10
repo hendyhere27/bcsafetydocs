@@ -42,5 +42,5 @@ Key facts:
 
 ## Optional
 
-- [About](https://bcsafetydocs.com/about.html): BC Safety Docs is run by Derek Henderson, a BC firefighter with a background in energy infrastructure work.
+- [About](https://bcsafetydocs.com/about.html): BC Safety Docs is run by Derek Henderson: HazMat and confined space rescue, 15+ years working under BC OHS.
 - [Terms & Privacy](https://bcsafetydocs.com/terms.html): Terms of use and privacy policy.
