@@ -100,6 +100,10 @@ export default {
       return handleGapReport(request, env);
     }
 
+    if (url.pathname === "/api/call-request" && request.method === "POST") {
+      return handleCallRequest(request, env);
+    }
+
     if (url.pathname === "/api/tick" && request.method === "GET") {
       return json({ ok: true }, 200);
     }
@@ -515,4 +519,105 @@ async function processDue(env, source, always = false) {
   } catch (e) {
     console.error("processDue failed:", e);
   }
+}
+
+
+// POST /api/call-request  { name, email, phone?, message?, topic, source, website }
+// "Request a free call" forms on the kit page and the thank-you page. Stores the
+// request, emails it to info@ (reply-to = the requester) and sends a confirmation.
+// Not a marketing signup: nothing is added to `signups`.
+async function handleCallRequest(request, env) {
+  let body;
+  try {
+    body = await request.json();
+  } catch {
+    return json({ ok: false, error: "Invalid request." }, 400);
+  }
+  if (typeof body.website === "string" && body.website.trim() !== "") {
+    return json({ ok: true }, 200); // honeypot: pretend success
+  }
+
+  const clean = (v, max) => (typeof v === "string" ? v.replace(/[\u0000-\u001f\u007f]+/g, " ").trim().slice(0, max) : "");
+  const name = clean(body.name, 100);
+  const email = clean(body.email, 200);
+  const phone = clean(body.phone, 40);
+  const message = typeof body.message === "string" ? body.message.replace(/\u0000/g, "").trim().slice(0, 1500) : "";
+  const topic = body.topic === "buyer-offer" ? "buyer-offer" : "question";
+  const source = clean(body.source, 100);
+
+  if (!name) return json({ ok: false, error: "Please enter your name." }, 400);
+  if (!EMAIL_RE.test(email)) return json({ ok: false, error: "Please enter a valid email address." }, 400);
+  if (!env.RESEND_API_KEY) {
+    console.error("RESEND_API_KEY secret is not set on this worker.");
+    return json({ ok: false, error: "Please email info@bcsafetydocs.com." }, 500);
+  }
+
+  const ip = request.headers.get("CF-Connecting-IP") || "unknown";
+  const ipHash = await sha256Hex(ip);
+  try {
+    const perEmail = await env.DB
+      .prepare("SELECT COUNT(*) AS n FROM call_requests WHERE email = ? AND created_at > datetime('now','-1 day')")
+      .bind(email.toLowerCase())
+      .first();
+    const perIp = await env.DB
+      .prepare("SELECT COUNT(*) AS n FROM call_requests WHERE ip_hash = ? AND created_at > datetime('now','-1 day')")
+      .bind(ipHash)
+      .first();
+    if ((perEmail && perEmail.n >= 3) || (perIp && perIp.n >= 10)) {
+      return json({ ok: false, error: "That's the daily limit for requests. Please email info@bcsafetydocs.com." }, 429);
+    }
+  } catch (e) {
+    console.error("Rate-limit check failed (continuing):", e);
+  }
+
+  try {
+    await env.DB
+      .prepare("INSERT INTO call_requests (name, email, phone, topic, message, source, ip_hash) VALUES (?, ?, ?, ?, ?, ?, ?)")
+      .bind(name, email.toLowerCase(), phone, topic, message, source, ipHash)
+      .run();
+  } catch (e) {
+    console.error("D1 call_requests insert failed:", e);
+  }
+
+  const label = topic === "buyer-offer" ? "FIRST-5 BUYER CALL" : "Call request";
+  const send = (payload) =>
+    fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, "Content-Type": "application/json" },
+      body: JSON.stringify({ from: "BC Safety Docs <info@bcsafetydocs.com>", ...payload }),
+    });
+
+  const note = await send({
+    to: ["info@bcsafetydocs.com"],
+    reply_to: [email],
+    subject: `[${label}] ${name}`,
+    text:
+      `${label}\n\nName: ${name}\nEmail: ${email}\nPhone: ${phone || "(none)"}\nFrom page: ${source || "(unknown)"}\n\nMessage:\n${message || "(none)"}\n\n` +
+      (topic === "buyer-offer"
+        ? "This came from the thank-you page for the first-5-buyers offer. Check the email against a Stripe payment before booking.\n"
+        : "Reply to this email to arrange a time.\n"),
+  });
+  if (!note.ok) {
+    console.error("Resend notify failed (call-request):", note.status, await note.text());
+    return json({ ok: false, error: "Could not send your request. Please email info@bcsafetydocs.com." }, 502);
+  }
+
+  // Confirmation to the requester; failure here doesn't fail the request.
+  try {
+    await send({
+      to: [email],
+      reply_to: ["info@bcsafetydocs.com"],
+      subject: "We got your call request",
+      text:
+        `Hi ${name.split(" ")[0] || "there"},\n\nThanks for your request. Derek will email you to find a time that works.\n\n` +
+        (topic === "buyer-offer"
+          ? "Because this is for the first-5-buyers offer, we'll confirm your purchase when we reply. Please take the free COR gap check before the call if you haven't: https://bcsafetydocs.com/cor-gap-check\n\n"
+          : "") +
+        `You can reply to this email with anything you'd like covered.\n\nBC Safety Docs\nhttps://bcsafetydocs.com\n`,
+    });
+  } catch (e) {
+    console.error("Call-request confirmation failed:", e);
+  }
+
+  return json({ ok: true }, 200);
 }

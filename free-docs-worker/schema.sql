@@ -88,3 +88,19 @@ CREATE TABLE IF NOT EXISTS sequence_emails (
   created_at   TEXT NOT NULL DEFAULT (datetime('now'))
 );
 CREATE INDEX IF NOT EXISTS idx_seq_email ON sequence_emails (email, status);
+
+-- Call requests from the kit page and thank-you page (handleCallRequest).
+-- Not marketing signups: nothing here feeds the Resend list.
+CREATE TABLE IF NOT EXISTS call_requests (
+  id         INTEGER PRIMARY KEY AUTOINCREMENT,
+  name       TEXT NOT NULL,
+  email      TEXT NOT NULL,                 -- lowercased
+  phone      TEXT,
+  topic      TEXT NOT NULL,                 -- question | buyer-offer
+  message    TEXT,
+  source     TEXT,                          -- page path the form was on
+  ip_hash    TEXT,                          -- truncated SHA-256, rate limiting only
+  created_at TEXT NOT NULL DEFAULT (datetime('now'))
+);
+CREATE INDEX IF NOT EXISTS idx_cr2_email ON call_requests (email, created_at);
+CREATE INDEX IF NOT EXISTS idx_cr2_ip    ON call_requests (ip_hash, created_at);

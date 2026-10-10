@@ -147,6 +147,30 @@ footer a:hover { color:var(--yellow); }
 .kit-hero-img{display:block;width:100%;max-width:780px;height:auto;margin:40px auto 0}
 @media(max-width:1000px){.pv-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.pv-grid{grid-template-columns:1fr}}
+
+.call-wrap{display:grid;grid-template-columns:1fr 1.2fr;gap:36px;align-items:start;margin-top:26px}
+.call-who{display:flex;gap:16px;align-items:center;margin-bottom:14px}
+.call-who img{width:84px;height:84px;border-radius:50%;object-fit:cover;border:3px solid var(--yellow);flex-shrink:0}
+.call-who strong{display:block;font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;color:var(--black);line-height:1.1}
+.call-who span{font-size:0.84rem;color:var(--grey);line-height:1.5}
+.call-copy p{font-size:0.92rem;color:var(--grey);line-height:1.7;margin-bottom:12px}
+.call-copy a{color:var(--blue);font-weight:600}
+.call-card{background:var(--white);border:1px solid var(--border);border-top:4px solid var(--yellow);border-radius:3px;padding:24px}
+.call-card h3{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.35rem;margin-bottom:12px;color:var(--black)}
+.call-card label{display:block;font-size:0.8rem;font-weight:600;color:var(--black);margin:10px 0 4px}
+.call-card input[type=text],.call-card input[type=email],.call-card input[type=tel],.call-card textarea{width:100%;font:inherit;font-size:0.95rem;padding:10px 12px;border:1px solid var(--mid);border-radius:3px;background:#fff;color:var(--black)}
+.call-card textarea{min-height:84px;resize:vertical}
+.call-card .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.call-card button[type=submit]{margin-top:14px;border:none;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-size:1.05rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;background:var(--yellow);color:var(--black);padding:12px 26px;border-radius:3px}
+.call-card button[disabled]{opacity:.55;cursor:default}
+.call-msg{font-size:0.86rem;margin-top:10px;min-height:1.2em;line-height:1.5}
+.call-fine{font-size:0.74rem;color:#888;margin-top:8px;line-height:1.55}
+.offer-box{margin-top:22px;background:var(--black);color:#fff;border-radius:3px;padding:22px 24px}
+.offer-box .tag{font-family:'Barlow Condensed',sans-serif;font-size:0.74rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--yellow)}
+.offer-box h3{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.4rem;line-height:1.15;margin:4px 0 8px;color:#fff}
+.offer-box p{font-size:0.88rem;color:#BBB;line-height:1.65;margin-bottom:8px}
+.offer-box p:last-child{margin-bottom:0}
+@media(max-width:860px){.call-wrap{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -211,6 +235,7 @@ footer a:hover { color:var(--yellow); }
     <p style="margin:22px auto 0;font-size:0.85rem;color:#888;">Want to see the quality first? <a href="/policy-statement.html" style="color:var(--yellow);">Get the OHS Policy Statement free &rarr;</a></p>
     <p style="margin:10px auto 0;font-size:0.85rem;color:#888;">Wondering what COR could be worth to you? <a href="/cor-rebate-calculator" style="color:var(--yellow);">Estimate your annual incentive with the free calculator &rarr;</a></p>
     <p style="margin:10px auto 0;font-size:0.85rem;color:#888;">Not sure where you stand? <a href="/cor-gap-check" style="color:var(--yellow);">Take the free 2-minute COR gap check &rarr;</a></p>
+    <p style="margin:10px auto 0;font-size:0.85rem;color:#888;">Questions first? <a href="#call" style="color:var(--yellow);">Book a free 15-minute call &rarr;</a></p>
     <img class="kit-hero-img" src="/images/hero-cor-kit.webp" width="1000" height="699" fetchpriority="high" alt="Pages from the COR Small-Employer Kit: the Workplace Inspection Checklist in front of the Worker Orientation and Training Record and the Formal Hazard Assessment Register"/>
   </div>
 
@@ -326,6 +351,47 @@ footer a:hover { color:var(--yellow); }
     </div>
   </section>
 
+
+  <section class="kit-section" id="call">
+    <div class="kit-inner">
+      <p class="section-label">A real person behind it</p>
+      <h2 class="section-title">Questions? Book a free 15-minute call.</h2>
+      <div class="call-wrap">
+        <div class="call-copy">
+          <div class="call-who">
+            <img src="/images/derek-avatar.webp" width="240" height="240" loading="lazy" alt="Derek Henderson"/>
+            <div><strong>Derek Henderson</strong><span>HazMat and confined space rescue, 15+ years working under BC OHS. <a href="/about.html">About me</a></span></div>
+          </div>
+          <p>I run BC Safety Docs and I read every message. If you want to talk through whether the kit fits your business, how COR works for a small employer, or what to do first, book a call. No sales pitch: if the kit isn't a fit, I'll tell you.</p>
+          <p>Prefer email? <a href="mailto:info@bcsafetydocs.com">info@bcsafetydocs.com</a> reaches me directly.</p>
+          <div class="offer-box" id="first-five">
+      <p class="tag">Launch offer &middot; first 5 buyers</p>
+      <h3>Free 20-minute call to go over your gap-check results.</h3>
+      <p>Buy the kit, take the free <a href="/cor-gap-check" style="color:var(--yellow)">COR gap check</a>, and Derek will go through your results with you for 20 minutes: what is in place, what is missing, and what to tackle first.</p>
+      <p>In return we ask for honest feedback and, only if you are happy, your permission to quote you. No obligation either way, and nothing is published without your OK. Customers quoted after a free call like this will be identified as such. The offer ends when the five spots are taken.</p>
+    </div>
+        </div>
+        <div class="call-card">
+          <h3>Request a free 15-minute call</h3>
+          <form class="call-form" data-topic="question" novalidate>
+          <label for="kc-name">Your name</label>
+          <input type="text" id="kc-name" name="name" autocomplete="name" required>
+          <label for="kc-email">Email</label>
+          <input type="email" id="kc-email" name="email" autocomplete="email" required>
+          <label for="kc-phone">Phone <span style="font-weight:400;color:#888">(optional)</span></label>
+          <input type="tel" id="kc-phone" name="phone" autocomplete="tel">
+          <label for="kc-msg">What would you like to ask? <span style="font-weight:400;color:#888">(optional)</span></label>
+          <textarea id="kc-msg" name="message"></textarea>
+          <div class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+          <button type="submit">Request my call</button>
+          <p class="call-msg" role="status"></p>
+          <p class="call-fine">We use your details only to arrange and follow up on this call. See the <a href="/terms.html" style="color:#888">Privacy Policy</a>. This does not add you to any mailing list.</p>
+        </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="kit-section alt">
     <div class="kit-inner faq">
       <p class="section-label">Questions</p>
@@ -373,5 +439,6 @@ footer a:hover { color:var(--yellow); }
   </p>
 </footer>
 <script>fetch('/api/tick').catch(function(){});</script>
+<script src="/call-form.js" defer></script>
 </body>
 </html>

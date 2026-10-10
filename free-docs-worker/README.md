@@ -179,3 +179,12 @@ Delivery backup (2026-10-09): the Cloudflare cron trigger had not fired after 35
 API request (and a `GET /api/tick` beacon on the calculator, gap-check and kit pages) also calls
 `processDue`, which sends any due follow-ups. Runs are logged in `cron_log` (source `lazy` or the
 cron expression). Keep both: the daily cron (`0 16 * * *`) is the intended path.
+
+## Call requests (`POST /api/call-request`)
+
+Powers the "Request a free 15-minute call" form on `cor-kit.html` and the first-5-buyers form on
+`success.html` (both use `/call-form.js`). Stores the request in `call_requests`, emails it to
+info@bcsafetydocs.com with the requester as reply-to, and sends the requester a confirmation.
+`topic: buyer-offer` requests must be checked against a Stripe payment before booking. Honeypot field
+`website`; limits 3 per email and 10 per network address per 24 hours. When the five launch-offer spots
+are taken, remove the offer box (`#first-five`) from `cor-kit.html` and `success.html`.

@@ -36,6 +36,18 @@
     .logo { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 1rem; color: #fff; letter-spacing: 0.04em; margin-top: 48px; }
     .logo span { color: #F5C400; }
     .disclaimer { font-size: 0.72rem; color: #444; max-width: 440px; margin-top: 32px; line-height: 1.6; }
+
+    .offer { background:#111; border:1px solid #F5C400; border-radius:4px; padding:22px 24px; margin:0 0 20px; max-width:480px; text-align:left; }
+    .offer .tag { font-family:'Barlow Condensed',sans-serif; font-size:0.74rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#F5C400; margin:0 0 4px; max-width:none; }
+    .offer h2 { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:1.4rem; line-height:1.15; color:#fff; margin-bottom:8px; }
+    .offer p { color:#aaa; font-size:0.86rem; max-width:none; margin-bottom:8px; }
+    .offer label { display:block; font-size:0.78rem; font-weight:600; color:#ddd; margin:10px 0 4px; }
+    .offer input, .offer textarea { width:100%; font:inherit; font-size:0.92rem; padding:9px 11px; border:1px solid #444; border-radius:3px; background:#1d1d1d; color:#fff; }
+    .offer textarea { min-height:70px; }
+    .offer .hp { position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+    .offer button { margin-top:12px; border:none; cursor:pointer; background:#F5C400; color:#1A1A1A; font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:1rem; letter-spacing:0.06em; text-transform:uppercase; padding:12px 24px; border-radius:3px; }
+    .offer .call-msg { font-size:0.84rem; min-height:1.2em; margin:8px 0 0; max-width:none; }
+    .offer .call-fine { font-size:0.72rem; color:#777; margin:8px 0 0; max-width:none; }
   </style>
 </head>
 <body>
@@ -45,8 +57,24 @@
   <div class="email-note">
     <p><strong>Didn't receive it?</strong> Check your spam folder first. If it's not there within 10 minutes, email us at <a href="mailto:info@bcsafetydocs.com" style="color:#F5C400;">info@bcsafetydocs.com</a> and we'll sort it out right away.</p>
   </div>
+  <div class="offer" id="first-five">
+    <p class="tag">Launch offer &middot; first 5 buyers</p>
+    <h2>Claim your free 20-minute call.</h2>
+    <p>Take the free <a href="/cor-gap-check" style="color:#F5C400;">COR gap check</a>, then book a 20-minute call with Derek to go over your results. In return we ask for honest feedback and, only if you are happy, your permission to quote you. No obligation, and nothing is published without your OK.</p>
+    <form class="call-form" data-topic="buyer-offer" novalidate>
+      <label for="s-name">Your name</label><input type="text" id="s-name" name="name" autocomplete="name" required>
+      <label for="s-email">Email used at checkout</label><input type="email" id="s-email" name="email" autocomplete="email" required>
+      <label for="s-phone">Phone (optional)</label><input type="tel" id="s-phone" name="phone" autocomplete="tel">
+      <label for="s-msg">Anything you'd like to cover? (optional)</label><textarea id="s-msg" name="message"></textarea>
+      <div class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+      <button type="submit">Claim my call</button>
+      <p class="call-msg" role="status"></p>
+      <p class="call-fine">Used only to arrange this call. Offer is for the first five buyers and ends when those spots are taken.</p>
+    </form>
+  </div>
   <a href="/index.html" class="btn">Back to BC Safety Docs</a>
   <p class="disclaimer">Templates are professional working tools — must be reviewed by a qualified person before use. Not legal or regulatory advice.</p>
   <div class="logo">BC<span>SAFETY</span>DOCS</div>
+<script src="/call-form.js" defer></script>
 </body>
 </html>
