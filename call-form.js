@@ -16,7 +16,7 @@
         var data = await resp.json().catch(function () { return {}; });
         if (resp.ok && data.ok) {
           msg.style.color = '#1E8449';
-          msg.textContent = 'Got it. Check your inbox for a confirmation; Derek will email you to find a time.';
+          msg.textContent = 'Got it. Check your inbox for a confirmation; I'll email you to find a time.';
           form.reset();
         } else {
           msg.style.color = '#C0392B';

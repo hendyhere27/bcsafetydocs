@@ -609,9 +609,9 @@ async function handleCallRequest(request, env) {
       reply_to: ["info@bcsafetydocs.com"],
       subject: "We got your call request",
       text:
-        `Hi ${name.split(" ")[0] || "there"},\n\nThanks for your request. Derek will email you to find a time that works.\n\n` +
+        `Hi ${name.split(" ")[0] || "there"},\n\nThanks for your request. I'll email you to find a time that works.\n\n` +
         (topic === "buyer-offer"
-          ? "Because this is for the first-5-buyers offer, we'll confirm your purchase when we reply. Please take the free COR gap check before the call if you haven't: https://bcsafetydocs.com/cor-gap-check\n\n"
+          ? "Because this is for the first-5-buyers offer, I'll confirm your purchase when I reply. Please take the free COR gap check before the call if you haven't: https://bcsafetydocs.com/cor-gap-check\n\n"
           : "") +
         `You can reply to this email with anything you'd like covered.\n\nBC Safety Docs\nhttps://bcsafetydocs.com\n`,
     });
