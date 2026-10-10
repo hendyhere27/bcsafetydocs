@@ -613,7 +613,7 @@ async function handleCallRequest(request, env) {
         (topic === "buyer-offer"
           ? "Because this is for the first-5-buyers offer, I'll confirm your purchase when I reply. Please take the free COR gap check before the call if you haven't: https://bcsafetydocs.com/cor-gap-check\n\n"
           : "") +
-        `You can reply to this email with anything you'd like covered.\n\nBC Safety Docs\nhttps://bcsafetydocs.com\n`,
+        `You can reply to this email with anything you'd like covered.\n\nDerek Henderson\nBC Safety Docs\nhttps://bcsafetydocs.com\n`,
     });
   } catch (e) {
     console.error("Call-request confirmation failed:", e);
