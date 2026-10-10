@@ -28,7 +28,7 @@ export const DOCS = {
   jsa: { title: "JSA / Field Level Hazard Assessment", free: true, url: "/jsa.html" },
   flha: { title: "Daily FLHA Form", free: true, url: "/flha.html" },
   swp: { title: "Safe Work Procedure Template", free: true, url: "/safe-work-procedure.html" },
-  confined: { title: "Confined Space Entry Permit", free: true, url: "/index.html" },
+  confined: { title: "Confined Space Entry Permit", free: true, url: "/confined-space-permit.html" },
   hotwork: { title: "Hot Work Permit", free: true, url: "/hot-work-permit.html" },
   loto: { title: "Lockout / Tagout Procedure", free: true, url: "/loto.html" },
   rules: { title: "Health & Safety Company Rules", free: false },

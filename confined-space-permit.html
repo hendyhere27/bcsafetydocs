@@ -13,10 +13,10 @@
 <script src="/track.js" defer></script>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Free BC JSA Template | Field Level Hazard Assessment | WorkSafeBC Part 3 | BC Safety Docs</title>
-  <meta name="description" content="Free BC Job Safety Analysis and Field Level Hazard Assessment template for WorkSafeBC OHS Regulation Part 3. 8-step analysis table, hierarchy of controls, crew briefing sign-off. For BC contractors."/>
-  <meta name="keywords" content="BC JSA template, field level hazard assessment BC, FLHA template WorkSafeBC, job safety analysis BC, BC contractor hazard assessment, WorkSafeBC Part 3 JSA, BC FLHA form"/>
-  <link rel="canonical" href="https://bcsafetydocs.com/jsa.html"/>
+  <title>Free BC Confined Space Entry Permit Template | WorkSafeBC Part 9 | BC Safety Docs</title>
+  <meta name="description" content="Free WorkSafeBC OHS Regulation Part 9 confined space entry permit template for BC contractors. Atmospheric testing log, standby person requirements and hazard classifications built in. Emailed instantly."/>
+  <meta name="keywords" content="BC confined space entry permit, WorkSafeBC Part 9 template, confined space permit BC, OHS Regulation Part 9 form, BC contractor safety forms, confined space entry permit Canada"/>
+  <link rel="canonical" href="https://bcsafetydocs.com/confined-space-permit"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/><noscript><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/></noscript>
@@ -100,15 +100,15 @@ footer a:hover { color:var(--yellow); }
 
 
 .hero{display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 56px);overflow:hidden}
-.hero-left{background:#2C3E50;padding:80px 6% 80px 8%;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2}
-.hero-left::after{content:'';position:absolute;top:0;right:-60px;width:120px;height:100%;background:#2C3E50;clip-path:polygon(0 0,50% 0,100% 100%,0 100%);z-index:3}
-.hero-right{background:#F5C400;padding:80px 8% 80px 10%;display:flex;flex-direction:column;justify-content:center}
-.eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#F5C400;margin-bottom:14px}
-.hero-headline{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(2.4rem,4.2vw,3.5rem);line-height:1.0;color:var(--white);margin-bottom:22px}
-.hero-headline em{font-style:normal;color:#F5C400}
+.hero-left{background:var(--black);padding:80px 6% 80px 8%;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2}
+.hero-left::after{content:'';position:absolute;top:0;right:-60px;width:120px;height:100%;background:var(--black);clip-path:polygon(0 0,50% 0,100% 100%,0 100%);z-index:3}
+.hero-right{background:var(--yellow);padding:80px 8% 80px 10%;display:flex;flex-direction:column;justify-content:center}
+.eyebrow{font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--yellow);margin-bottom:14px}
+.hero-headline{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:clamp(2.5rem,4.5vw,3.7rem);line-height:1.0;color:var(--white);margin-bottom:22px}
+.hero-headline em{font-style:normal;color:var(--yellow)}
 .hero-sub{font-size:0.97rem;color:#AAAAAA;line-height:1.65;max-width:420px;margin-bottom:34px}
 .hero-cta-group{display:flex;flex-direction:column;gap:10px;max-width:280px}
-.price-note{font-size:0.8rem;color:#888;text-align:center}
+.price-note{font-size:0.8rem;color:#666;text-align:center}
 .form-card{background:var(--white);border-radius:4px;box-shadow:0 8px 40px rgba(0,0,0,0.18);overflow:hidden;max-width:400px}
 .form-card-header{padding:13px 18px}
 .form-card-header h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;color:var(--white);letter-spacing:0.04em}
@@ -117,26 +117,49 @@ footer a:hover { color:var(--yellow); }
 .form-field{margin-bottom:9px}
 .form-label{display:block;background:#ECF0F1;font-size:0.66rem;font-weight:600;color:#555;padding:3px 7px;letter-spacing:0.04em}
 .form-input{display:block;width:100%;height:26px;border:1px solid #DDD;border-top:none}
-.hazard-row{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0 6px;font-size:0.74rem;font-weight:600}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.hazard-row{display:flex;gap:14px;margin:10px 0 7px;font-size:0.76rem;font-weight:600}
 .hazard-row span{display:flex;align-items:center;gap:4px}
 .cb{width:11px;height:11px;border:1.5px solid #999;display:inline-block}
-.cb.checked{background:#2C3E50;border-color:#2C3E50}
+.cb.checked{background:var(--red);border-color:var(--red)}
 .form-tag{display:inline-block;background:#EBF5FB;border:1px solid #AED6F1;font-size:0.63rem;color:#1A5276;padding:2px 7px;border-radius:2px;margin-top:5px;margin-right:4px}
-.hierarchy-bar{background:#2C3E50;color:white;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:0.82rem;letter-spacing:0.06em;padding:10px 20px;margin:40px 0 20px;border-radius:2px;display:inline-block}
-.hc-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:44px}
-.hc-card{text-align:center;padding:18px 10px;border:2px solid var(--border);border-radius:3px}
-.hc-card.active{border-color:#2C3E50;background:#F0F3F4}
-.hc-num{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.5rem;color:#2C3E50}
-.hc-label{font-size:0.78rem;font-weight:600;color:var(--grey);margin-top:4px}
-.hc-desc{font-size:0.72rem;color:#999;margin-top:6px;line-height:1.4}
+.problem{background:var(--black)}
+.problem .section-title{color:var(--white)}
+.problem .section-label{color:var(--yellow)}
+.problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:44px}
+.problem-card{border-top:3px solid var(--yellow);padding-top:18px}
+.problem-card h4{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.05rem;color:var(--white);margin-bottom:7px}
+.problem-card p{font-size:0.86rem;color:#777;line-height:1.65}
 .includes-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;margin-top:44px;align-items:start}
 .who-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:36px}
 .who-card{background:var(--white);border:1px solid var(--border);border-radius:3px;padding:22px}
 .who-card h4{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;color:var(--black);margin-bottom:7px}
 .who-card p{font-size:0.84rem;color:var(--grey);line-height:1.6}
-@media(max-width:900px){.hero{grid-template-columns:1fr;min-height:auto}.hero-left::after{display:none}.hero-left{padding:56px 5%}.hero-right{padding:36px 5%;background:#F9F9F9}.hc-grid{grid-template-columns:repeat(3,1fr)}.includes-grid{grid-template-columns:1fr}.who-grid{grid-template-columns:1fr}}
+.products{background:var(--light)}
+.prod-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:36px}
+.prod-card{background:var(--white);border:1px solid var(--border);border-top:4px solid var(--black);border-radius:3px;padding:22px;display:flex;flex-direction:column}
+.prod-card.feat{border-top-color:var(--yellow);box-shadow:0 6px 24px rgba(0,0,0,0.10)}
+.prod-card .prod-tag{flex:none;line-height:1.3;font-family:'Barlow Condensed',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--red);margin-bottom:6px}
+.prod-card h3{font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.3rem;line-height:1.1;color:var(--black);margin-bottom:8px}
+.prod-card .prod-price{flex:none;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.9rem;color:var(--black);line-height:1;margin-bottom:10px}
+.prod-card .prod-price small{font-size:0.85rem;font-weight:700;margin-left:3px}
+.prod-card p{font-size:0.84rem;color:var(--grey);line-height:1.6;margin-bottom:16px;flex:1}
+.prod-card .btn-primary,.prod-card .btn-outline{padding:12px 16px;font-size:1rem;width:100%}
+.free-strip{margin-top:28px;font-size:0.88rem;color:var(--grey);line-height:2}
+.free-strip a{display:inline-block;color:var(--black);font-weight:600;text-decoration:none;border:1px solid var(--border);background:var(--white);border-radius:3px;padding:2px 10px;margin:0 6px 6px 0;line-height:1.7}
+.free-strip a:hover{border-color:var(--black)}
+.verified{background:var(--black)}
+.verified .section-title{color:var(--white)}
+.verified .section-label{color:var(--yellow)}
+.verified .section-body{color:#AAA;max-width:680px}
+.fix-list{list-style:none;margin-top:28px;display:grid;grid-template-columns:1fr 1fr;gap:10px 28px}
+.fix-list li{font-size:0.86rem;color:#BBB;line-height:1.55;padding:10px 0;border-bottom:1px solid #2E2E2E}
+.fix-list b{color:var(--yellow);font-family:'Barlow Condensed',sans-serif;font-size:1rem;margin-right:6px}
+.verified-note{margin-top:22px;border-left:4px solid var(--yellow);padding:4px 0 4px 16px;font-size:0.88rem;color:#CCC;line-height:1.7;max-width:760px}
+@media(max-width:1100px){.prod-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.prod-grid{grid-template-columns:1fr}.fix-list{grid-template-columns:1fr}.hero-cta-group{max-width:none}.btn-primary,.btn-dark{display:block}.btn-dark{padding:16px 20px}.reg-row{gap:12px}.reg-val{text-align:right}}
+@media(max-width:900px){.hero{grid-template-columns:1fr;min-height:auto}.hero-left::after{display:none}.hero-left{padding:56px 5%}.hero-right{padding:36px 5%;background:#F9F9F9}.problem-grid{grid-template-columns:1fr}.includes-grid{grid-template-columns:1fr}.who-grid{grid-template-columns:1fr}}
 
-  .learn-more{background:var(--light)}.learn-list{list-style:none;margin-top:8px;max-width:640px}.learn-list li{border-bottom:1px solid var(--border)}.learn-list a{display:block;padding:13px 0;color:var(--blue);font-weight:600;font-size:0.95rem;text-decoration:none}.learn-list a span{display:block;font-weight:400;color:var(--grey);font-size:0.82rem;margin-top:2px}
   .free-pill{display:inline-block;background:#27AE60;color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:0.9rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:16px}
 .dl-card{background:#fff;border-radius:6px;padding:18px;max-width:440px;width:100%;box-shadow:0 8px 30px rgba(0,0,0,0.25);text-align:left}
 .cta-section .dl-card{margin:0 auto}
@@ -204,15 +227,15 @@ footer a:hover { color:var(--yellow); }
   <section class="hero" aria-label="Hero">
     <div class="hero-left">
       <span class="free-pill">Free Download</span>
-      <p class="eyebrow">WorkSafeBC OHS Regulation Part 3 &mdash; s.3.3</p>
-      <h1 class="hero-headline">JSA and FLHA templates<br>built for<br><em>BC job sites.</em></h1>
-      <p class="hero-sub">One document covers both your Job Safety Analysis and Field Level Hazard Assessment. Hierarchy of controls built in. Toolbox talk and crew briefing sign-off included. BC OHS Regulation Part 3 referenced throughout.</p>
+      <p class="eyebrow">WorkSafeBC OHS Regulation Part 9</p>
+      <h1 class="hero-headline">The confined space<br>permit built for<br><em>BC contractors.</em></h1>
+      <p class="hero-sub">Not a generic US template. Not a blank form. A two-page, regulation-specific confined space entry permit with BC atmospheric thresholds, standby person requirements, and hazard classifications already built in.</p>
       <div class="hero-cta-group" style="max-width:440px;">
         <div class="dl-card">
-          <form class="dl-form" data-product="jsa" data-label="Send Me the Free JSA">
+          <form class="dl-form" data-product="confined-space" data-label="Send Me the Free Permit">
             <div class="free-form-row">
               <input type="email" class="free-email-input" placeholder="you@company.com" aria-label="Email address" required/>
-              <button type="submit" class="free-submit-btn">Send Me the Free JSA</button>
+              <button type="submit" class="free-submit-btn">Send Me the Free Permit</button>
             </div>
             <p class="free-msg" role="status"></p>
             <label class="free-optin-row"><input type="checkbox" class="free-optin"> <span>Also send me occasional WorkSafeBC compliance updates. Unsubscribe any time. (Optional &mdash; leave unticked and you'll get only your download.)</span></label><p class="free-consent">We'll email the download link right away. See our <a href="/terms.html">Privacy Policy</a>.</p>
@@ -222,110 +245,159 @@ footer a:hover { color:var(--yellow); }
     </div>
     <div class="hero-right" aria-hidden="true">
       <div class="form-card">
-        <div class="form-card-header" style="background:#2C3E50;">
-          <h3>JOB SAFETY ANALYSIS / FLHA</h3>
-          <p>WorkSafeBC OHS Regulation Part 3 &middot; s.3.3 Risk Assessment</p>
+        <div class="form-card-header" style="background:var(--red);">
+          <h3>CONFINED SPACE ENTRY PERMIT</h3>
+          <p>WorkSafeBC OHS Regulation Part 9 &middot; s.9.1, 9.25, 9.28&ndash;9.36</p>
         </div>
         <div class="form-card-body">
-          <div class="form-field"><span class="form-label">Task / Job Description</span><div class="form-input"></div></div>
-          <div class="form-field"><span class="form-label">Hazard Categories (check all that apply)</span>
+          <div class="form-row">
+            <div class="form-field"><span class="form-label">Permit No.</span><div class="form-input"></div></div>
+            <div class="form-field"><span class="form-label">Issue Date</span><div class="form-input"></div></div>
+          </div>
+          <div class="form-field"><span class="form-label">Confined Space Location / ID</span><div class="form-input"></div></div>
+          <div class="form-field">
+            <span class="form-label">2 HAZARD CLASSIFICATION (s.9.1 / s.9.25)</span>
             <div class="hazard-row">
-              <span><span class="cb"></span> Excavation</span>
-              <span><span class="cb checked"></span> Confined Space</span>
-              <span><span class="cb"></span> Hot Work</span>
+              <span><span class="cb"></span> LOW</span>
+              <span><span class="cb"></span> MODERATE</span>
+              <span><span class="cb checked"></span> HIGH</span>
             </div>
           </div>
-          <div class="form-field"><span class="form-label">3 JSA ANALYSIS TABLE (E&rarr;S&rarr;Eng&rarr;A&rarr;PPE)</span><div class="form-input" style="height:36px;"></div></div>
-          <div class="form-field"><span class="form-label">6 TOOLBOX TALK &amp; CREW BRIEFING</span><div class="form-input"></div></div>
-          <span class="form-tag">&#10003; 8-step analysis table</span>
-          <span class="form-tag">&#10003; Crew briefing sign-off</span>
+          <div class="form-field"><span class="form-label">Atmospheric Testing &mdash; O2 / LEL / H2S / CO</span><div class="form-input"></div></div>
+          <div class="form-field"><span class="form-label">Standby Person (s.9.35 / s.9.36)</span><div class="form-input"></div></div>
+          <span class="form-tag">&#10003; BC-specific thresholds</span>
+          <span class="form-tag">&#10003; 2-page permit + monitoring log</span>
         </div>
       </div>
     </div>
   </section>
 
   <div class="trust-bar">
-    <div class="trust-item"><div class="trust-icon">&#10003;</div> BC OHS Regulation Part 3 s.3.3</div>
-    <div class="trust-item"><div class="trust-icon">&#10003;</div> Hierarchy of controls built in</div>
-    <div class="trust-item"><div class="trust-icon">&#10003;</div> Toolbox talk sign-off included</div>
-    <div class="trust-item"><div class="trust-icon">&#10003;</div> Works as JSA or FLHA</div>
+    <div class="trust-item"><div class="trust-icon">&#10003;</div> BC OHS Regulation Part 9 specific</div>
+    <div class="trust-item"><div class="trust-icon">&#10003;</div> Sections 9.1, 9.25, 9.28&ndash;9.36 referenced</div>
+    <div class="trust-item"><div class="trust-icon">&#10003;</div> Fully editable Word doc</div>
+    <div class="trust-item"><div class="trust-icon">&#10003;</div> Instant download</div>
   </div>
 
-  <section aria-labelledby="hc-title">
-    <p class="section-label">Built around the regulation</p>
-    <h2 class="section-title" id="hc-title">Hierarchy of controls. Sequenced correctly.</h2>
-    <p class="section-body">Most generic JSA templates list controls as a free-text field. This one sequences them correctly &mdash; elimination first, PPE last &mdash; matching the WorkSafeBC OHS Regulation requirement under Part 3.</p>
-    <div class="hierarchy-bar">WORKSAFEBC HIERARCHY OF CONTROLS &mdash; s.3.3</div>
-    <div class="hc-grid">
-      <div class="hc-card active"><div class="hc-num">1</div><div class="hc-label">Eliminate</div><div class="hc-desc">Remove the hazard entirely from the workplace</div></div>
-      <div class="hc-card active"><div class="hc-num">2</div><div class="hc-label">Substitute</div><div class="hc-desc">Replace with something less hazardous</div></div>
-      <div class="hc-card active"><div class="hc-num">3</div><div class="hc-label">Engineering</div><div class="hc-desc">Isolate people from the hazard</div></div>
-      <div class="hc-card active"><div class="hc-num">4</div><div class="hc-label">Administrative</div><div class="hc-desc">Change the way people work</div></div>
-      <div class="hc-card active"><div class="hc-num">5</div><div class="hc-label">PPE</div><div class="hc-desc">Protect the worker &mdash; last resort</div></div>
+  <section class="products" id="products" aria-labelledby="products-title">
+    <p class="section-label">Products</p>
+    <h2 class="section-title" id="products-title">Free templates. One paid kit for COR.</h2>
+    <p class="section-body">Editable Word documents. The field templates are free; the COR Kit is a one-time purchase. No subscription.</p>
+    <div class="prod-grid">
+      <div class="prod-card feat">
+        <p class="prod-tag">For COR employers &middot; the one paid product</p>
+        <h3>COR Small-Employer Kit</h3>
+        <p class="prod-price">$279<small>CAD</small></p>
+        <p>18 documents mapped to the 13 national COR audit elements, for BC employers with fewer than 20 workers. Includes the confined space permit, JSA/FLHA and the other field templates, plus 10 COR program documents that are only sold in the kit.</p>
+        <a href="/cor-kit.html" class="btn-primary">See the COR Kit</a>
+      </div>
+      <div class="prod-card">
+        <p class="prod-tag">Free &middot; email delivery</p>
+        <h3>8 field templates</h3>
+        <p class="prod-price">$0</p>
+        <p>Confined space permit, JSA/FLHA, hot work, lockout, daily FLHA, safe work procedure, incident report and emergency response plan. Each is a separate free download.</p>
+        <a href="#buy" class="btn-outline">Get the Confined Space Permit</a>
+      </div>
     </div>
+    <p class="free-strip"><strong style="color:var(--black);">Free templates (email delivery):</strong><br>
+      <a href="/confined-space-permit.html">Confined Space Permit</a><a href="/jsa.html">JSA / FLHA</a><a href="/policy-statement.html">OHS Policy Statement</a><a href="/hot-work-permit.html">Hot Work Permit</a><a href="/loto.html">Lockout / Tagout</a><a href="/flha.html">Daily FLHA</a><a href="/safe-work-procedure.html">Safe Work Procedure</a><a href="/incident-report.html">Incident Report</a><a href="/emergency-response.html">Emergency Response Plan</a><br>
+      <strong style="color:var(--black);">Free interactive tool:</strong><br>
+      <a href="/blog/bc-firesmart-assessment-tool">BC FireSmart Assessment Tool</a>
+    </p>
   </section>
 
-  <section style="background:var(--light);" aria-labelledby="includes-title">
-    <p class="section-label">What's included</p>
-    <h2 class="section-title" id="includes-title">Analysis table. Hazard checklist. Crew briefing. One form.</h2>
-    <div class="includes-grid">
-      <ul class="includes-list">
-        <li><span class="check">&#10003;</span> Fillable Word document (.docx) &mdash; edit on any device, print on site</li>
-        <li><span class="check">&#10003;</span> Job information: task description, 8 work type checkboxes, supervisor details</li>
-        <li><span class="check">&#10003;</span> 12-category hazard identification checklist to review before analysis</li>
-        <li><span class="check">&#10003;</span> 8-step JSA analysis table: Task Step / Hazards / Controls / Residual Risk</li>
-        <li><span class="check">&#10003;</span> Hierarchy of controls (E&rarr;S&rarr;Eng&rarr;A&rarr;PPE) built into the table header</li>
-        <li><span class="check">&#10003;</span> Residual risk rating (High / Medium / Low) per step</li>
-        <li><span class="check">&#10003;</span> Additional controls / site-specific notes field</li>
-        <li><span class="check">&#10003;</span> Supervisor authorization signature before work begins</li>
-        <li><span class="check">&#10003;</span> Toolbox talk briefing notes field</li>
-        <li><span class="check">&#10003;</span> 8-worker crew briefing sign-off table</li>
-        <li><span class="check">&#10003;</span> Closing supervisor confirmation &mdash; all workers briefed before work starts</li>
-        <li><span class="check">&#10003;</span> Revision number field for document control</li>
-        <li><span class="check">&#10003;</span> BC OHS Regulation Part 3 s.3.3 referenced throughout</li>
-      </ul>
-      <div class="reg-card">
-        <h4>Regulatory Basis</h4>
-        <div class="reg-row"><span class="reg-label">Regulation</span><span class="reg-val">BC OHS Reg. Part 3</span></div>
-        <div class="reg-row"><span class="reg-label">Risk assessment requirement</span><span class="reg-val">s.3.3</span></div>
-        <div class="reg-row"><span class="reg-label">Hierarchy of controls</span><span class="reg-val">Part 3 s.3.12</span></div>
-        <div class="reg-row"><span class="reg-label">Works as JSA</span><span class="reg-val">&#10003; Yes</span></div>
-        <div class="reg-row"><span class="reg-label">Works as FLHA</span><span class="reg-val">&#10003; Yes</span></div>
-        <div class="reg-row"><span class="reg-label">Toolbox talk record</span><span class="reg-val">&#10003; Built in</span></div>
-        <div class="reg-row"><span class="reg-label">Crew sign-off</span><span class="reg-val">&#10003; 8 workers</span></div>
-        <div class="reg-row"><span class="reg-label">Format</span><span class="reg-val">Editable .docx</span></div>
+  <section class="problem" aria-labelledby="problem-title">
+    <p class="section-label">The problem</p>
+    <h2 class="section-title" id="problem-title">Generic templates don't cut it on a BC worksite.</h2>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <h4>US-based forms miss BC classification</h4>
+        <p>BC uses a three-tier atmospheric hazard classification &mdash; Low, Moderate, High &mdash; under s.9.1 and s.9.25. Most templates online are built for OSHA, not WorkSafeBC.</p>
+      </div>
+      <div class="problem-card">
+        <h4>Free WorkSafeBC samples are starting points</h4>
+        <p>WorkSafeBC's own samples don't have atmospheric reading columns, per-hazard standby person requirements, or amendment signature blocks needed for a real entry.</p>
+      </div>
+      <div class="problem-card">
+        <h4>Enterprise software is overkill</h4>
+        <p>SafetyCulture and SafetyEvolution charge $25&ndash;$30 per user per month. For a crew doing one confined space entry a week, that's $100+/month for a permit you can download free here.</p>
       </div>
     </div>
   </section>
 
-  <section aria-labelledby="who-title">
-    <p class="section-label">Who it's for</p>
-    <h2 class="section-title" id="who-title">Every BC contractor who puts workers in front of hazards.</h2>
-    <div class="who-grid">
-      <div class="who-card"><h4>Small Contractors &amp; Owner-Operators</h4><p>If you're doing pre-job planning without a safety coordinator, this form keeps you compliant and documented without taking 45 minutes to fill out.</p></div>
-      <div class="who-card"><h4>Pipeline &amp; Utility Crews</h4><p>High-hazard tasks with multiple workers need a documented analysis before work starts. This form covers the analysis and crew briefing in one document.</p></div>
-      <div class="who-card"><h4>Mechanical &amp; Construction</h4><p>Hot work, working at heights, energized equipment &mdash; the work type checkboxes and hazard category grid ensure nothing gets missed before the job starts.</p></div>
-      <div class="who-card"><h4>Safety Officers Building Programs</h4><p>Whether you're building a COR-ready safety program or need a solid daily FLHA for a small crew, this template is the foundation.</p></div>
+  <section aria-labelledby="includes-title">
+    <p class="section-label">What's included</p>
+    <h2 class="section-title" id="includes-title">Everything a BC supervisor needs. Nothing they don't.</h2>
+    <div class="includes-grid">
+      <ul class="includes-list">
+        <li><span class="check">&#10003;</span> Two-page fillable Word document (.docx) &mdash; edit on any device, print on site</li>
+        <li><span class="check">&#10003;</span> BC atmospheric hazard classification (Low / Moderate / High) per s.9.1 and s.9.25</li>
+        <li><span class="check">&#10003;</span> Atmospheric testing log: O2 (19.5% oxygen-deficiency threshold, s.1.1), LEL &lt;20%, H2S &le;10 ppm ceiling, CO &lt;25 ppm TWA</li>
+        <li><span class="check">&#10003;</span> Standby person requirements per hazard level &mdash; Low, Moderate, and High per s.9.35/s.9.36</li>
+        <li><span class="check">&#10003;</span> Supplied-air and SCBA requirements referenced per s.9.28(a)</li>
+        <li><span class="check">&#10003;</span> Isolation, lockout, and purge verification checklist</li>
+        <li><span class="check">&#10003;</span> Full PPE checklist including supplied-air respirator, SCBA, emergency escape respirator</li>
+        <li><span class="check">&#10003;</span> Rescue plan &mdash; method, equipment, emergency contacts, nearest hospital</li>
+        <li><span class="check">&#10003;</span> 6-entry entrant sign-in/sign-out log plus 6-entry continuation on Page 2</li>
+        <li><span class="check">&#10003;</span> 16-row extended atmospheric monitoring log</li>
+        <li><span class="check">&#10003;</span> Permit amendment signature blocks for mid-job condition changes</li>
+        <li><span class="check">&#10003;</span> Regulatory section references throughout (s.9.1, 9.25, 9.28&ndash;9.36)</li>
+      </ul>
+      <div class="reg-card">
+        <h4>BC-Specific Atmospheric Thresholds</h4>
+        <div class="reg-row"><span class="reg-label">O2 (&ldquo;oxygen deficient&rdquo; below this, s.1.1)</span><span class="reg-val">&ge; 19.5%</span></div>
+        <div class="reg-row"><span class="reg-label">LEL action threshold</span><span class="reg-val">&lt; 20% LEL</span></div>
+        <div class="reg-row"><span class="reg-label">H2S ceiling</span><span class="reg-val">&le; 10 ppm</span></div>
+        <div class="reg-row"><span class="reg-label">CO TLV-TWA</span><span class="reg-val">&lt; 25 ppm</span></div>
+        <div class="reg-row"><span class="reg-label">Low hazard vent. minimum</span><span class="reg-val">85 m&sup3;/h per worker</span></div>
+        <div class="reg-row"><span class="reg-label">Retest interval (vacated)</span><span class="reg-val">&gt; 20 min absent</span></div>
+        <div class="reg-row"><span class="reg-label">Regulation</span><span class="reg-val">BC OHS Reg. Part 9</span></div>
+        <div class="reg-row"><span class="reg-label">Key sections</span><span class="reg-val">s.9.1, 9.25, 9.28&ndash;9.36</span></div>
+      </div>
+    </div>
+    <div class="reg-card" style="border-left-color:var(--yellow); margin-top:36px;">
+      <h4>Why &ldquo;good&rdquo; oxygen doesn't mean a safe atmosphere</h4>
+      <p style="font-size:0.88rem; color:var(--grey); line-height:1.7; margin-bottom:10px;">A normal oxygen reading (19.5%&ndash;20.9%) can pass while H2S or CO is present at fatal concentrations. The math: going from 20.9% to the 19.5% floor represents about 14,000 ppm of total displacement. A lethal dose of H2S (IDLH ~100 ppm) or CO (fatal in hours at ~200 ppm) is well under 2% of that budget &mdash; small enough that it won't move your O2 reading outside the normal range at all. O2, LEL, H2S, and CO are four independent tests. A clean O2 number does not clear the other three.</p>
+      <p style="font-size:0.85rem; margin-bottom:0;"><a href="/blog/oxygen-reading-20-9-confined-space" style="color:var(--blue); font-weight:600;">Read the full breakdown &rarr;</a> &nbsp;&middot;&nbsp; <a href="/blog/confined-space-entry-permit-bc-requirements" style="color:var(--blue); font-weight:600;">When Part 9 requires a permit &rarr;</a></p>
     </div>
   </section>
 
-    <section class="learn-more" aria-label="Related guides and products">
-    <p class="section-label">Related</p>
-    <ul class="learn-list">
-      <li><a href="/confined-space-permit.html">Free Confined Space Entry Permit<span>Two-page Part 9 permit with atmospheric log and rescue plan</span></a></li>
-      <li><a href="/cor-kit.html">COR Small-Employer Kit &mdash; $279<span>18 documents mapped to the 13 national COR audit elements</span></a></li>
-    </ul>
+  <section class="verified" id="verified" aria-labelledby="verified-title">
+    <p class="section-label">Checked against the regulation</p>
+    <h2 class="section-title" id="verified-title">We audited our own templates. We found 7 citation errors and fixed them.</h2>
+    <p class="section-body">In July 2026 every Part 9 reference in our permit and tools was re-checked against the live WorkSafeBC OHS Regulation. Seven section references were wrong or overstated. All seven were corrected in the permit, on this site and in our free MCP server. The corrected references:</p>
+    <ol class="fix-list">
+      <li><b>1</b>Low-hazard standby person: now s.9.34 (was cited to the wrong section).</li>
+      <li><b>2</b>Retest after everyone has left for more than 20 minutes: now s.9.25(3).</li>
+      <li><b>3</b>Continuous monitoring where flammable gas could exceed 20% LEL: now s.9.25(6).</li>
+      <li><b>4</b>Moderate-hazard ventilation: now s.9.30 (was cited to s.9.31).</li>
+      <li><b>5</b>Supplied-air / SCBA determination: now s.9.28(a) (was cited to s.9.29, Inerting).</li>
+      <li><b>6</b>No natural ventilation for high-hazard atmospheres: now s.9.33(2)(a).</li>
+      <li><b>7</b>The 19.5% oxygen figure was presented as a Part 9 entry requirement. It comes from the s.1.1 definition of &ldquo;oxygen deficient&rdquo; (under 19.5%); Part 9 itself sets no numeric oxygen floor for entry, so we now describe it that way.</li>
+    </ol>
+    <p class="verified-note">We also added a standing warning to the permit's atmospheric log and our tools: a normal oxygen reading clears the oxygen hazard only. H2S, CO and flammable gas are separate tests. <a href="/blog/oxygen-reading-20-9-confined-space" style="color:var(--yellow);font-weight:600;">Why a 20.9% reading doesn't mean safe &rarr;</a></p>
+  </section>
+
+  <section style="background:var(--light);" aria-labelledby="who-title">
+    <p class="section-label">Who it's for</p>
+    <h2 class="section-title" id="who-title">Built for the trades that actually go underground.</h2>
+    <div class="who-grid">
+      <div class="who-card"><h4>Utility &amp; Pipeline Contractors</h4><p>Valve chambers, meter pits, pipeline crossings. Entry permits are required under s.9.13 for high hazard atmospheres, lockout or isolation, and entrapment or engulfment hazards.</p></div>
+      <div class="who-card"><h4>Plumbing &amp; Drainage</h4><p>Manholes, sump pits, catch basins. WorkSafeBC inspectors know what a compliant BC permit looks like &mdash; make sure yours does too.</p></div>
+      <div class="who-card"><h4>Hydrovac &amp; Excavation</h4><p>Excavations qualifying as confined spaces under Part 9 require the same controls. This permit covers classification and atmospheric testing.</p></div>
+      <div class="who-card"><h4>Safety Officers &amp; Owner-Operators</h4><p>Building a safety program for a small BC contractor without a dedicated safety coordinator? This is your professionally formatted, regulation-referenced starting point.</p></div>
+    </div>
   </section>
 
   <section class="cta-section" id="buy" aria-labelledby="cta-title">
     <p class="section-label">Free download</p>
-    <h2 class="section-title" id="cta-title">Have it ready before the next job.</h2>
+    <h2 class="section-title" id="cta-title">Ready before your next entry.</h2>
     <p class="section-body">Enter your email and we'll send the Word document. Add your company name and logo, print it, use it on site. No subscription, no login.</p>
     <div class="dl-card">
-          <form class="dl-form" data-product="jsa" data-label="Send Me the Free JSA">
+          <form class="dl-form" data-product="confined-space" data-label="Send Me the Free Permit">
             <div class="free-form-row">
               <input type="email" class="free-email-input" placeholder="you@company.com" aria-label="Email address" required/>
-              <button type="submit" class="free-submit-btn">Send Me the Free JSA</button>
+              <button type="submit" class="free-submit-btn">Send Me the Free Permit</button>
             </div>
             <p class="free-msg" role="status"></p>
             <label class="free-optin-row"><input type="checkbox" class="free-optin"> <span>Also send me occasional WorkSafeBC compliance updates. Unsubscribe any time. (Optional &mdash; leave unticked and you'll get only your download.)</span></label><p class="free-consent">We'll email the download link right away. See our <a href="/terms.html">Privacy Policy</a>.</p>

@@ -136,6 +136,17 @@ footer a:hover { color:var(--yellow); }
 .faq a{color:var(--blue)}
 @media(max-width:800px){.fit-grid,.doc-cols{grid-template-columns:1fr}}
 @media(max-width:600px){.kit-section{padding:44px 5%}}
+
+.pv-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:30px}
+.pv-card{margin:0}
+.pv-card a{display:block;background:#fff;border:1px solid var(--border);border-radius:3px;box-shadow:0 6px 20px rgba(0,0,0,0.10);overflow:hidden;transition:transform .15s,box-shadow .15s}
+.pv-card a:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(0,0,0,0.16)}
+.pv-card img{display:block;width:100%;height:auto}
+.pv-card figcaption{margin-top:10px;font-size:0.84rem;color:var(--grey);line-height:1.5}
+.pv-card figcaption strong{display:block;color:var(--black);font-family:'Barlow Condensed',sans-serif;font-size:1.02rem;font-weight:700}
+.kit-hero-img{display:block;width:100%;max-width:780px;height:auto;margin:40px auto 0}
+@media(max-width:1000px){.pv-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.pv-grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -146,7 +157,7 @@ footer a:hover { color:var(--yellow); }
       <button aria-haspopup="true">Permits</button>
       <div class="dropdown">
         <span class="dd-label">Entry Permits</span>
-        <a href="/index.html">Confined Space Entry Permit <span style="display:inline-block;background:#27AE60;color:#fff;font-size:0.62rem;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-left:6px;vertical-align:1px;">Free</span></a>
+        <a href="/confined-space-permit.html">Confined Space Entry Permit <span style="display:inline-block;background:#27AE60;color:#fff;font-size:0.62rem;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-left:6px;vertical-align:1px;">Free</span></a>
         <a href="/hot-work-permit.html">Hot Work Permit <span class="badge-free">Free</span></a>
         <span class="dd-label">Procedures</span>
         <a href="/loto.html">Lockout / Tagout Procedure <span class="badge-free">Free</span></a>
@@ -200,11 +211,27 @@ footer a:hover { color:var(--yellow); }
     <p style="margin:22px auto 0;font-size:0.85rem;color:#888;">Want to see the quality first? <a href="/policy-statement.html" style="color:var(--yellow);">Get the OHS Policy Statement free &rarr;</a></p>
     <p style="margin:10px auto 0;font-size:0.85rem;color:#888;">Wondering what COR could be worth to you? <a href="/cor-rebate-calculator" style="color:var(--yellow);">Estimate your annual incentive with the free calculator &rarr;</a></p>
     <p style="margin:10px auto 0;font-size:0.85rem;color:#888;">Not sure where you stand? <a href="/cor-gap-check" style="color:var(--yellow);">Take the free 2-minute COR gap check &rarr;</a></p>
+    <img class="kit-hero-img" src="/images/hero-cor-kit.webp" width="1000" height="699" fetchpriority="high" alt="Pages from the COR Small-Employer Kit: the Workplace Inspection Checklist in front of the Worker Orientation and Training Record and the Formal Hazard Assessment Register"/>
   </div>
 
   <div class="savings-bar">
     <p>&#10003; 18 documents delivered instantly &middot; Fully editable Word files &middot; Cited to OHSR and the Act &middot; No subscription ever</p>
   </div>
+
+  <section class="kit-section" id="previews">
+    <div class="kit-inner">
+      <p class="section-label">Page previews</p>
+      <h2 class="section-title">See the documents before you buy.</h2>
+      <p class="kit-lead">The first page of four of the 18 documents, as they ship. Each is a plain Word file with a program statement in everyday language, the regulation sections it is built on, and the forms you fill in. Click any page to enlarge it.</p>
+      <div class="pv-grid">
+      <figure class="pv-card"><a href="/images/preview-hazard-assessment-register.webp" target="_blank" rel="noopener"><img src="/images/preview-hazard-assessment-register.webp" width="900" height="1114" loading="lazy" decoding="async" alt="First page of the Formal Hazard Assessment Register: company details, program statement, risk rating guide and hazard categories"/></a><figcaption><strong>Formal Hazard Assessment Register</strong>Advance task-by-task hazard assessment with a risk grid and controls. OHSR ss.3.3, 3.5, 3.9&ndash;3.10.</figcaption></figure>
+      <figure class="pv-card"><a href="/images/preview-inspection-checklist.webp" target="_blank" rel="noopener"><img src="/images/preview-inspection-checklist.webp" width="900" height="1115" loading="lazy" decoding="async" alt="First page of the Workplace Inspection Program and Checklist: company details, program statement and housekeeping, fire and tools checklists"/></a><figcaption><strong>Workplace Inspection Program &amp; Checklist</strong>Inspection program plus a ready checklist with corrective-action notes. OHSR ss.3.5, 3.7&ndash;3.8.</figcaption></figure>
+      <figure class="pv-card"><a href="/images/preview-training-record.webp" target="_blank" rel="noopener"><img src="/images/preview-training-record.webp" width="900" height="882" loading="lazy" decoding="async" alt="First page of the Worker Orientation and Training Record: worker identification, program statement and new worker orientation checklist"/></a><figcaption><strong>Worker Orientation &amp; Training Record</strong>The orientation topics OHSR s.3.23 requires, with training records. OHSR ss.3.23&ndash;3.25.</figcaption></figure>
+      <figure class="pv-card"><a href="/images/preview-safety-meeting-log.webp" target="_blank" rel="noopener"><img src="/images/preview-safety-meeting-log.webp" width="900" height="1117" loading="lazy" decoding="async" alt="First page of the Safety Meeting Report and Communication Log: meeting details, program statement, attendance and agenda"/></a><figcaption><strong>Safety Meeting Report &amp; Communication Log</strong>Meeting report, attendance and communication log for committees, worker reps or small crews. WCA ss.37, 43&ndash;45.</figcaption></figure>
+      </div>
+      <p class="cov-note">Auditors check documents, interviews and what they observe on site, so these only count once they match how your company really works.</p>
+    </div>
+  </section>
 
   <section class="kit-section">
     <div class="kit-inner">
@@ -305,7 +332,7 @@ footer a:hover { color:var(--yellow); }
       <h2 class="section-title">Before you buy.</h2>
       <details><summary>Does this get me certified?</summary><p>No. It gives you the written program documents. Certification is awarded through your sector's certifying partner (for example BCCSA for construction) after an audit of your actual program. We can't promise you'll pass, or that you'll receive any WorkSafeBC incentive.</p></details>
       <details><summary>Do I still need an audit?</summary><p>Yes. You arrange your audit through your certifying partner. Small employers answer a reduced question set, but still need documentation touching every element, and a minimum score in each one.</p></details>
-      <details><summary>Can I buy individual documents?</summary><p>The ten COR program documents are sold only as this kit. The eight field templates in it are free to download on their own: <a href="/index.html">Confined Space Entry Permit</a>, <a href="/jsa.html">JSA / FLHA</a>, <a href="/hot-work-permit.html">Hot Work Permit</a>, <a href="/loto.html">Lockout / Tagout</a>, <a href="/flha.html">Daily FLHA</a>, <a href="/safe-work-procedure.html">Safe Work Procedure</a>, <a href="/incident-report.html">Incident Report</a> and <a href="/emergency-response.html">Emergency Response Plan</a>. The OHS Policy Statement is also <a href="/policy-statement.html">free</a>. What you pay for is the other COR documents and the element-by-element mapping.</p></details>
+      <details><summary>Can I buy individual documents?</summary><p>The ten COR program documents are sold only as this kit. The eight field templates in it are free to download on their own: <a href="/confined-space-permit.html">Confined Space Entry Permit</a>, <a href="/jsa.html">JSA / FLHA</a>, <a href="/hot-work-permit.html">Hot Work Permit</a>, <a href="/loto.html">Lockout / Tagout</a>, <a href="/flha.html">Daily FLHA</a>, <a href="/safe-work-procedure.html">Safe Work Procedure</a>, <a href="/incident-report.html">Incident Report</a> and <a href="/emergency-response.html">Emergency Response Plan</a>. The OHS Policy Statement is also <a href="/policy-statement.html">free</a>. What you pay for is the other COR documents and the element-by-element mapping.</p></details>
       <details><summary>How is it delivered?</summary><p>Instantly, by email: a download link to a zip file of 18 Word (.docx) documents plus a short start-here guide and the bonus COR Audit Quick Reference.</p></details>
       <details><summary>What if my sector or size isn't listed as a good fit?</summary><p>Look at your certifying partner's audit tool before buying and compare it with the coverage table above. Email <a href="mailto:info@bcsafetydocs.com">info@bcsafetydocs.com</a> if you're not sure &mdash; we'd rather tell you it isn't a fit.</p></details>
     </div>
@@ -330,7 +357,7 @@ footer a:hover { color:var(--yellow); }
   </div>
   <div>
     <p style="color:#666;font-size:0.78rem;font-weight:600;margin-bottom:8px;">DOCUMENTS</p>
-    <p><a href="/index.html">Confined Space Entry Permit <span style="display:inline-block;background:#27AE60;color:#fff;font-size:0.62rem;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-left:6px;vertical-align:1px;">Free</span></a><br>
+    <p><a href="/confined-space-permit.html">Confined Space Entry Permit <span style="display:inline-block;background:#27AE60;color:#fff;font-size:0.62rem;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-left:6px;vertical-align:1px;">Free</span></a><br>
     <a href="/jsa.html">JSA / FLHA Template</a><br>
     <a href="/hot-work-permit.html">Hot Work Permit</a><br>
     <a href="/incident-report.html">Incident Investigation Report</a></p>
