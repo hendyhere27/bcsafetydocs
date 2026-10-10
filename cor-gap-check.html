@@ -321,8 +321,8 @@ footer a:hover { color:var(--yellow); }
             <p id="kb-sub"></p>
             <ul class="free-links" id="kb-free"></ul>
             <p style="margin-top:12px">The COR kit is the written program a COR audit looks for: 18 editable Word documents cited to the OHS Regulation, plus a bonus audit quick reference. It is <strong>not</strong> certification &mdash; you still need an audit through your certifying partner.</p>
-            <a href="/cor-kit.html" class="btn-dark">See what's in the COR kit</a>
-            <p style="margin-top:12px">Also useful: <a href="/cor-rebate-calculator" style="color:var(--black);font-weight:600;">what could COR be worth to you? &rarr;</a></p>
+            <a href="https://buy.stripe.com/14A9AScvvdV94vP0qjfEk07" class="btn-dark" id="kb-buy">Get the COR Kit &mdash; $279 CAD</a>
+            <p style="margin-top:12px"><a href="/cor-kit.html" style="color:var(--black);font-weight:600;">See what's inside first &rarr;</a> &nbsp;&middot;&nbsp; Also useful: <a href="/cor-rebate-calculator" style="color:var(--black);font-weight:600;">what could COR be worth to you? &rarr;</a></p>
           </div>
         </div>
       </div>
@@ -416,10 +416,13 @@ function showResult(r) {
     $('kb-line').textContent = 'No gaps flagged. The work now is keeping the records going.';
     $('kb-sub').textContent = 'Auditors look for evidence the system has been running over time. Ask your certifying partner how much history it expects.';
   } else {
-    $('kb-line').textContent = 'Your gaps map to ' + r.gapDocs.length + ' documents: ' + free.length + ' free, ' + kit.length + ' in the COR kit.';
+    const m = r.counts.none, p = r.counts.partial;
+    $('kb-line').textContent = (m > 0
+      ? "You're missing " + m + ' element' + (m === 1 ? '' : 's') + (p > 0 ? ' and have ' + p + ' partly covered' : '')
+      : p + ' element' + (p === 1 ? ' is' : 's are') + ' only partly covered') + '. The kit has a document for all 13.';
     $('kb-sub').textContent = kit.length
-      ? 'Download the free ones now. The kit ($279 CAD) adds the other ' + kit.length + ' (' + kit.map((d) => d.title).join(', ') + ').'
-      : 'Every document for your gaps has a free template, so you can start today without buying anything.';
+      ? 'Your gaps map to ' + r.gapDocs.length + ' documents: ' + free.length + ' are free templates you can download now, and ' + kit.length + ' are only in the kit (' + kit.map((d) => d.title).join(', ') + ').'
+      : 'Every document for your gaps also has a free template, so you can start today without buying anything; the kit bundles them all in one download.';
     free.forEach((d) => { const li = document.createElement('li'); const a = document.createElement('a'); a.href = d.url; a.textContent = d.title; li.appendChild(a); fl.appendChild(li); });
   }
   $('result').classList.add('show');

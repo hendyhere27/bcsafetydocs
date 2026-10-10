@@ -55,6 +55,13 @@ export function buildGapEmail(r) {
       strengths.map((e) => `<div style="font-size:14px;color:#444;padding:2px 0;">&#10003; ${e.id}. ${esc(e.name)}</div>`).join("")
     : "";
 
+  const missingLine =
+    counts.none > 0
+      ? `You're missing ${counts.none} element${counts.none === 1 ? "" : "s"}${counts.partial > 0 ? ` and have ${counts.partial} partly covered` : ""}. The kit has a document for all 13.`
+      : counts.partial > 0
+        ? `${counts.partial} element${counts.partial === 1 ? " is" : "s are"} only partly covered. The kit has a document for all 13.`
+        : "All 13 elements are in place. The kit has a document for all 13 if you want a clean master set.";
+  const BUY = "https://buy.stripe.com/14A9AScvvdV94vP0qjfEk07";
   const kitMsg = kitDocs.length
     ? `${freeDocs.length} of the documents for your gaps are free templates. The other ${kitDocs.length} are only in the COR kit ($279 CAD, 18 editable documents plus a bonus audit quick reference).`
     : freeDocs.length
@@ -81,9 +88,10 @@ export function buildGapEmail(r) {
     (gaps.length ? `<div style="font-size:20px;font-weight:800;color:#1A1A1A;margin:28px 0 0;">Your gaps, in a suggested order</div><div style="font-size:13px;color:#777;">Foundations first: policy and hazard assessment support almost everything else.</div>${gapBlocks}` : "") +
     strengthRows +
     `<div style="margin-top:24px;padding:16px;background:#FEF9E7;border-left:4px solid #F5C400;font-size:15px;line-height:1.55;color:#1A1A1A;">` +
-    `<strong>${esc(kitMsg)}</strong><br>` +
-    `<a href="${SITE}/cor-kit" style="display:inline-block;margin-top:10px;background:#F5C400;color:#1A1A1A;font-weight:700;text-decoration:none;padding:10px 18px;border-radius:3px;">See the COR kit</a>` +
-    ` <a href="${SITE}/cor-rebate-calculator" style="display:inline-block;margin-top:10px;margin-left:6px;color:#1A5276;font-size:14px;">What could COR be worth to you?</a></div>` +
+    `<strong>${esc(missingLine)}</strong><br><span style="font-size:14px;color:#444;">${esc(kitMsg)}</span><br>` +
+    `<a href="${BUY}" style="display:inline-block;margin-top:10px;background:#1A1A1A;color:#F5C400;font-weight:700;text-decoration:none;padding:11px 20px;border-radius:3px;">Get the COR kit &mdash; $279 CAD</a>` +
+    ` <a href="${SITE}/cor-kit" style="display:inline-block;margin-top:10px;margin-left:6px;color:#1A5276;font-size:14px;">See what&rsquo;s inside first</a>` +
+    `<br><a href="${SITE}/cor-rebate-calculator" style="display:inline-block;margin-top:8px;color:#1A5276;font-size:13px;">What could COR be worth to you?</a></div>` +
     `<div style="font-size:15px;font-weight:700;color:#1A1A1A;margin:24px 0 4px;">How much history do you need?</div>` +
     `<div style="font-size:14px;line-height:1.55;color:#444;">Having the documents is only half of it: auditors also look for records showing the system has been running. ${esc(PARTNER_NOTES[sector])}</div>` +
     `<div style="margin-top:22px;padding:14px;background:#F4F4F4;border-left:4px solid #2C3E50;font-size:13px;line-height:1.55;color:#555;">` +
@@ -105,7 +113,7 @@ export function buildGapEmail(r) {
           .join("\n") +
         "\n"
       : "") +
-    `${kitMsg}\n${SITE}/cor-kit\nWhat could COR be worth to you? ${SITE}/cor-rebate-calculator\n\n` +
+    `${missingLine}\n${kitMsg}\nGet the COR kit ($279 CAD): ${BUY}\nSee what's inside first: ${SITE}/cor-kit\nWhat could COR be worth to you? ${SITE}/cor-rebate-calculator\n\n` +
     `HOW MUCH HISTORY DO YOU NEED?\nHaving the documents is only half of it: auditors also look for records showing the system has been running. ${PARTNER_NOTES[sector]}\n\n` +
     `This is a quick self-check against the national 13-element COR framework, based only on your answers. It is not an audit, not a score your certifying partner will recognise, and not a prediction that you would pass or fail. Partners publish their own audit tools and element lists differ. BC Safety Docs is independent and not affiliated with WorkSafeBC or any certifying partner.\n\n` +
     `Questions? info@bcsafetydocs.com\n`;

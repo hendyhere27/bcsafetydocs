@@ -285,6 +285,14 @@ footer a:hover { color:var(--yellow); }
           </div>
           <ul class="res-notes" id="r-notes"></ul>
 
+          <div class="kit-box" id="kit-box">
+            <p class="kb-line" id="kb-line"></p>
+            <p id="kb-sub"></p>
+            <p>The kit is the written safety program a COR audit looks for: 18 editable Word documents cited to the OHS Regulation, plus a bonus audit quick reference. It is <strong>not</strong> certification &mdash; you still need an audit through your sector's certifying partner.</p>
+            <a href="https://buy.stripe.com/14A9AScvvdV94vP0qjfEk07" class="btn-dark" id="kb-buy">Get the COR Kit &mdash; $279 CAD</a>
+            <p style="margin-top:12px"><a href="/cor-kit.html" style="color:var(--black);font-weight:600;">See what's inside first &rarr;</a> &nbsp;&middot;&nbsp; <a href="/cor-gap-check" style="color:var(--black);font-weight:600;">Check how audit-ready you are &rarr;</a></p>
+          </div>
+
           <div class="gate" id="gate">
             <h3>Get the full breakdown by email</h3>
             <p>Step-by-step arithmetic, a three-year schedule, when the money actually arrives, what can hold it back, and what certification costs that this estimate leaves out.</p>
@@ -299,13 +307,6 @@ footer a:hover { color:var(--yellow); }
             <p class="done" id="send-done">Sent. Check your inbox (and spam folder) for your breakdown.</p>
           </div>
 
-          <div class="kit-box" id="kit-box">
-            <p class="kb-line" id="kb-line"></p>
-            <p id="kb-sub"></p>
-            <p>The kit is the written safety program a COR audit looks for: 18 editable Word documents cited to the OHS Regulation, plus a bonus audit quick reference. It is <strong>not</strong> certification &mdash; you still need an audit through your sector's certifying partner.</p>
-            <a href="/cor-kit.html" class="btn-dark">See what's in the COR kit</a>
-            <p style="margin-top:12px">Also useful: <a href="/cor-gap-check" style="color:var(--black);font-weight:600;">how audit-ready is your safety program? &rarr;</a></p>
-          </div>
         </div>
       </div>
     </div>
@@ -361,10 +362,13 @@ function showResult(r) {
   notes.push('Not included: the cost of getting certified (your time, partner fees, any external auditor, training).');
   const ul = $('r-notes'); ul.textContent = '';
   notes.forEach((t) => { const li = document.createElement('li'); li.textContent = t; ul.appendChild(li); });
-  $('kb-line').textContent = 'The kit costs ' + fmt(CONSTANTS.KIT_PRICE) + '. Your estimated incentive is ' + fmt(r.annual) + ' a year.';
-  $('kb-sub').textContent = r.annual >= CONSTANTS.KIT_PRICE
-    ? 'One year of the estimated incentive is about ' + r.kitMultiple + '× the kit price — if you get certified and stay eligible.'
-    : 'At that estimate, it would take about ' + r.paybackYears + ' years of incentives to equal the kit price — so decide on whether the kit saves you drafting time, not on the rebate alone.';
+  const kitP = CONSTANTS.KIT_PRICE;
+  $('kb-line').textContent = 'Your estimated incentive: ' + fmt(r.annual) + '/yr. Kit: ' + fmt(kitP) + ', ' + (r.annual >= kitP
+    ? 'about ' + Math.round((kitP / r.annual) * 100) + "% of one year's estimate."
+    : "more than one year's estimate (about " + r.paybackYears + ' years).');
+  $('kb-sub').textContent = r.annual >= kitP
+    ? 'If you get certified and stay eligible, one year of the estimated incentive is about ' + r.kitMultiple + '\u00d7 the kit price. It is paid the year after you certify, and it does not include the cost of certifying.'
+    : 'At that estimate the incentive alone would take a while to match the kit price, so decide on whether the kit saves you drafting time, not on the rebate alone.';
   $('result').classList.add('show');
   $('result').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
