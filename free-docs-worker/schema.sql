@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS sequence_subs (
 CREATE TABLE IF NOT EXISTS sequence_emails (
   id           INTEGER PRIMARY KEY AUTOINCREMENT,
   email        TEXT NOT NULL,
-  kind         TEXT NOT NULL,                  -- rebate | gap
+  kind         TEXT NOT NULL,                  -- rebate | gap | docs
   step         INTEGER NOT NULL,               -- 1..3 (day 2, 5, 10)
   send_at      TEXT NOT NULL,                  -- UTC; the daily cron sends rows that are due
   payload_json TEXT NOT NULL,                  -- { kind, data } used to build the email

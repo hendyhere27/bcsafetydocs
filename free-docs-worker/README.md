@@ -155,7 +155,11 @@ whenever the audit quick reference is refreshed.
 ## Follow-up sequence (`sequence.js`, `GET/POST /api/unsubscribe`)
 
 People who tick the optional box on the incentive calculator or gap check get three short
-emails (day 2, 5, 10), personalised with their figures. At opt-in the worker queues three rows in
+emails (day 2, 5, 10), personalised with their figures. Free-template downloads (`/api/free-download`)
+with the box ticked get the same timing with `kind: docs` (generic content), and the download email
+links the 1-page checklist (`cor-readiness-checklist.html`, generated from the 13 elements in
+`cor-gap-logic.js`). The checkbox promises exactly that (checklist + 3 emails), so don't use those
+addresses for broader broadcasts without fresh consent. At opt-in the worker queues three rows in
 `sequence_emails`; a daily cron (`0 16 * * *` UTC, see `wrangler.jsonc`) sends whatever is due and
 skips anyone unsubscribed. We send from our own queue because Resend scheduled sends cannot be
 cancelled with the sending-only API key. `sequence_subs` holds a random unsubscribe token per

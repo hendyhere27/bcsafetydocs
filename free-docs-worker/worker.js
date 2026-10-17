@@ -15,6 +15,8 @@ import { assess as assessGap } from "../cor-gap-logic.js";
 import { buildGapEmail } from "./gap-email.js";
 import { scheduleSequence, handleUnsubscribe, runDueSequence } from "./sequence.js";
 
+const CHECKLIST_URL = "https://bcsafetydocs.com/cor-readiness-checklist";
+
 // Product slug -> filename on bcsafetydocs.com. Add an entry here each time
 // a new free document ships.
 const PRODUCTS = {
@@ -163,11 +165,16 @@ async function handleFreeDownload(request, env) {
         `<p>Thanks for requesting the <strong>${productInfo.title}</strong>.</p>` +
         `<p><a href="${downloadUrl}">Click here to download ${productInfo.filename}</a></p>` +
         `<p style="color:#777;font-size:13px;">This is a working tool — review it with a qualified person and verify it against the current WorkSafeBC OHS Regulation before use.</p>` +
+        (optIn ? `<p>As you asked, here is the <a href="${CHECKLIST_URL}">1-page COR readiness checklist</a>. Three short emails on getting audit-ready follow over the next 10 days; each one has an unsubscribe link.</p>` : "") +
         `<p>Questions? Email <a href="mailto:info@bcsafetydocs.com">info@bcsafetydocs.com</a></p>`,
       text:
         `Thanks for requesting the ${productInfo.title}.\n\n` +
         `Download: ${downloadUrl}\n\n` +
         `This is a working tool — review it with a qualified person and verify it against the current WorkSafeBC OHS Regulation before use.\n\n` +
+        (optIn ? `As you asked, here is the 1-page COR readiness checklist: ${CHECKLIST_URL}
+Three short emails on getting audit-ready follow over the next 10 days; each one has an unsubscribe link.
+
+` : "") +
         `Questions? Email info@bcsafetydocs.com`,
     }),
   });
@@ -190,6 +197,11 @@ async function handleFreeDownload(request, env) {
       .run();
   } catch (e) {
     console.error("D1 signup insert failed:", e);
+  }
+
+  // Ticked box: queue the three-email follow-up (the checklist link went in the download email).
+  if (optIn) {
+    await scheduleSequence(env, { email, kind: "docs", data: { title: productInfo.title } });
   }
 
   return json({ ok: true }, 200);

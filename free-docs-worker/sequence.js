@@ -1,5 +1,6 @@
 // COR follow-up sequence: three short emails (day 2, 5, 10) for people who
-// ticked the optional follow-up box on the incentive calculator or gap check.
+// ticked the optional follow-up box on the incentive calculator, the gap check
+// or a free template download.
 //
 // How it works: at opt-in the worker queues three rows in D1 (`sequence_emails`,
 // status 'pending', send_at = day 2/5/10 at 16:00 UTC). A daily cron trigger runs
@@ -39,14 +40,59 @@ function button(href, label) {
 
 // data for kind "rebate": { annual, threeYear }
 // data for kind "gap":    { have, partial, none, top: [{ name, docTitle, docUrl, free }], freeCount, kitCount }
+// data for kind "docs":   { title } (the free template they downloaded)
 export function buildSequenceEmail({ kind, step, data, unsubUrl, address }) {
   const kit = CONSTANTS.KIT_PRICE;
   const calc = `${SITE}/cor-rebate-calculator`;
   const gap = `${SITE}/cor-gap-check`;
   const kitUrl = `${SITE}/cor-kit`;
+  const checklistUrl = `${SITE}/cor-readiness-checklist`;
   let subject, bodyHtml, bodyText;
 
-  if (kind === "rebate") {
+  if (kind === "docs") {
+    const title = data && data.title ? data.title : "free template";
+    if (step === 1) {
+      subject = "The records question behind a COR audit";
+      bodyHtml =
+        para(`You downloaded the ${esc(title)} and asked for the audit-prep emails. Here is the first thing worth knowing about a COR audit.`) +
+        para(`${esc(RECORDS_LINE)}`) +
+        para(`So the records you start keeping this month are a clock you can't skip later. Your one-page checklist is here to print or save: tick what you could show an auditor today.`) +
+        button(checklistUrl, "Open the 1-page checklist") +
+        para(`For a personalised version, the free <a href="${esc(gap)}" style="color:#1A5276;">gap check</a> takes two minutes.`);
+      bodyText = `You downloaded the ${title} and asked for the audit-prep emails. Here is the first thing worth knowing about a COR audit.
+
+${RECORDS_LINE}
+
+So the records you start keeping this month are a clock you can't skip later. Your one-page checklist is here to print or save: tick what you could show an auditor today.
+${checklistUrl}
+
+For a personalised version, the free gap check takes two minutes: ${gap}`;
+    } else if (step === 2) {
+      subject = "One empty element can sink a COR audit";
+      bodyHtml =
+        para(`${esc(HALF_RULE)}`) +
+        para(`So the checklist boxes you can't tick matter more than the ones you can. Several of the documents behind the 13 elements are free templates; the rest are in the COR kit: 18 editable documents plus a bonus audit quick reference, <strong>$${kit} CAD</strong> once. It is the written program only, not certification.`) +
+        button(kitUrl, "See the COR kit") +
+        para(`Or see which elements you're missing first: <a href="${esc(gap)}" style="color:#1A5276;">the free gap check</a>.`);
+      bodyText = `${HALF_RULE}
+
+So the checklist boxes you can't tick matter more than the ones you can. Several of the documents behind the 13 elements are free templates; the rest are in the COR kit: 18 editable documents plus a bonus audit quick reference, $${kit} CAD once. It is the written program only, not certification.
+
+See the kit: ${kitUrl}
+Or see which elements you're missing first (free gap check): ${gap}`;
+    } else {
+      subject = "Want me to look at your gaps?";
+      bodyHtml =
+        para(`It's Derek at BC Safety Docs. You downloaded the ${esc(title)} a week and a half ago.`) +
+        para(`If you reply with your industry, roughly how many workers you have, and what you already have written down, I'll send back the three things I'd tackle first. No cost, no sales call.`) +
+        para(`If you'd rather not hear from me, the unsubscribe link below ends these emails.`);
+      bodyText = `It's Derek at BC Safety Docs. You downloaded the ${title} a week and a half ago.
+
+If you reply with your industry, roughly how many workers you have, and what you already have written down, I'll send back the three things I'd tackle first. No cost, no sales call.
+
+If you'd rather not hear from me, the unsubscribe link below ends these emails.`;
+    }
+  } else if (kind === "rebate") {
     const a = fmt(data.annual), t = fmt(data.threeYear);
     if (step === 1) {
       subject = `Your ${a} COR incentive: the records question`;
@@ -106,7 +152,7 @@ export function buildSequenceEmail({ kind, step, data, unsubUrl, address }) {
     }
   }
 
-  const why = kind === "rebate" ? "COR incentive calculator" : "COR gap check";
+  const why = kind === "docs" ? "free template download" : kind === "rebate" ? "COR incentive calculator" : "COR gap check";
   const footerHtml =
     `<p style="margin:22px 0 0;font-size:12px;line-height:1.55;color:#777;border-top:1px solid #E5E5E5;padding-top:14px;">You're getting this because you ticked the follow-up box on the ${why} at bcsafetydocs.com. ` +
     `<a href="${esc(unsubUrl)}" style="color:#777;">Unsubscribe</a>. BC Safety Docs, ${esc(address)}. BC Safety Docs is independent and not affiliated with WorkSafeBC or any certifying partner.</p>`;
