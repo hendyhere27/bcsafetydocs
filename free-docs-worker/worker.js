@@ -52,6 +52,10 @@ const PRODUCTS = {
     title: "JSA / FLHA Template",
     filename: "BC_JSA_FLHA_Template_Part3.docx",
   },
+  "toolbox-talk": {
+    title: "Toolbox Talk Record",
+    filename: "BC_Toolbox_Talk_Record.docx",
+  },
   "policy-statement": {
     title: "Occupational Health & Safety Policy Statement",
     filename: "BC_COR_Policy_Statement.docx",

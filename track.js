@@ -14,7 +14,7 @@
   // The nine free template pages: after a successful signup, show a short pointer to the
   // COR kit and the gap check inside the form card. On-page only (nothing extra is emailed).
   var FREE_DOCS = ['flha', 'jsa', 'loto', 'hot-work-permit', 'incident-report', 'policy-statement',
-    'safe-work-procedure', 'emergency-response', 'confined-space'];
+    'safe-work-procedure', 'emergency-response', 'confined-space', 'toolbox-talk'];
   function showKitCta(product) {
     var msgs = document.querySelectorAll('.free-msg');
     for (var i = 0; i < msgs.length; i++) {
