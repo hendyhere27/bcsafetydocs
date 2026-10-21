@@ -73,13 +73,14 @@ For a personalised version, the free gap check takes two minutes: ${gap}`;
         para(`${esc(HALF_RULE)}`) +
         para(`So the checklist boxes you can't tick matter more than the ones you can. Several of the documents behind the 13 elements are free templates; the rest are in the COR kit: 18 editable documents plus a bonus audit quick reference, <strong>$${kit} CAD</strong> once. It is the written program only, not certification.`) +
         button(kitUrl, "See the COR kit") +
-        para(`Or see which elements you're missing first: <a href="${esc(gap)}" style="color:#1A5276;">the free gap check</a>.`);
+        para(`Or see which elements you're missing first: <a href="${esc(gap)}" style="color:#1A5276;">the free gap check</a>. And to see what COR could be worth to you, the <a href="${esc(calc)}" style="color:#1A5276;">free incentive calculator</a> applies WorkSafeBC's published 10% COR incentive formula to your payroll.`);
       bodyText = `${HALF_RULE}
 
 So the checklist boxes you can't tick matter more than the ones you can. Several of the documents behind the 13 elements are free templates; the rest are in the COR kit: 18 editable documents plus a bonus audit quick reference, $${kit} CAD once. It is the written program only, not certification.
 
 See the kit: ${kitUrl}
-Or see which elements you're missing first (free gap check): ${gap}`;
+Or see which elements you're missing first (free gap check): ${gap}
+And to see what COR could be worth to you, the free incentive calculator applies WorkSafeBC's published 10% COR incentive formula to your payroll: ${calc}`;
     } else {
       subject = "Want me to look at your gaps?";
       bodyHtml =

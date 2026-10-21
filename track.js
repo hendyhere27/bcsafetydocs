@@ -26,7 +26,7 @@
       d.className = 'kit-cta';
       d.setAttribute('style', 'margin-top:14px;padding:12px 14px;background:#FFF8DC;border-left:4px solid #F5C400;border-radius:3px;color:#1A1A1A;font-size:0.82rem;line-height:1.55;text-align:left;');
       var src = encodeURIComponent('free-' + product);
-      d.innerHTML = '<strong>Going for COR?</strong> The <a href="/cor-kit?src=' + src + '" style="color:#1A5276;font-weight:600;">COR Small-Employer Kit</a> has 18 editable documents mapped to the 13 national COR audit elements: $279 CAD, 14-day refund. Not sure what you are missing? Take the free <a href="/cor-gap-check?src=' + src + '" style="color:#1A5276;font-weight:600;">2-minute gap check</a> first.';
+      d.innerHTML = '<strong>Going for COR?</strong> The <a href="/cor-kit?src=' + src + '" style="color:#1A5276;font-weight:600;">COR Small-Employer Kit</a> has 18 editable documents mapped to the 13 national COR audit elements: $279 CAD, 14-day refund. Not sure what you are missing? Take the free <a href="/cor-gap-check?src=' + src + '" style="color:#1A5276;font-weight:600;">2-minute gap check</a> first, or see <a href="/cor-rebate-calculator?src=' + src + '" style="color:#1A5276;font-weight:600;">what COR could be worth to you</a>.';
       m.parentNode.insertBefore(d, m.nextSibling);
     }
   }
