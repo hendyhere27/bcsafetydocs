@@ -46,6 +46,7 @@ export function buildSequenceEmail({ kind, step, data, unsubUrl, address }) {
   const calc = `${SITE}/cor-rebate-calculator`;
   const gap = `${SITE}/cor-gap-check`;
   const kitUrl = `${SITE}/cor-kit`;
+  const buyUrl = "https://buy.stripe.com/14A9AScvvdV94vP0qjfEk07?prefilled_promo_code=COR10"; // COR10 = 10% off, created in Stripe 2026-10-22
   const checklistUrl = `${SITE}/cor-readiness-checklist`;
   let subject, bodyHtml, bodyText;
 
@@ -86,10 +87,14 @@ And to see what COR could be worth to you, the free incentive calculator applies
       bodyHtml =
         para(`It's Derek at BC Safety Docs. You downloaded the ${esc(title)} a week and a half ago.`) +
         para(`If you reply with your industry, roughly how many workers you have, and what you already have written down, I'll send back the three things I'd tackle first. No cost, no sales call.`) +
+        para(`Separately, if you'd rather get started on your own, use code <strong>COR10</strong> for 10% off the COR kit ($${kit} CAD, one-time): <a href="${esc(buyUrl)}" style="color:#1A5276;">buy with the code applied</a>. The kit is the written program only, not certification, and it comes with a 14-day refund.`) +
         para(`If you'd rather not hear from me, the unsubscribe link below ends these emails.`);
       bodyText = `It's Derek at BC Safety Docs. You downloaded the ${title} a week and a half ago.
 
 If you reply with your industry, roughly how many workers you have, and what you already have written down, I'll send back the three things I'd tackle first. No cost, no sales call.
+
+Separately, if you'd rather get started on your own, use code COR10 for 10% off the COR kit ($${kit} CAD, one-time): ${buyUrl}
+The kit is the written program only, not certification, and it comes with a 14-day refund.
 
 If you'd rather not hear from me, the unsubscribe link below ends these emails.`;
     }
@@ -116,8 +121,12 @@ If you'd rather not hear from me, the unsubscribe link below ends these emails.`
       bodyHtml =
         para(`It's Derek at BC Safety Docs. You ran the COR calculator a week and a half ago (estimate: up to ${esc(a)} a year).`) +
         para(`If you reply with your industry, roughly how many workers you have, and what you already have written down, I'll send back the three things I'd tackle first. No cost, no sales call.`) +
+        para(`Separately, if you'd rather get started on your own, use code <strong>COR10</strong> for 10% off the COR kit ($${kit} CAD, one-time): <a href="${esc(buyUrl)}" style="color:#1A5276;">buy with the code applied</a>. The kit is the written program only, not certification, and it comes with a 14-day refund.`) +
         para(`If you'd rather not hear from me, the unsubscribe link below ends these emails.`);
-      bodyText = `It's Derek at BC Safety Docs. You ran the COR calculator a week and a half ago (estimate: up to ${a} a year).\n\nIf you reply with your industry, roughly how many workers you have, and what you already have written down, I'll send back the three things I'd tackle first. No cost, no sales call.\n\nIf you'd rather not hear from me, the unsubscribe link below ends these emails.`;
+      bodyText = `It's Derek at BC Safety Docs. You ran the COR calculator a week and a half ago (estimate: up to ${a} a year).\n\nIf you reply with your industry, roughly how many workers you have, and what you already have written down, I'll send back the three things I'd tackle first. No cost, no sales call.\n\nSeparately, if you'd rather get started on your own, use code COR10 for 10% off the COR kit ($${kit} CAD, one-time): ${buyUrl}
+The kit is the written program only, not certification, and it comes with a 14-day refund.
+
+If you'd rather not hear from me, the unsubscribe link below ends these emails.`;
     }
   } else {
     const { have, partial, none, top, freeCount, kitCount } = data;
@@ -148,8 +157,12 @@ If you'd rather not hear from me, the unsubscribe link below ends these emails.`
       bodyHtml =
         para(`It's Derek at BC Safety Docs. You ran the COR gap check a week and a half ago (${esc(tally)}).`) +
         para(`If you reply with your industry, roughly how many workers you have, and what you already have written down, I'll send back the three things I'd tackle first. No cost, no sales call.`) +
+        para(`Separately, if you'd rather get started on your own, use code <strong>COR10</strong> for 10% off the COR kit ($${kit} CAD, one-time): <a href="${esc(buyUrl)}" style="color:#1A5276;">buy with the code applied</a>. The kit is the written program only, not certification, and it comes with a 14-day refund.`) +
         para(`If you'd rather not hear from me, the unsubscribe link below ends these emails.`);
-      bodyText = `It's Derek at BC Safety Docs. You ran the COR gap check a week and a half ago (${tally}).\n\nIf you reply with your industry, roughly how many workers you have, and what you already have written down, I'll send back the three things I'd tackle first. No cost, no sales call.\n\nIf you'd rather not hear from me, the unsubscribe link below ends these emails.`;
+      bodyText = `It's Derek at BC Safety Docs. You ran the COR gap check a week and a half ago (${tally}).\n\nIf you reply with your industry, roughly how many workers you have, and what you already have written down, I'll send back the three things I'd tackle first. No cost, no sales call.\n\nSeparately, if you'd rather get started on your own, use code COR10 for 10% off the COR kit ($${kit} CAD, one-time): ${buyUrl}
+The kit is the written program only, not certification, and it comes with a 14-day refund.
+
+If you'd rather not hear from me, the unsubscribe link below ends these emails.`;
     }
   }
 
