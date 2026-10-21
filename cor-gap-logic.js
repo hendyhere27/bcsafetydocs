@@ -18,6 +18,9 @@ export const SECTORS = {
   hospitality: "Hospitality / tourism",
   forestry: "Forestry",
   oilgas: "Oil & gas",
+  localgov: "Local government",
+  manufacturing: "Manufacturing / food processing",
+  transport: "Trucking / transportation / warehousing",
   other: "Other / not sure",
 };
 
@@ -157,12 +160,16 @@ export function assess(input) {
 }
 
 // Short, verified partner notes (sources: each partner's public pages and
-// documents, checked 9 Oct 2026; see BC_COR_Audit_Quick_Reference_SOURCES.md).
+// documents, checked 9 Oct 2026; BCMSA, MSABC and SafetyDriven checked 21 Oct 2026,
+// from their public web pages only, PDFs not opened; see BC_COR_Audit_Quick_Reference_SOURCES.md).
 export const PARTNER_NOTES = {
   construction: "BCCSA: Small COR is for 19 or fewer employees and can use your own trained internal auditor; Large COR (20 or more) needs an external auditor for certification. BCCSA says there should be at least 6 months of supporting evidence, with 12 months recommended.",
   agriculture: "AgSafe BC: small employers (19 or fewer full-time employees) can use a trained internal auditor or an AgSafe-approved external auditor; large employers use an external auditor for certification. AgSafe doesn't publish a minimum records period on the pages we checked, so ask them how much history you need.",
   hospitality: "go2HR: SECOR (Small Employer COR) is for fewer than 20 employees. Its Terms of Participation say an internal auditor can do the audits for under-20 employers, though its website audit page says external, so confirm with go2HR. No minimum records period is published on the pages we checked.",
   forestry: "BC Forest Safety Council (SAFE Companies): the audit reviews the 12 consecutive months before it, and small employers (2 to 19 workers) use an internal auditor. Its audit structure differs from the 13-element framework used here, so check BCFSC's own audit tool; much of the written-program content still overlaps.",
   oilgas: "Energy Safety Canada: COR is for 11 or more employees and SECOR for 10 or fewer. Its protocol uses 10 elements rather than 13, so check ESC's own audit protocol; much of the written-program content still overlaps. For SECOR, ESC advises having 12 months of documentation before the audit.",
+  localgov: "BC Municipal Safety Association (BCMSA): COR for local governments (WorkSafeBC classification unit 753004). BCMSA says employers with fewer than 20 employees can have all audits done by trained internal staff, while 20 or more need a certified external auditor for certification. BCMSA doesn't publish a minimum records period on the pages we checked, so ask it how much history you need.",
+  manufacturing: "Manufacturing Safety Alliance of BC (MSABC) runs COR as OSSE for manufacturers and food processors. It says certification is free for small businesses (fewer than 20 employees), that small and micro employers may use an internal or external auditor, and that large employers (20 or more) need an external auditor for certification. MSABC counts size in full-time equivalents and doesn't publish a minimum records period on the pages we checked, so ask it how much history you need.",
+  transport: "SafetyDriven: COR for trucking, transportation and warehousing (its member classification units are General Trucking 732019 and Moving & Storage 732030; others by alignment with WorkSafeBC). SafetyDriven says small employers (fewer than 20 employees) can use an internal auditor for certification and maintenance audits, while large employers need an external auditor for certification. It says the program is free apart from internal auditor training and any external auditor. It doesn't publish a minimum records period on the pages we checked, so ask it how much history you need.",
   other: "Your certifying partner is normally the one for your sector; WorkSafeBC matches employers without a dedicated partner to the closest fit. Ask yours how much record history it expects before your first audit: BCCSA, for example, says at least 6 months with 12 recommended.",
 };
