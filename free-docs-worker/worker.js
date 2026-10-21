@@ -166,6 +166,7 @@ async function handleFreeDownload(request, env) {
         `<p><a href="${downloadUrl}">Click here to download ${productInfo.filename}</a></p>` +
         `<p style="color:#777;font-size:13px;">This is a working tool — review it with a qualified person and verify it against the current WorkSafeBC OHS Regulation before use.</p>` +
         (optIn ? `<p>As you asked, here is the <a href="${CHECKLIST_URL}">1-page COR readiness checklist</a>. Three short emails on getting audit-ready follow over the next 10 days; each one has an unsubscribe link.</p>` : "") +
+        `<p style="color:#555;font-size:14px;">Also free: the <a href="https://bcsafetydocs.com/cor-gap-check">COR gap check</a> and the <a href="https://bcsafetydocs.com/cor-rebate-calculator">COR incentive calculator</a>.</p>` +
         `<p>Questions? Email <a href="mailto:info@bcsafetydocs.com">info@bcsafetydocs.com</a></p>`,
       text:
         `Thanks for requesting the ${productInfo.title}.\n\n` +
@@ -175,6 +176,9 @@ async function handleFreeDownload(request, env) {
 Three short emails on getting audit-ready follow over the next 10 days; each one has an unsubscribe link.
 
 ` : "") +
+        `Also free: the COR gap check (https://bcsafetydocs.com/cor-gap-check) and the COR incentive calculator (https://bcsafetydocs.com/cor-rebate-calculator).
+
+` +
         `Questions? Email info@bcsafetydocs.com`,
     }),
   });
