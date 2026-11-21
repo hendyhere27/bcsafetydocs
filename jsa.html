@@ -63,7 +63,7 @@ section { padding:72px 8%; }
 .includes-list li:last-child { border-bottom:none; }
 .check { width:19px; height:19px; background:var(--yellow); border-radius:2px; display:flex; align-items:center; justify-content:center; font-size:0.62rem; font-weight:800; color:var(--black); flex-shrink:0; margin-top:2px; }
 .reg-card { background:var(--light); border-left:4px solid var(--red); padding:26px; border-radius:2px; }
-.reg-card h4 { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:1.05rem; color:var(--black); margin-bottom:14px; letter-spacing:0.02em; }
+.reg-card h3 { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:1.05rem; color:var(--black); margin-bottom:14px; letter-spacing:0.02em; }
 .reg-row { display:flex; justify-content:space-between; align-items:center; padding:7px 0; border-bottom:1px solid var(--border); font-size:0.81rem; }
 .reg-row:last-child { border-bottom:none; }
 .reg-label { color:var(--grey); }
@@ -82,12 +82,12 @@ section { padding:72px 8%; }
 .price-amount { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:3.4rem; color:var(--black); line-height:1; }
 .price-currency { font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:1.3rem; color:var(--black); }
 .price-once { font-size:0.82rem; color:rgba(0,0,0,0.5); margin-left:4px; }
-.cta-disclaimer { font-size:0.73rem; color:rgba(0,0,0,0.45); max-width:480px; margin:14px auto 0; line-height:1.6; }
+.cta-disclaimer { font-size:0.78rem; color:rgba(0,0,0,0.72); max-width:480px; margin:14px auto 0; line-height:1.6; }
 footer { background:var(--black); padding:32px 8%; display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:20px; }
 .footer-logo { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:1rem; color:var(--white); letter-spacing:0.04em; }
 .footer-logo span { color:var(--yellow); }
-footer p { font-size:0.74rem; color:#555; line-height:1.65; max-width:420px; }
-footer a { color:#666; text-decoration:none; }
+footer p { font-size:0.78rem; color:#A8A8A8; line-height:1.65; max-width:420px; }
+footer a { color:#C8C8C8; text-decoration:none; }
 footer a:hover { color:var(--yellow); }
 .coming-hero { min-height:calc(100vh - 56px); background:var(--black); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:60px 8%; }
 .coming-hero .eyebrow { font-family:'Barlow Condensed',sans-serif; font-size:0.78rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--yellow); margin-bottom:16px; }
@@ -132,12 +132,12 @@ footer a:hover { color:var(--yellow); }
 .includes-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;margin-top:44px;align-items:start}
 .who-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:36px}
 .who-card{background:var(--white);border:1px solid var(--border);border-radius:3px;padding:22px}
-.who-card h4{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;color:var(--black);margin-bottom:7px}
+.who-card h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;color:var(--black);margin-bottom:7px}
 .who-card p{font-size:0.84rem;color:var(--grey);line-height:1.6}
 @media(max-width:900px){.hero{grid-template-columns:1fr;min-height:auto}.hero-left::after{display:none}.hero-left{padding:56px 5%}.hero-right{padding:36px 5%;background:#F9F9F9}.hc-grid{grid-template-columns:repeat(3,1fr)}.includes-grid{grid-template-columns:1fr}.who-grid{grid-template-columns:1fr}}
 
   .learn-more{background:var(--light)}.learn-list{list-style:none;margin-top:8px;max-width:640px}.learn-list li{border-bottom:1px solid var(--border)}.learn-list a{display:block;padding:13px 0;color:var(--blue);font-weight:600;font-size:0.95rem;text-decoration:none}.learn-list a span{display:block;font-weight:400;color:var(--grey);font-size:0.82rem;margin-top:2px}
-  .free-pill{display:inline-block;background:#27AE60;color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:0.9rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:16px}
+  .free-pill{display:inline-block;background:#1E8449;color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:0.9rem;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;padding:4px 14px;border-radius:20px;margin-bottom:16px}
 .dl-card{background:#fff;border-radius:6px;padding:18px;max-width:440px;width:100%;box-shadow:0 8px 30px rgba(0,0,0,0.25);text-align:left}
 .cta-section .dl-card{margin:0 auto}
 .free-form-row{display:flex;gap:10px;flex-wrap:wrap}
@@ -145,11 +145,12 @@ footer a:hover { color:var(--yellow); }
 .free-submit-btn{flex:0 0 auto;background:#27AE60;color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;padding:0 22px;height:48px;border:none;border-radius:3px;cursor:pointer}
 .free-submit-btn:disabled{opacity:0.6;cursor:default}
 .free-msg{font-size:0.83rem;margin-top:10px;min-height:1.2em}
-.free-consent{font-size:0.72rem;color:#888;margin-top:10px;line-height:1.55}
+.free-consent{font-size:0.8rem;color:#888;margin-top:10px;line-height:1.55}
 .free-consent a{color:#888}
 @media(max-width:600px){.free-form-row{flex-direction:column}.free-submit-btn{width:100%}}
   .free-optin-row{display:flex;gap:8px;align-items:flex-start;font-size:0.78rem;color:#777;line-height:1.5;margin-top:12px;text-align:left;cursor:pointer}.free-optin-row input{margin-top:3px;flex-shrink:0}
 </style>
+  <link rel="stylesheet" href="/polish.css"/>
 </head>
 <body>
 <nav id="sitenav">
@@ -160,36 +161,36 @@ footer a:hover { color:var(--yellow); }
       <div class="dropdown">
         <a href="/cor-kit.html" class="highlight">COR Small-Employer Kit &mdash; $279 CAD</a>
         <span class="dd-label">Free COR tools</span>
-        <a href="/cor-gap-check">COR Gap Check <span style="display:inline-block;background:#27AE60;color:#fff;font-size:0.62rem;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-left:6px;vertical-align:1px;">Free</span></a>
-        <a href="/cor-rebate-calculator">COR Incentive Calculator <span style="display:inline-block;background:#27AE60;color:#fff;font-size:0.62rem;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-left:6px;vertical-align:1px;">Free</span></a>
+        <a href="/cor-gap-check">COR Gap Check <span style="display:inline-block;background:#1E8449;color:#fff;font-size:0.7rem;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-left:6px;vertical-align:1px;">Free</span></a>
+        <a href="/cor-rebate-calculator">COR Incentive Calculator <span style="display:inline-block;background:#1E8449;color:#fff;font-size:0.7rem;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-left:6px;vertical-align:1px;">Free</span></a>
       </div>
     </li>
     <li>
       <button aria-haspopup="true">Permits</button>
       <div class="dropdown">
         <span class="dd-label">Entry Permits</span>
-        <a href="/confined-space-permit.html">Confined Space Entry Permit <span style="display:inline-block;background:#27AE60;color:#fff;font-size:0.62rem;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-left:6px;vertical-align:1px;">Free</span></a>
-        <a href="/hot-work-permit.html">Hot Work Permit <span style="display:inline-block;background:#27AE60;color:#fff;font-size:0.62rem;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-left:6px;vertical-align:1px;">Free</span></a>
+        <a href="/confined-space-permit.html">Confined Space Entry Permit <span style="display:inline-block;background:#1E8449;color:#fff;font-size:0.7rem;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-left:6px;vertical-align:1px;">Free</span></a>
+        <a href="/hot-work-permit.html">Hot Work Permit <span style="display:inline-block;background:#1E8449;color:#fff;font-size:0.7rem;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-left:6px;vertical-align:1px;">Free</span></a>
         <span class="dd-label">Procedures</span>
-        <a href="/loto.html">Lockout / Tagout Procedure <span style="display:inline-block;background:#27AE60;color:#fff;font-size:0.62rem;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-left:6px;vertical-align:1px;">Free</span></a>
+        <a href="/loto.html">Lockout / Tagout Procedure <span style="display:inline-block;background:#1E8449;color:#fff;font-size:0.7rem;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-left:6px;vertical-align:1px;">Free</span></a>
       </div>
     </li>
     <li>
       <button aria-haspopup="true">Assessments</button>
       <div class="dropdown">
-        <a href="/jsa.html">JSA / Field Level Hazard Assessment <span style="display:inline-block;background:#27AE60;color:#fff;font-size:0.62rem;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-left:6px;vertical-align:1px;">Free</span></a>
-        <a href="/policy-statement.html">OHS Policy Statement <span style="display:inline-block;background:#27AE60;color:#fff;font-size:0.62rem;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-left:6px;vertical-align:1px;">Free</span></a>
-        <a href="/flha.html">Daily FLHA Form <span style="display:inline-block;background:#27AE60;color:#fff;font-size:0.62rem;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-left:6px;vertical-align:1px;">Free</span></a>
-        <a href="/toolbox-talk.html">Toolbox Talk Record <span style="display:inline-block;background:#27AE60;color:#fff;font-size:0.62rem;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-left:6px;vertical-align:1px;">Free</span></a>
-        <a href="/safe-work-procedure.html">Safe Work Procedure <span style="display:inline-block;background:#27AE60;color:#fff;font-size:0.62rem;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-left:6px;vertical-align:1px;">Free</span></a>
-        <a href="/blog/bc-firesmart-assessment-tool">FireSmart Assessment Tool <span style="display:inline-block;background:#27AE60;color:#fff;font-size:0.62rem;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-left:6px;vertical-align:1px;">Free</span></a>
+        <a href="/jsa.html">JSA / Field Level Hazard Assessment <span style="display:inline-block;background:#1E8449;color:#fff;font-size:0.7rem;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-left:6px;vertical-align:1px;">Free</span></a>
+        <a href="/policy-statement.html">OHS Policy Statement <span style="display:inline-block;background:#1E8449;color:#fff;font-size:0.7rem;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-left:6px;vertical-align:1px;">Free</span></a>
+        <a href="/flha.html">Daily FLHA Form <span style="display:inline-block;background:#1E8449;color:#fff;font-size:0.7rem;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-left:6px;vertical-align:1px;">Free</span></a>
+        <a href="/toolbox-talk.html">Toolbox Talk Record <span style="display:inline-block;background:#1E8449;color:#fff;font-size:0.7rem;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-left:6px;vertical-align:1px;">Free</span></a>
+        <a href="/safe-work-procedure.html">Safe Work Procedure <span style="display:inline-block;background:#1E8449;color:#fff;font-size:0.7rem;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-left:6px;vertical-align:1px;">Free</span></a>
+        <a href="/blog/bc-firesmart-assessment-tool">FireSmart Assessment Tool <span style="display:inline-block;background:#1E8449;color:#fff;font-size:0.7rem;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-left:6px;vertical-align:1px;">Free</span></a>
       </div>
     </li>
     <li>
       <button aria-haspopup="true">Incident &amp; Emergency</button>
       <div class="dropdown">
-        <a href="/incident-report.html">Incident Investigation Report <span style="display:inline-block;background:#27AE60;color:#fff;font-size:0.62rem;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-left:6px;vertical-align:1px;">Free</span></a>
-        <a href="/emergency-response.html">Emergency Response Plan <span style="display:inline-block;background:#27AE60;color:#fff;font-size:0.62rem;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-left:6px;vertical-align:1px;">Free</span></a>
+        <a href="/incident-report.html">Incident Investigation Report <span style="display:inline-block;background:#1E8449;color:#fff;font-size:0.7rem;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-left:6px;vertical-align:1px;">Free</span></a>
+        <a href="/emergency-response.html">Emergency Response Plan <span style="display:inline-block;background:#1E8449;color:#fff;font-size:0.7rem;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-left:6px;vertical-align:1px;">Free</span></a>
       </div>
     </li>
     <li><a href="/blog/">Blog</a></li>
@@ -261,7 +262,7 @@ footer a:hover { color:var(--yellow); }
   <section aria-labelledby="hc-title">
     <p class="section-label">Built around the regulation</p>
     <h2 class="section-title" id="hc-title">Hierarchy of controls. Sequenced correctly.</h2>
-    <p class="section-body">Most generic JSA templates list controls as a free-text field. This one sequences them correctly &mdash; elimination first, PPE last &mdash; matching the WorkSafeBC OHS Regulation requirement under Part 3.</p>
+    <p class="section-body">Most generic JSA templates list controls as a free-text field. This one sequences them correctly (elimination first, PPE last), matching the WorkSafeBC OHS Regulation requirement under Part 3.</p>
     <div class="hierarchy-bar">WORKSAFEBC HIERARCHY OF CONTROLS &mdash; s.3.3</div>
     <div class="hc-grid">
       <div class="hc-card active"><div class="hc-num">1</div><div class="hc-label">Eliminate</div><div class="hc-desc">Remove the hazard entirely from the workplace</div></div>
@@ -277,7 +278,7 @@ footer a:hover { color:var(--yellow); }
     <h2 class="section-title" id="includes-title">Analysis table. Hazard checklist. Crew briefing. One form.</h2>
     <div class="includes-grid">
       <ul class="includes-list">
-        <li><span class="check">&#10003;</span> Fillable Word document (.docx) &mdash; edit on any device, print on site</li>
+        <li><span class="check">&#10003;</span> Fillable Word document (.docx): edit on any device, print on site</li>
         <li><span class="check">&#10003;</span> Job information: task description, 8 work type checkboxes, supervisor details</li>
         <li><span class="check">&#10003;</span> 12-category hazard identification checklist to review before analysis</li>
         <li><span class="check">&#10003;</span> 8-step JSA analysis table: Task Step / Hazards / Controls / Residual Risk</li>
@@ -287,12 +288,12 @@ footer a:hover { color:var(--yellow); }
         <li><span class="check">&#10003;</span> Supervisor authorization signature before work begins</li>
         <li><span class="check">&#10003;</span> Toolbox talk briefing notes field</li>
         <li><span class="check">&#10003;</span> 8-worker crew briefing sign-off table</li>
-        <li><span class="check">&#10003;</span> Closing supervisor confirmation &mdash; all workers briefed before work starts</li>
+        <li><span class="check">&#10003;</span> Closing supervisor confirmation: all workers briefed before work starts</li>
         <li><span class="check">&#10003;</span> Revision number field for document control</li>
         <li><span class="check">&#10003;</span> BC OHS Regulation Part 3 s.3.3 referenced throughout</li>
       </ul>
       <div class="reg-card">
-        <h4>Regulatory Basis</h4>
+        <h3>Regulatory Basis</h3>
         <div class="reg-row"><span class="reg-label">Regulation</span><span class="reg-val">BC OHS Reg. Part 3</span></div>
         <div class="reg-row"><span class="reg-label">Risk assessment requirement</span><span class="reg-val">s.3.3</span></div>
         <div class="reg-row"><span class="reg-label">Hierarchy of controls</span><span class="reg-val">Part 3 s.3.12</span></div>
@@ -309,10 +310,10 @@ footer a:hover { color:var(--yellow); }
     <p class="section-label">Who it's for</p>
     <h2 class="section-title" id="who-title">Every BC contractor who puts workers in front of hazards.</h2>
     <div class="who-grid">
-      <div class="who-card"><h4>Small Contractors &amp; Owner-Operators</h4><p>If you're doing pre-job planning without a safety coordinator, this form keeps you compliant and documented without taking 45 minutes to fill out.</p></div>
-      <div class="who-card"><h4>Pipeline &amp; Utility Crews</h4><p>High-hazard tasks with multiple workers need a documented analysis before work starts. This form covers the analysis and crew briefing in one document.</p></div>
-      <div class="who-card"><h4>Mechanical &amp; Construction</h4><p>Hot work, working at heights, energized equipment &mdash; the work type checkboxes and hazard category grid ensure nothing gets missed before the job starts.</p></div>
-      <div class="who-card"><h4>Safety Officers Building Programs</h4><p>Whether you're building a COR-ready safety program or need a solid daily FLHA for a small crew, this template is the foundation.</p></div>
+      <div class="who-card"><h3>Small Contractors &amp; Owner-Operators</h3><p>If you're doing pre-job planning without a safety coordinator, this form keeps you compliant and documented without taking 45 minutes to fill out.</p></div>
+      <div class="who-card"><h3>Pipeline &amp; Utility Crews</h3><p>High-hazard tasks with multiple workers need a documented analysis before work starts. This form covers the analysis and crew briefing in one document.</p></div>
+      <div class="who-card"><h3>Mechanical &amp; Construction</h3><p>Hot work, working at heights, energized equipment. The work type checkboxes and hazard category grid ensure nothing gets missed before the job starts.</p></div>
+      <div class="who-card"><h3>Safety Officers Building Programs</h3><p>Whether you're building a COR-ready safety program or need a solid daily FLHA for a small crew, this template is the foundation.</p></div>
     </div>
   </section>
 
@@ -349,18 +350,18 @@ footer a:hover { color:var(--yellow); }
     <p style="margin-top:8px;"><a href="mailto:info@bcsafetydocs.com">info@bcsafetydocs.com</a></p>
   </div>
   <div>
-    <p style="color:#666;font-size:0.78rem;font-weight:600;margin-bottom:8px;">DOCUMENTS</p>
-    <p><a href="/confined-space-permit.html">Confined Space Entry Permit <span style="display:inline-block;background:#27AE60;color:#fff;font-size:0.62rem;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-left:6px;vertical-align:1px;">Free</span></a><br>
+    <p style="color:#A8A8A8;font-size:0.78rem;font-weight:600;margin-bottom:8px;">DOCUMENTS</p>
+    <p><a href="/confined-space-permit.html">Confined Space Entry Permit <span style="display:inline-block;background:#1E8449;color:#fff;font-size:0.7rem;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-left:6px;vertical-align:1px;">Free</span></a><br>
     <a href="/jsa.html">JSA / FLHA Template</a><br>
     <a href="/hot-work-permit.html">Hot Work Permit</a><br>
     <a href="/incident-report.html">Incident Investigation Report</a></p>
   </div>
   <div>
-    <p style="color:#666;font-size:0.78rem;font-weight:600;margin-bottom:8px;">COR KIT</p>
+    <p style="color:#A8A8A8;font-size:0.78rem;font-weight:600;margin-bottom:8px;">COR KIT</p>
     <p><a href="/cor-kit.html">COR Small-Employer Kit</a></p>
     <p style="margin-top:16px;"><a href="/terms.html">Terms &amp; Privacy</a></p>
   </div>
-  <p style="width:100%;color:#333;font-size:0.7rem;border-top:1px solid #222;padding-top:16px;margin-top:8px;">
+  <p style="width:100%;color:#8F8F8F;font-size:0.75rem;border-top:1px solid #333;padding-top:16px;margin-top:8px;">
     &copy; 2026 BC Safety Docs. All rights reserved. Templates are professional working tools &mdash; must be reviewed by a qualified person before use. Not legal or regulatory advice.
   </p>
 </footer>

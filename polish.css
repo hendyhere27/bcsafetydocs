@@ -1,0 +1,26 @@
+/* Shared polish layer: loaded after each page's own <style>. */
+h1, h2, h3 { text-wrap: balance; }
+p, li, blockquote, figcaption { text-wrap: pretty; }
+a { text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+::selection { background: #F5C400; color: #1A1A1A; }
+input, textarea, select { caret-color: #1A5276; }
+:focus-visible { outline: 3px solid #1A5276; outline-offset: 2px; }
+nav :focus-visible, footer :focus-visible, .dl-card :focus-visible { outline-color: #F5C400; }
+/* Readable measure for long body copy */
+.section-body, .how-list li, .verified-note, .reg-card p, .post-body p, .post-body li { max-width: 70ch; }
+/* Footer text on near-black: 4.5:1 minimum */
+footer p { color: #A8A8A8; }
+footer a { color: #C8C8C8; }
+footer a:hover { color: #F5C400; }
+
+/* Contrast fixes (WCAG AA 4.5:1); !important because pages set these greys with more specific selectors */
+/* Primary free-download button: white text needs a darker green */
+.free-submit-btn { background: #1E8449 !important; }
+/* Small grey text on white / light grey */
+.free-consent, .free-consent a, .free-optin-row span, .opt, .card-meta, figcaption,
+.doc-col li span, .qn small, td.el small, .hc-desc, label > span.opt { color: #666 !important; }
+/* Grey text on near-black */
+.bundle-hero > p, .terms-hero > p, .terms-hero > p a, .problem-card p, .disclaimer { color: #A8A8A8 !important; }
+/* Dark text on yellow */
+#buy .section-label, .cta-section .section-label, .price-once { color: rgba(0,0,0,0.72) !important; }
