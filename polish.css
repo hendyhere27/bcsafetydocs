@@ -18,9 +18,19 @@ footer a:hover { color: #F5C400; }
 /* Primary free-download button: white text needs a darker green */
 .free-submit-btn { background: #1E8449 !important; }
 /* Small grey text on white / light grey */
-.free-consent, .free-consent a, .free-optin-row span, .opt, .card-meta, figcaption,
+.free-consent, .free-consent a, .opt, .card-meta, figcaption,
 .doc-col li span, .qn small, td.el small, .hc-desc, label > span.opt { color: #666 !important; }
 /* Grey text on near-black */
 .bundle-hero > p, .terms-hero > p, .terms-hero > p a, .problem-card p, .disclaimer { color: #A8A8A8 !important; }
 /* Dark text on yellow */
 #buy .section-label, .cta-section .section-label, .price-once { color: rgba(0,0,0,0.72) !important; }
+
+/* Opt-in checkbox: the one optional choice on the form, so it reads as a real option, not fine print */
+.free-optin-row { font-size: 0.88rem !important; line-height: 1.5; }
+.free-optin-row span { color: #333 !important; }
+.free-optin-row input { width: 18px; height: 18px; margin-top: 2px; accent-color: #1E8449; }
+
+/* Mobile: the email field's 220px flex-basis became a 220px-tall box when the row stacks into a column */
+@media (max-width: 600px) {
+  .free-form-row .free-email-input { flex: 0 0 auto; width: 100%; }
+}

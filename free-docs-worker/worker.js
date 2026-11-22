@@ -62,6 +62,21 @@ const PRODUCTS = {
   },
 };
 
+// Ticked opt-in box: the matching free template that is sent along with the COR checklist.
+// "label" must match the wording on the page's checkbox (see the free template pages).
+const MATCHING = {
+  flha: { to: "jsa", label: "JSA template" },
+  jsa: { to: "flha", label: "daily FLHA form" },
+  loto: { to: "safe-work-procedure", label: "Safe Work Procedure template" },
+  "hot-work-permit": { to: "jsa", label: "JSA template" },
+  "incident-report": { to: "emergency-response", label: "Emergency Response Plan" },
+  "policy-statement": { to: "safe-work-procedure", label: "Safe Work Procedure template" },
+  "safe-work-procedure": { to: "jsa", label: "JSA template" },
+  "emergency-response": { to: "incident-report", label: "Incident Investigation Report" },
+  "confined-space": { to: "emergency-response", label: "Emergency Response Plan" },
+  "toolbox-talk": { to: "flha", label: "daily FLHA form" },
+};
+
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function corsHeaders() {
@@ -154,6 +169,8 @@ async function handleFreeDownload(request, env) {
   }
 
   const downloadUrl = `https://bcsafetydocs.com/${productInfo.filename}`;
+  const m = MATCHING[product];
+  const matchUrl = m && PRODUCTS[m.to] ? `https://bcsafetydocs.com/${PRODUCTS[m.to].filename}` : "";
 
   const emailResp = await fetch("https://api.resend.com/emails", {
     method: "POST",
@@ -169,14 +186,14 @@ async function handleFreeDownload(request, env) {
         `<p>Thanks for requesting the <strong>${productInfo.title}</strong>.</p>` +
         `<p><a href="${downloadUrl}">Click here to download ${productInfo.filename}</a></p>` +
         `<p style="color:#777;font-size:13px;">This is a working tool — review it with a qualified person and verify it against the current WorkSafeBC OHS Regulation before use.</p>` +
-        (optIn ? `<p>As you asked, here is the <a href="${CHECKLIST_URL}">1-page COR readiness checklist</a>. Three short emails on getting audit-ready follow over the next 10 days; each one has an unsubscribe link.</p>` : "") +
+        (optIn ? `<p>As you asked, here is the ${matchUrl ? `matching <a href="${matchUrl}">${m.label}</a> and the ` : "the "}<a href="${CHECKLIST_URL}">1-page COR readiness checklist</a>. Three short emails on getting audit-ready follow over the next 10 days; each one has an unsubscribe link.</p>` : "") +
         `<p style="color:#555;font-size:14px;">Also free: the <a href="https://bcsafetydocs.com/cor-gap-check">COR gap check</a> and the <a href="https://bcsafetydocs.com/cor-rebate-calculator">COR incentive calculator</a>.</p>` +
         `<p>Questions? Email <a href="mailto:info@bcsafetydocs.com">info@bcsafetydocs.com</a></p>`,
       text:
         `Thanks for requesting the ${productInfo.title}.\n\n` +
         `Download: ${downloadUrl}\n\n` +
         `This is a working tool — review it with a qualified person and verify it against the current WorkSafeBC OHS Regulation before use.\n\n` +
-        (optIn ? `As you asked, here is the 1-page COR readiness checklist: ${CHECKLIST_URL}
+        (optIn ? `As you asked, here is ${matchUrl ? `the matching ${m.label} (${matchUrl}) and ` : ""}the 1-page COR readiness checklist: ${CHECKLIST_URL}
 Three short emails on getting audit-ready follow over the next 10 days; each one has an unsubscribe link.
 
 ` : "") +

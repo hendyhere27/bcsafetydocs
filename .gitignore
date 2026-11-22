@@ -3,3 +3,7 @@ Thumbs.db
 ~$*
 .wrangler/
 node_modules/
+
+# Local design/product context for Impeccable; the repo root is served publicly, so keep these out of git
+PRODUCT.md
+DESIGN.md

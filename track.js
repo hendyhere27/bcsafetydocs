@@ -22,6 +22,7 @@
       if (m.textContent.indexOf('Check your inbox') !== 0) continue;
       var box = m.parentNode;
       if (box.querySelector('.kit-cta')) continue;
+      var oo = box.querySelector('.free-optin-row'); if (oo) oo.style.display = 'none'; // choice already sent; hide the stale checkbox
       var d = document.createElement('div');
       d.className = 'kit-cta';
       d.setAttribute('style', 'margin-top:14px;padding:12px 14px;background:#FFF8DC;border-left:4px solid #F5C400;border-radius:3px;color:#1A1A1A;font-size:0.82rem;line-height:1.55;text-align:left;');

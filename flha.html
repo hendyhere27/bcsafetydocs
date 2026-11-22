@@ -162,8 +162,8 @@ footer a:hover { color:var(--yellow); }
           <input type="email" id="freeEmail" class="free-email-input" placeholder="you@company.com" required/>
           <button type="submit" id="freeSubmitBtn" class="free-submit-btn">Send Me the Free Form</button>
         </div>
-        <p class="free-msg" id="freeMsg"></p>
-        <label class="free-optin-row"><input type="checkbox" class="free-optin"> <span>Also send me the 1-page COR readiness checklist + 3 short emails on getting audit-ready. Unsubscribe any time. (Optional &mdash; leave unticked and you'll get only your download.)</span></label><p class="free-consent">We'll email the download link right away. See our <a href="/terms.html" style="color:#999;">Privacy Policy</a>.</p>
+        <label class="free-optin-row"><input type="checkbox" class="free-optin"> <span>Also send me the matching JSA template and the 1-page COR readiness checklist, plus 3 short emails on getting audit-ready. Unsubscribe any time.</span></label>
+        <p class="free-msg" id="freeMsg"></p><p class="free-consent">We'll email the download link right away. See our <a href="/terms.html" style="color:#999;">Privacy Policy</a>.</p>
       </form>
     </div>
 
@@ -211,7 +211,7 @@ footer a:hover { color:var(--yellow); }
       });
       var data = await resp.json();
       if (data.ok) {
-        msg.style.color = '#27AE60';
+        msg.style.color = '#1E8449';
         msg.textContent = 'Check your inbox — your download link is on its way.';
         if (window.bcsdLead) bcsdLead('flha');
         document.getElementById('freeEmail').value = '';
