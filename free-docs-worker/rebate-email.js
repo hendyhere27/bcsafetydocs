@@ -13,6 +13,11 @@ const LINKS = [
   ["WorkSafeBC: certifying partners by sector", "https://www.worksafebc.com/en/health-safety/create-manage/certificate-recognition/certifying-partners"],
 ];
 
+// Mail apps (Gmail mobile, Apple Mail) auto-link dates as calendar links that open
+// a blank page. A zero-width non-joiner after each space breaks that detection
+// without changing how the date looks.
+const noLinkDate = (s) => String(s).replace(/ /g, " &#8204;");
+
 export function buildRebateEmail(r) {
   const { inputs, assessablePayroll, capApplied, cap, basePremium, tenPercent, floor, floorApplied, annual, threeYear } = r;
   const kit = CONSTANTS.KIT_PRICE;
@@ -90,7 +95,7 @@ export function buildRebateEmail(r) {
     `<div style="margin-top:18px;font-size:15px;font-weight:700;color:#1A1A1A;">Official WorkSafeBC pages</div>` +
     `<ul style="padding-left:18px;font-size:14px;">${linkRows}</ul>` +
     `<div style="margin-top:20px;padding:14px;background:#F4F4F4;border-left:4px solid #2C3E50;font-size:13px;line-height:1.55;color:#555;">` +
-    `<strong>Please read:</strong> this is an estimate from the figures you entered and WorkSafeBC's published incentive rules (checked ${esc(CONSTANTS.CHECKED)}). WorkSafeBC decides eligibility and the amount. BC Safety Docs is independent and not affiliated with WorkSafeBC or any certifying partner. Not financial or legal advice.</div>` +
+    `<strong>Please read:</strong> this is an estimate from the figures you entered and WorkSafeBC's published incentive rules (checked <span style="color:inherit;text-decoration:none;">${noLinkDate(esc(CONSTANTS.CHECKED))}</span>). WorkSafeBC decides eligibility and the amount. BC Safety Docs is independent and not affiliated with WorkSafeBC or any certifying partner. Not financial or legal advice.</div>` +
     `<p style="font-size:13px;color:#777;margin-top:20px;">You asked for this estimate at bcsafetydocs.com. Questions? Reply to this email or write <a href="mailto:info@bcsafetydocs.com" style="color:#1A5276;">info@bcsafetydocs.com</a>.</p>` +
     `</td></tr></table></td></tr></table></body></html>`;
 
@@ -101,7 +106,7 @@ export function buildRebateEmail(r) {
     `${kitLine}\nThe kit is 18 editable Word documents plus a bonus audit quick reference. It is not certification.\nhttps://bcsafetydocs.com/cor-kit\n\n` +
     `READ BEFORE YOU RELY ON THIS NUMBER\n${caveats.map((c) => `- ${c}`).join("\n")}\n\n` +
     `OFFICIAL WORKSAFEBC PAGES\n${LINKS.map(([t, u]) => `${t}: ${u}`).join("\n")}\n\n` +
-    `This is an estimate from the figures you entered and WorkSafeBC's published incentive rules (checked ${CONSTANTS.CHECKED}). WorkSafeBC decides eligibility and the amount. BC Safety Docs is independent and not affiliated with WorkSafeBC or any certifying partner. Not financial or legal advice.\n\n` +
+    `This is an estimate from the figures you entered and WorkSafeBC's published incentive rules (checked ${CONSTANTS.CHECKED.replace(/ /g, " \u200C")}). WorkSafeBC decides eligibility and the amount. BC Safety Docs is independent and not affiliated with WorkSafeBC or any certifying partner. Not financial or legal advice.\n\n` +
     `You asked for this estimate at bcsafetydocs.com. Questions? info@bcsafetydocs.com\n`;
 
   return {
