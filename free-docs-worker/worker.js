@@ -14,6 +14,7 @@ import { buildRebateEmail } from "./rebate-email.js";
 import { assess as assessGap } from "../cor-gap-logic.js";
 import { buildGapEmail } from "./gap-email.js";
 import { scheduleSequence, handleUnsubscribe, runDueSequence } from "./sequence.js";
+import { calculate as firstAidCalc, summaryLines as firstAidLines } from "../first-aid-logic.js";
 
 const CHECKLIST_URL = "https://bcsafetydocs.com/cor-readiness-checklist";
 
@@ -60,6 +61,10 @@ const PRODUCTS = {
     title: "Occupational Health & Safety Policy Statement",
     filename: "BC_COR_Policy_Statement.docx",
   },
+  "first-aid-pack": {
+    title: "First Aid Program Pack",
+    filename: "BC_First_Aid_Program_Pack.docx",
+  },
 };
 
 // Ticked opt-in box: the matching free template that is sent along with the COR checklist.
@@ -75,7 +80,11 @@ const MATCHING = {
   "emergency-response": { to: "incident-report", label: "Incident Investigation Report" },
   "confined-space": { to: "emergency-response", label: "Emergency Response Plan" },
   "toolbox-talk": { to: "flha", label: "daily FLHA form" },
+  "first-aid-pack": { to: "emergency-response", label: "Emergency Response Plan" },
 };
+
+const escHtml = (s) =>
+  String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -169,6 +178,29 @@ async function handleFreeDownload(request, env) {
   }
 
   const downloadUrl = `https://bcsafetydocs.com/${productInfo.filename}`;
+
+  // First aid calculator: re-run the Schedule 3-A lookup server-side from the raw answers
+  // (the client never supplies result text) and put the result in the email.
+  let faHtml = "";
+  let faText = "";
+  if (product === "first-aid-pack" && body.firstAid && typeof body.firstAid === "object") {
+    const fa = firstAidCalc({
+      workers: body.firstAid.workers,
+      hazard: body.firstAid.hazard,
+      remote: body.firstAid.remote === true,
+      lessAccessible: body.firstAid.lessAccessible === true,
+    });
+    if (fa.ok) {
+      const lines = firstAidLines(fa);
+      faHtml =
+        `<div style="margin:16px 0;padding:14px 16px;background:#F4F4F4;border-left:4px solid #F5C400;">` +
+        `<p style="margin:0 0 6px;font-weight:bold;">Your minimum first aid under Schedule 3-A</p>` +
+        `<p style="margin:0 0 6px;">${escHtml(lines[0])}</p>` +
+        (lines.length > 1 ? `<ul style="margin:0;padding-left:18px;">${lines.slice(1).map((l) => `<li>${escHtml(l.replace(/^- /, ""))}</li>`).join("")}</ul>` : "") +
+        `<p style="margin:8px 0 0;font-size:13px;color:#555;">This is the minimum. Copy it into Part A of the pack, then complete the written assessment (s.3.16(2)); it may show you need more.</p></div>`;
+      faText = `YOUR MINIMUM FIRST AID UNDER SCHEDULE 3-A\n${lines.join("\n")}\nThis is the minimum. Copy it into Part A of the pack, then complete the written assessment (s.3.16(2)); it may show you need more.\n\n`;
+    }
+  }
   const m = MATCHING[product];
   const matchUrl = m && PRODUCTS[m.to] ? `https://bcsafetydocs.com/${PRODUCTS[m.to].filename}` : "";
 
@@ -185,6 +217,7 @@ async function handleFreeDownload(request, env) {
       html:
         `<p>Thanks for requesting the <strong>${productInfo.title}</strong>.</p>` +
         `<p><a href="${downloadUrl}">Click here to download ${productInfo.filename}</a></p>` +
+        faHtml +
         `<p style="color:#777;font-size:13px;">This is a working tool — review it with a qualified person and verify it against the current WorkSafeBC OHS Regulation before use.</p>` +
         (optIn ? `<p>As you asked, here is the ${matchUrl ? `matching <a href="${matchUrl}">${m.label}</a> and the ` : "the "}<a href="${CHECKLIST_URL}">1-page COR readiness checklist</a>. Three short emails on getting audit-ready follow over the next 10 days; each one has an unsubscribe link.</p>` : "") +
         `<p style="color:#555;font-size:14px;">Also free: the <a href="https://bcsafetydocs.com/cor-gap-check">COR gap check</a> and the <a href="https://bcsafetydocs.com/cor-rebate-calculator">COR incentive calculator</a>.</p>` +
@@ -192,6 +225,7 @@ async function handleFreeDownload(request, env) {
       text:
         `Thanks for requesting the ${productInfo.title}.\n\n` +
         `Download: ${downloadUrl}\n\n` +
+        faText +
         `This is a working tool — review it with a qualified person and verify it against the current WorkSafeBC OHS Regulation before use.\n\n` +
         (optIn ? `As you asked, here is ${matchUrl ? `the matching ${m.label} (${matchUrl}) and ` : ""}the 1-page COR readiness checklist: ${CHECKLIST_URL}
 Three short emails on getting audit-ready follow over the next 10 days; each one has an unsubscribe link.

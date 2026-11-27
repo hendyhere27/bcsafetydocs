@@ -190,7 +190,7 @@ footer a:hover { color:var(--yellow); }
 .gate .row input{flex:1 1 240px}
 .gate .row button{border:none;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-size:1.05rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;background:var(--black);color:var(--white);padding:12px 26px;border-radius:3px}
 .gate .row button[disabled]{opacity:0.5;cursor:default}
-.consent{display:flex;gap:10px;align-items:flex-start;margin-top:14px;font-size:0.82rem;color:var(--grey);line-height:1.5}
+.consent{display:flex;gap:10px;align-items:flex-start;margin-top:14px;font-size:0.86rem;color:#1A1A1A;line-height:1.5;background:#FFF8D6;border:1px solid #F5C400;border-radius:3px;padding:10px 12px}.consent input{width:18px;height:18px;flex:none;margin-top:2px;accent-color:#1A1A1A}
 .consent input{margin-top:3px;flex-shrink:0}
 .gate .done{display:none;margin-top:12px;font-weight:600;color:var(--green)}
 .kit-box{margin-top:22px;background:var(--yellow);border-radius:3px;padding:24px 28px}
@@ -245,6 +245,7 @@ footer a:hover { color:var(--yellow); }
         <a href="/incident-report">Incident Investigation Report <span class="badge-free">Free</span></a>
         <a href="/emergency-response">Emergency Response Plan <span class="badge-free">Free</span></a>
         <a href="/worksafebc-penalty-calculator">WorkSafeBC Penalty Estimator <span style="display:inline-block;background:#1E8449;color:#fff;font-size:0.7rem;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-left:6px;vertical-align:1px;">Free</span></a>
+        <a href="/first-aid-requirements-calculator">First Aid Requirements Calculator <span style="display:inline-block;background:#1E8449;color:#fff;font-size:0.7rem;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-left:6px;vertical-align:1px;">Free</span></a>
       </div>
     </li>
     <li><a href="/blog/">Blog</a></li>
@@ -321,7 +322,7 @@ footer a:hover { color:var(--yellow); }
                 <input type="email" id="email" placeholder="you@example.com" aria-label="Email address" autocomplete="email" required>
                 <button type="submit" id="send-btn">Email my breakdown</button>
               </div>
-              <label class="consent"><input type="checkbox" id="optin"> <span>Also send me a few short emails about getting audit-ready for COR. Unsubscribe any time. (Optional &mdash; leave unticked and you'll get only your breakdown.)</span></label>
+              <label class="consent"><input type="checkbox" id="optin"> <span><strong>Yes, also send me 3 short emails from BC Safety Docs</strong> on getting audit-ready for COR (the last one has 10% off the COR kit). Unsubscribe any time. Leave unticked and you'll get only your breakdown.</span></label>
             </form>
             <p class="calc-err" id="send-err" role="alert"></p>
             <p class="done" id="send-done">Sent. Check your inbox (and spam folder) for your breakdown.</p>
@@ -446,7 +447,7 @@ $('send-form').addEventListener('submit', async (e) => {
   </div>
   <div>
     <p style="color:#A8A8A8;font-size:0.78rem;font-weight:600;margin-bottom:8px;">COR KIT</p>
-    <p><a href="/cor-kit">COR Small-Employer Kit</a><br><a href="/cor-rebate-calculator">COR Incentive Calculator</a><br><a href="/worksafebc-penalty-calculator">WorkSafeBC Penalty Estimator</a></p>
+    <p><a href="/cor-kit">COR Small-Employer Kit</a><br><a href="/cor-rebate-calculator">COR Incentive Calculator</a><br><a href="/worksafebc-penalty-calculator">WorkSafeBC Penalty Estimator</a><br><a href="/first-aid-requirements-calculator">First Aid Requirements Calculator</a></p>
     <p style="margin-top:16px;"><a href="/terms">Terms &amp; Privacy</a></p>
   </div>
   <p style="width:100%;color:#8F8F8F;font-size:0.75rem;border-top:1px solid #333;padding-top:16px;margin-top:8px;">
