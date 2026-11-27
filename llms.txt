@@ -34,6 +34,7 @@ Key facts:
 
 ## Blog
 
+- [COR audit checklist for small employers: what to have ready](https://bcsafetydocs.com/blog/cor-audit-checklist-small-employers): how a COR audit gathers evidence (observation, documentation, interviews per go2HR's SECOR manual), the 80% overall / 50% per element pass mark, and the evidence to have ready for each of the 13 elements with OHSR/WCA citations.
 - [BC first aid certificate changes and the November 2027 deadline](https://bcsafetydocs.com/blog/bc-first-aid-certificate-changes-2027): Level 1, 2 and 3 replaced by Basic (7 h), Intermediate (14 h, was 35 h) and Advanced (70 h) on November 1, 2024; old certificates count as the new levels until they expire, and that transition rule (Schedule 3-A s.2) is repealed November 1, 2027; what employers should check.
 - [BC FireSmart Interactive Assessment Tool](https://bcsafetydocs.com/blog/bc-firesmart-assessment-tool): Free BC wildfire self-check. Answer questions about roof, siding, outbuildings, water supply, surrounding fuels and land to get a readiness score and a prioritized action plan by FireSmart Home Ignition Zone, with the full report emailed. Not an official FireSmart assessment.
 - [COR certification in BC: what small employers need to know](https://bcsafetydocs.com/blog/bc-cor-certification-small-employers): Plain-language guide to WorkSafeBC's voluntary Certificate of Recognition: what it is, how certification works, the certifying partners, small-employer audit rules, pass marks, record history and the annual incentive. Sources cited; not legal advice.
